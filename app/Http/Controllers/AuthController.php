@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\RegisterRequest;
 use Illuminate\Http\Request;
 
 class AuthController extends Controller
@@ -15,9 +16,9 @@ class AuthController extends Controller
         return view('auth.register');
     }
 
-    public function register(Request $request)
+    public function register(RegisterRequest $request)
     {
-        return $request->has('name');
+        return $request;
         $userCerdentials = $request->validate([
             'email' => ['required', 'email'],
             'password' => ['required'],
