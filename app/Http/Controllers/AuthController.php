@@ -6,15 +6,21 @@ use Illuminate\Http\Request;
 
 class AuthController extends Controller
 {
-    // go to the login page
-    public function index()
+    public function showLoginPage()
     {
         return view('auth.login');
     }
 
-    // go to register page
-    public function register(){
+    public function showRegisterPage(){
         return view('auth.register');
     }
 
+    public function register(Request $request)
+    {
+        return $request->has('name');
+        $userCerdentials = $request->validate([
+            'email' => ['required', 'email'],
+            'password' => ['required'],
+        ]);
+    }
 }

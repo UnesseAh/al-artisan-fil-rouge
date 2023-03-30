@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\AuthController as AuthControllerAlias;
+use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,18 +14,19 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+//Route::get('/', function () {
+//    return view('welcome');
+//});
 
-//index,postLogin, registration,postRegistration,dashboard,logout
 
-Route::controller(AuthControllerAlias::class)->group(function(){
-    Route::get('login', 'index')->name('login');
-    Route::post('post-login', 'postLogin')->name('login.post');
-    Route::get('register', 'register')->name('register');
-    Route::post('post-registration', 'postRegistration')->name('register.post');
-    Route::get('dashboard', 'dashboard');
-    Route::get('logout','logout')->name('logout');
+Route::controller(AuthController::class)->group(function()
+{
+    Route::get('register', 'showRegisterPage')->name('register');
+    Route::post('post-register', 'register')->name('register.post');
+    Route::get('login', 'showLoginPage')->name('login');
+    Route::post('post-login', 'login')->name('login.post');
+
+//    Route::get('dashboard', 'dashboard');
+//    Route::get('logout','logout')->name('logout');
 });
 
