@@ -23,7 +23,7 @@ Route::get('/', function () {
 Route::controller(AuthControllerAlias::class)->group(function(){
     Route::get('login', 'index')->name('login');
     Route::post('post-login', 'postLogin')->name('login.post');
-    Route::get('registration', 'registration')->name('register');
+    Route::get('register', 'register')->name('register');
     Route::post('post-registration', 'postRegistration')->name('register.post');
     Route::get('dashboard', 'dashboard');
     Route::get('logout','logout')->name('logout');
