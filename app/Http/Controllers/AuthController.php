@@ -24,13 +24,18 @@ class AuthController extends Controller
             'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|min:6|confirmed'
         ]);
-
+        // skip id whenever validation fails
         $user = User::create([
             'name' => $request->input('name'),
             'email' => $request->input('email'),
             'password' => Hash::make($request->input('password'))
         ]);
 
+        if($user) {
+            return redirect('login')->with('success', 'You have successfully registered');
+        }else {
+            return redirect('register')->with('error', 'Registration failed. Please try again.');
+        }
 //        different method to create a new user
 //        $user = new User;
 //        $user->name = $request->name;
@@ -38,6 +43,5 @@ class AuthController extends Controller
 //        $user->password = Hash::make($request->password);
 //        $user->save();
 
-        return redirect('login')->with('success', 'You have successfully registered');
     }
 }

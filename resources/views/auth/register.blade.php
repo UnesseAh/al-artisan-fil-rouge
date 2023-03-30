@@ -16,5 +16,17 @@
         <label for="password_confirmation">Confirm Password:</label>
         <input type="password" name="password_confirmation" required>
     </div>
+    @if ($errors->any())
+        <div>
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
+    @if(session('error'))
+        <div>{{ session('error') }}</div>
+    @endif
     <button type="submit">Register</button>
 </form>
