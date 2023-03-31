@@ -32,7 +32,7 @@ Route::controller(AuthController::class)->group(function()
 });
 
 Route::controller(ForgotPasswordController::class)->group(function(){
-    Route::get('forget-password', 'showForgetPasswordForm');
-    Route::post('forget-password', 'submitForgetPasswordForm');
+    Route::get('forget-password', 'showForgetPasswordForm')->name('showForgetForm');
+    Route::post('forget-password', 'submitForgetPasswordForm')->name('submitForgetForm');
 });
 

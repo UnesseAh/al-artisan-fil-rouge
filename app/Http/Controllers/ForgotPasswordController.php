@@ -10,4 +10,13 @@ class ForgotPasswordController extends Controller
     {
         return view('auth.forgetPassword');
     }
+
+    public function submitForgetPasswordForm(Request $request)
+    {
+        return 'working';
+        $request->validate([
+            'email' => 'required|email',
+        ]);
+    }
+
 }
