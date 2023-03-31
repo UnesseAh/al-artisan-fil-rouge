@@ -63,4 +63,13 @@ class AuthController extends Controller
 //            'email' => 'The provided credentials do not match our records.'
 //        ])->onlyInput('email');
     }
+
+    public function dashboard()
+    {
+        if(Auth::check())
+        {
+            return view('dashboard');
+        }
+        return redirect('login')->with('success', 'Opps! You do not have access');
+    }
 }

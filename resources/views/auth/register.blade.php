@@ -1,7 +1,7 @@
 @if(session('error'))
     <div>{{ session('error') }}</div>
 @endif
-
+<h1>REGISTER :</h1>
 <form method="POST" action="{{ route('register') }}">
     @csrf
     <div>
