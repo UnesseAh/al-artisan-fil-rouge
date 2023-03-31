@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
 class AuthController extends Controller
@@ -43,5 +44,23 @@ class AuthController extends Controller
 //        $user->password = Hash::make($request->password);
 //        $user->save();
 
+    }
+
+    public function login(Request $request)
+    {
+        $userInput = $request->validate([
+            'email' => 'required|string|email|max:255',
+            'password' => 'required|string'
+        ]);
+
+        if(Auth::attempt($userInput))
+        {
+            return redirect()->intended('dashboard')->with('success', 'You have Successfully loggedin');
+        }
+
+        return redirect('login')->with('success', 'Oppes! You have entered invalid credentials');
+//        return back()->withErrors([
+//            'email' => 'The provided credentials do not match our records.'
+//        ])->onlyInput('email');
     }
 }

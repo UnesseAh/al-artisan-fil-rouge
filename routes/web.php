@@ -22,8 +22,8 @@ use Illuminate\Support\Facades\Route;
 Route::controller(AuthController::class)->group(function()
 {
     Route::get('register', 'showRegisterPage');
-    Route::post('post-register', 'register')->name('register');
     Route::get('login', 'showLoginPage');
+    Route::post('post-register', 'register')->name('register');
     Route::post('post-login', 'login')->name('login');
 
 //    Route::get('dashboard', 'dashboard');

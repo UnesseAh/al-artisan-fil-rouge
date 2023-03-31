@@ -1,30 +1,35 @@
+@if(session('error'))
+    <div>{{ session('error') }}</div>
+@endif
+
 <form method="POST" action="{{ route('register') }}">
     @csrf
     <div>
         <label for="name">Name:</label>
-        <input type="text" name="name" required autofocus>
+        <input type="text" name="name">
+        @if($errors->has('name'))
+            <span>{{ $errors->first('name') }}</span>
+        @endif
     </div>
     <div>
         <label for="email">Email:</label>
-        <input type="email" name="email" required>
+        <input type="email" name="email">
+        @if($errors->has('email'))
+            <span>{{ $errors->first('email')}}</span>
+        @endif
     </div>
     <div>
         <label for="password">Password:</label>
-        <input type="password" name="password" required>
+        <input type="password" name="password">
+        @if($errors->has('password'))
+            <span>{{ $errors->first('password') }}</span>
+        @endif
     </div>
     <div>
         <label for="password_confirmation">Confirm Password:</label>
-        <input type="password" name="password_confirmation" required>
+        <input type="password" name="password_confirmation">
     </div>
-    @if ($errors->any())
-        <div>
-            <ul>
-                @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                @endforeach
-            </ul>
-        </div>
-    @endif
+
     @if(session('error'))
         <div>{{ session('error') }}</div>
     @endif
