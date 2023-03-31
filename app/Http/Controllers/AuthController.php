@@ -48,17 +48,19 @@ class AuthController extends Controller
 
     public function login(Request $request)
     {
-        $userInput = $request->validate([
+         $request->validate([
             'email' => 'required|string|email|max:255',
             'password' => 'required|string'
         ]);
 
+        $userInput = $request->only('email', 'password');
+
         if(Auth::attempt($userInput))
         {
-            return redirect()->intended('dashboard')->with('success', 'You have Successfully loggedin');
+            return redirect()->intended('dashboard')->with('success', 'You have Successfully logged in');
         }
 
-        return redirect('login')->with('success', 'Oppes! You have entered invalid credentials');
+        return redirect('login')->with('success', 'Opps! You have entered invalid credentials');
 //        return back()->withErrors([
 //            'email' => 'The provided credentials do not match our records.'
 //        ])->onlyInput('email');
@@ -71,5 +73,12 @@ class AuthController extends Controller
             return view('dashboard');
         }
         return redirect('login')->with('success', 'Opps! You do not have access');
+    }
+
+    public function logout()
+    {
+        // Session::flush();
+        Auth::logout();
+        return redirect('login');
     }
 }
