@@ -1,6 +1,6 @@
 
 
-<form action="{{ route('submitForgetForm') }}" method="POST">
+<form action="{{ route('forget.password.submit') }}" method="POST">
     @csrf
     <div>
     <label for="email">Email :</label>

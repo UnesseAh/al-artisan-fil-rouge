@@ -1,7 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
-use App\Http\Controllers\ForgotPasswordController;
+use App\Http\Controllers\resetPasswordController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -31,8 +31,8 @@ Route::controller(AuthController::class)->group(function()
     Route::get('logout','logout')->name('logout');
 });
 
-Route::controller(ForgotPasswordController::class)->group(function(){
-    Route::get('forget-password', 'showForgetPasswordForm')->name('showForgetForm');
-    Route::post('forget-password', 'submitForgetPasswordForm')->name('submitForgetForm');
+Route::controller(resetPasswordController::class)->group(function(){
+    Route::get('forget-password', 'showForgetPasswordForm')->name('forget.password.show');
+    Route::post('forget-password', 'sendRestLinkEmail')->name('forget.password.submit');
 });
 
