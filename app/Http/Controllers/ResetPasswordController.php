@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Str;
 
-class resetPasswordController extends Controller
+class ResetPasswordController extends Controller
 {
     public function showForgetPasswordForm()
     {
@@ -29,12 +29,27 @@ class resetPasswordController extends Controller
             'created_at' => Carbon::now()
         ]);
 
-        Mail::send('email.forgetPassword', ['token' => $token], function($message) use($request){
+        Mail::send('email.forgetPassword', ['token' => $token], function($message) use($request)
+        {
             $message->to($request->email);
             $message->subject('Reset Password');
         });
 
-        return back()->with('message', 'We have e-mailed your password reset link!');
+        return redirect()->route('dashboard')->with('message', 'We have e-mailed your password reset link!');
+    }
+
+    public function showResetPasswordForm($token)
+    {
+        return view('auth.resetPassword', ['token', $token]);
+    }
+
+    public function resetPassword(Request $request)
+    {
+        $request->validate([
+            'email' => 'required',
+            'password' => 'required',
+            'password_confirmation',
+        ]);
     }
 
 }

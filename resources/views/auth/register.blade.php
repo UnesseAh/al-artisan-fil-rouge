@@ -2,7 +2,7 @@
     <div>{{ session('error') }}</div>
 @endif
 <h1>REGISTER :</h1>
-<form method="POST" action="{{ route('register') }}">
+<form method="POST" action="{{ route('register.submit') }}">
     @csrf
     <div>
         <label for="name">Name:</label>
@@ -35,3 +35,5 @@
     @endif
     <button type="submit">Register</button>
 </form>
+
+<p>Already have an account? <a href="{{ route('login.page') }}">login</a></p>

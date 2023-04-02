@@ -1,5 +1,6 @@
 <h1>Dashboard</h1>
-@if(session('success'))
-    <span>{{ session('success') }}</span>
+@if(session('message'))
+    <span>{{ session('message') }}</span>
 @endif
 
+<p><a href="{{ route('forget.password.show') }}">Change password</a></p>

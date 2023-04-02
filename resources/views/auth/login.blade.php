@@ -3,7 +3,7 @@
 @endif
 
 <h1>LOGIN :</h1>
-<form action="{{ route('login') }}" method="POST">
+<form action="{{ route('login.submit') }}" method="POST">
     @csrf
     <div>
         <label for="email">Email:</label>
@@ -21,3 +21,5 @@
     </div>
     <button type="submit">Login</button>
 </form>
+
+<p>You don't have an account? <a href="{{ route('register.page') }}">Register</a></p>

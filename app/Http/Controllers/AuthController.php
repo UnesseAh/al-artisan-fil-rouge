@@ -54,7 +54,7 @@ class AuthController extends Controller
 
         if(Auth::attempt($userInput))
         {
-            return redirect()->intended('dashboard')->with('success', 'You have Successfully logged in');
+            return redirect()->intended('dashboard')->with('message', 'You have Successfully logged in');
         }
 
         return redirect('login')->with('success', 'Opps! You have entered invalid credentials');
