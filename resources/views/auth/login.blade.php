@@ -1,8 +1,9 @@
-@if(session('success'))
-    <div>{{ session('success') }}</div>
+<h1>LOGIN :</h1>
+
+@if(session('message'))
+    <div>{{ session('message') }}</div>
 @endif
 
-<h1>LOGIN :</h1>
 <form action="{{ route('login.submit') }}" method="POST">
     @csrf
     <div>
@@ -20,6 +21,9 @@
         @endif
     </div>
     <button type="submit">Login</button>
+    <br>
+    <a href="{{ route('forget.password.show') }}">Reset Password</a>
+
 </form>
 
 <p>You don't have an account? <a href="{{ route('register.page') }}">Register</a></p>

@@ -37,7 +37,7 @@ class ResetPasswordController extends Controller
             $message->subject('Reset Password');
         });
 
-        return redirect()->route('dashboard')->with('message', 'We have e-mailed your password reset link!');
+        return redirect()->route('forget.password.show')->with('message', 'We have e-mailed your password reset link!');
     }
 
     public function showResetPasswordForm($token)

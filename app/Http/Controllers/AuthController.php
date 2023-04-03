@@ -33,7 +33,7 @@ class AuthController extends Controller
             'password' => Hash::make($request->input('password'))
         ]);
 
-        return redirect('login')->with('success', 'You have successfully registered');
+        return redirect('login')->with('message', 'You have successfully registered');
 //        different method to create a new user
 //        $user = new User;
 //        $user->name = $request->name;

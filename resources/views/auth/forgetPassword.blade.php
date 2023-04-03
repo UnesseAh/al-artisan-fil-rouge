@@ -1,4 +1,6 @@
-
+@if(session('message'))
+    <span>{{ session('message') }}</span>
+@endif
 
 <form action="{{ route('forget.password.submit') }}" method="POST">
     @csrf
