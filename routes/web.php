@@ -38,6 +38,3 @@ Route::controller(ResetPasswordController::class)->group(function(){
     Route::post('reset-password', 'resetPassword')->name('reset.password.submit');
 });
 
-
-
-
