@@ -36,7 +36,8 @@ Route::controller(ResetPasswordController::class)->group(function(){
     Route::post('forget-password', 'sendRestLinkEmail')->name('forget.password.submit');
     Route::get('reset-password/{token}', 'showResetPasswordForm')->name('reset.password.show');
     Route::post('reset-password', 'resetPassword')->name('reset.password.submit');
-
-
 });
+
+
+
 
