@@ -17,5 +17,19 @@ class CategorySeeder extends Seeder
     public function run()
     {
         Category::factory(5)->create();
+        /*
+        $categories  = [
+            [
+                'name' => 'category 1',
+                'slug' => Str::slug('category 1')
+            ],
+            [
+                'name' => 'category 2',
+                'slug' => Str::slug('category 2')
+            ],
+        ];
+
+        Category::insert($categories);
+        */
     }
 }

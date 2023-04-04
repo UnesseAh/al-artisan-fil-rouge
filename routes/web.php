@@ -3,7 +3,7 @@
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ResetPasswordController;
 use Illuminate\Support\Facades\Route;
-
+use \Barryvdh\Debugbar\Facades\Debugbar;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -15,9 +15,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-//Route::get('/', function () {
-//    return view('welcome');
-//});
+Route::get('/', function () {
+    $name  = 'youness';
+    return view('welcome', ['name' => $name]);
+});
 
 
 Route::controller(AuthController::class)->group(function()
