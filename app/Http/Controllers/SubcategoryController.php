@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Subcategory;
 use Illuminate\Http\Request;
 
 class SubcategoryController extends Controller
@@ -13,7 +14,8 @@ class SubcategoryController extends Controller
      */
     public function index()
     {
-        //
+        $subcategory = Subcategory::all();
+        return $subcategory;
     }
 
     /**
@@ -23,7 +25,7 @@ class SubcategoryController extends Controller
      */
     public function create()
     {
-        //
+
     }
 
     /**
@@ -34,18 +36,27 @@ class SubcategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
-    }
+        $validateData = $request->validate([
+            'name' => 'required|unique:users|max:50|',
+        ]);
 
+        $subcategory  = Subcategory::create($validateData);
+
+        return $subcategory;
+    }
     /**
      * Display the specified resource.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Subcategory $subcategory)
     {
-        //
+        $subcategory = Subcategory::find($subcategory);
+
+        return $subcategory;
+
+
     }
 
     /**
@@ -66,9 +77,16 @@ class SubcategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Subcategory $subcategory)
     {
-        //
+        $validateData = $request->request([
+            'name' => 'required',
+            'category_id'  => 'required',
+        ]);
+
+        Subcategory::update($validateData);
+
+
     }
 
     /**
@@ -77,8 +95,8 @@ class SubcategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Subcategory $subcategory)
     {
-        //
+        Subcategory::delete();
     }
 }
