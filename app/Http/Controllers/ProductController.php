@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Product;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
@@ -13,7 +14,8 @@ class ProductController extends Controller
      */
     public function index()
     {
-        //
+        $product =  Product::all();
+        return $product;
     }
 
     /**
@@ -34,7 +36,16 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validateData = $request->validate([
+            'title' => 'required',
+            'description'  => 'required',
+            'price'  => 'required',
+            'image' => 'required',
+            'subcategory_id' => 'required'
+        ]);
+
+        $product = Product::create($validateData);
+        return $product;
     }
 
     /**
@@ -43,9 +54,10 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Product $product)
     {
-        //
+        $product = Product::find($product);
+        return $product;
     }
 
     /**
@@ -66,9 +78,18 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Product $product)
     {
-        //
+        $validateData = $request->validate([
+            'title' => 'required',
+            'description'  => 'required',
+            'price'  => 'required',
+            'image' => 'required',
+            'subcategory_id' => 'required'
+        ]);
+
+        $product = Product::update($validateData);
+        return $product;
     }
 
     /**
@@ -77,8 +98,9 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Product $product)
     {
-        //
+        Product::delete();
+        return 'product deleted successfully!';
     }
 }
