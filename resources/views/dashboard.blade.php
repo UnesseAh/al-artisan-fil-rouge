@@ -5,3 +5,5 @@
 
 
 <p><a href="{{ route('forget.password.show') }}">Change password</a></p>
+<p><a href="">Categories</a></p>
+

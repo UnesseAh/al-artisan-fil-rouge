@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 
-class Category extends Controller
+class CategoryController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,7 +15,8 @@ class Category extends Controller
      */
     public function index()
     {
-        //
+        $categories = Category::all();
+        return $categories;
     }
 
     /**
@@ -23,7 +26,7 @@ class Category extends Controller
      */
     public function create()
     {
-        //
+
     }
 
     /**
@@ -34,7 +37,13 @@ class Category extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validateData  = $request->validate([
+            'name' => 'required|unique:categories|max:50'
+        ]);
+
+        Category::create($validateData);
+
+        return $validateData;
     }
 
     /**
@@ -43,9 +52,10 @@ class Category extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Category $category)
     {
-        //
+        //$category = Category::find($category);
+        return $category;
     }
 
     /**
@@ -66,9 +76,17 @@ class Category extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Category $category)
     {
-        //
+        $validateData = $request->validate([
+            'name' =>
+                'required',
+                'max:50',
+                Rule::unique('categories')->ignore($category->id),
+        ]);
+
+        $category->update($validateData);
+        return $category;
     }
 
     /**
@@ -77,8 +95,9 @@ class Category extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Category $category)
     {
-        //
+        $category->delete();
+        return 'deleted successfully!';
     }
 }
