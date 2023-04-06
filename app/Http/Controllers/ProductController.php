@@ -25,7 +25,7 @@ class ProductController extends Controller
      */
     public function create()
     {
-        //
+        return view('dashboard.product.create-product');
     }
 
     /**
@@ -68,7 +68,8 @@ class ProductController extends Controller
      */
     public function edit($id)
     {
-        //
+        return view('dashboard.product.edit-product');
+
     }
 
     /**

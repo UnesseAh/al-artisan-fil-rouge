@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ResetPasswordController;
 use Illuminate\Support\Facades\Route;
 use \Barryvdh\Debugbar\Facades\Debugbar;
@@ -16,8 +17,7 @@ use \Barryvdh\Debugbar\Facades\Debugbar;
 */
 
 Route::get('/', function () {
-    $name  = 'youness';
-    return view('welcome', ['name' => $name]);
+    return view('welcome');
 });
 
 
@@ -39,3 +39,9 @@ Route::controller(ResetPasswordController::class)->group(function(){
     Route::post('reset-password', 'resetPassword')->name('reset.password.submit');
 });
 
+Route::controller(ProductController::class)->group(function()
+{
+    Route::get('dashboard/create-product', 'create')->name('create.product');
+    Route::get('dashboard/edit-product', 'edit')->name('edit.product');
+
+});
