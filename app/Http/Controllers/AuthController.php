@@ -26,6 +26,7 @@ class AuthController extends Controller
             'password' => 'required|string|min:6|confirmed'
         ]);
 
+
         // skip id whenever validation fails
         $user = User::create([
             'name' => $request->input('name'),
@@ -50,6 +51,7 @@ class AuthController extends Controller
             'password' => 'required|string'
         ]);
 
+        return $request;
 
         $userInput = $request->only('email', 'password');
 

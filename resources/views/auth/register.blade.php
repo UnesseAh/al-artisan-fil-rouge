@@ -3,47 +3,60 @@
 @include('includes.dashboard.head')
 <body>
     <div>
-        <section class="vh-100" style="background-color: white;">
+        <section class="vh-100" style="background-color: #C7B299;">
             <div class="container py-5 h-100">
                 <div class="row d-flex justify-content-center align-items-center h-100">
                     <div class="col col-xl-10">
                         <div class="card" style="border-radius: 1rem;">
                             <div class="row g-0">
                                 <div class="col-md-6 col-lg-5 d-none d-md-block">
-                                    <img src="{{ asset('image/image-4.jpg') }}"
+                                    <img src="{{ asset('images/image-4.jpg') }}"
                                          alt="login form" class="img-fluid" style="border-radius: 1rem 0 0 1rem;" />
                                 </div>
-                                <div class="col-md-6 col-lg-7 d-flex align-items-center" style="background-color: red;">
+                                <div class="col-md-6 col-lg-7 d-flex align-items-center" >
                                     <div class="card-body p-4 p-lg-5 text-black">
 
-                                        <form action="{{ route('register.submit') }}" method="POST">
+                                        <form method="POST" action="{{ route('register.submit') }}">
                                             @csrf
                                             <div class="d-flex align-items-center mb-3 pb-1">
-                                                <img src="{{ asset('image/al-artisan-logo-1.png') }}" style="width: 50%">
-{{--                                                <span class="h1 fw-bold mb-0">Logo</span>--}}
+                                                <img src="{{ asset('images/logo/al-artisan-logo-dark-1.png') }}" style="width: 50%">
                                             </div>
 
-                                            <h5 class="fw-normal mb-3 pb-3" style="letter-spacing: 1px;">Sign into your account</h5>
+{{--                                            <h5 class="fw-normal mb-3 pb-3" style="letter-spacing: 1px;">Sign into your account</h5>--}}
 
                                             <div class="form-outline mb-4">
-                                                <input type="email" id="form2Example17" class="form-control form-control-lg" />
-                                                <label class="form-label" for="form2Example17">Email address</label>
+                                                <input name="name" type="text" id="name" class="form-control form-control-lg bg-white" />
+                                                <label class="form-label" for="name">Name</label>
                                             </div>
-
+{{--                                        @if($errors->has('name'))--}}
+                                            {{--            <span>{{ $errors->first('name') }}</span>--}}
+                                            {{--        @endif--}}
                                             <div class="form-outline mb-4">
-                                                <input type="password" id="form2Example27" class="form-control form-control-lg" />
-                                                <label class="form-label" for="form2Example27">Password</label>
+                                                <input name="email" type="email" id="email" class="form-control form-control-lg" />
+                                                <label class="form-label" for="email">Email address</label>
                                             </div>
-
+                                            {{--        @if($errors->has('email'))--}}
+                                            {{--            <span>{{ $errors->first('email')}}</span>--}}
+                                            {{--        @endif--}}
+                                            <div class="form-outline mb-4">
+                                                <input name="password" type="password" id="password" class="form-control form-control-lg" />
+                                                <label class="form-label" for="password">Password</label>
+                                            </div>
+                                            {{--        @if($errors->has('password'))--}}
+                                            {{--            <span>{{ $errors->first('password') }}</span>--}}
+                                            {{--        @endif--}}
+                                            <div class="form-outline mb-4">
+                                                <input name="password_confirmation" type="password" id="password_confirmation" class="form-control form-control-lg" />
+                                                <label class="form-label" for="password_confirmation">Confirm password</label>
+                                            </div>
+                                            {{--    @if(session('error'))--}}
+                                            {{--        <div>{{ session('error') }}</div>--}}
+                                            {{--    @endif--}}
                                             <div class="pt-1 mb-4">
-                                                <button class="btn btn-dark btn-lg btn-block" type="button">Login</button>
+                                                <button type="submit" class="btn btn-dark btn-lg btn-block">Register</button>
                                             </div>
 
-                                            <a class="small text-muted" href="#!">Forgot password?</a>
-                                            <p class="mb-5 pb-lg-2" style="color: #393f81;">Don't have an account? <a href="#!"
-                                                                                                                      style="color: #393f81;">Register here</a></p>
-                                            <a href="#!" class="small text-muted">Terms of use.</a>
-                                            <a href="#!" class="small text-muted">Privacy policy</a>
+                                            <p class="mb-5 pb-lg-2" style="color: #332D2D;">Already have an account? <a href="{{ route('login.page') }}" style="color: #C7B299;">Login here</a></p>
                                         </form>
 
                                     </div>
@@ -55,42 +68,35 @@
             </div>
         </section>
     </div>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.2.0/mdb.min.js"></script>
+
 </body>
 {{--@if(session('error'))--}}
 {{--    <div>{{ session('error') }}</div>--}}
 {{--@endif--}}
-{{--<h1>REGISTER :</h1>--}}
 {{--<form method="POST" action="{{ route('register.submit') }}">--}}
 {{--    @csrf--}}
 {{--    <div>--}}
 {{--        <label for="name">Name:</label>--}}
 {{--        <input type="text" name="name">--}}
-{{--        @if($errors->has('name'))--}}
-{{--            <span>{{ $errors->first('name') }}</span>--}}
-{{--        @endif--}}
+{{--
 {{--    </div>--}}
 {{--    <div>--}}
 {{--        <label for="email">Email:</label>--}}
 {{--        <input type="email" name="email">--}}
-{{--        @if($errors->has('email'))--}}
-{{--            <span>{{ $errors->first('email')}}</span>--}}
-{{--        @endif--}}
+
 {{--    </div>--}}
 {{--    <div>--}}
 {{--        <label for="password">Password:</label>--}}
 {{--        <input type="password" name="password">--}}
-{{--        @if($errors->has('password'))--}}
-{{--            <span>{{ $errors->first('password') }}</span>--}}
-{{--        @endif--}}
+
 {{--    </div>--}}
 {{--    <div>--}}
 {{--        <label for="password_confirmation">Confirm Password:</label>--}}
 {{--        <input type="password" name="password_confirmation">--}}
 {{--    </div>--}}
 
-{{--    @if(session('error'))--}}
-{{--        <div>{{ session('error') }}</div>--}}
-{{--    @endif--}}
+
 {{--    <button type="submit">Register</button>--}}
 {{--</form>--}}
 
