@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('product_name');
             $table->integer('quantity');
             $table->decimal('price', 6, 2);
-            $table->total('total', 6, 2);
+            $table->decimal('total', 6, 2);
             $table->boolean('paid')->default(0);
             $table->boolean('delivered')->default(0);
             $table->timestamps();
