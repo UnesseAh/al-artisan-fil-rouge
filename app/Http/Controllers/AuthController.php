@@ -51,7 +51,6 @@ class AuthController extends Controller
             'password' => 'required|string'
         ]);
 
-        return $request;
 
         $userInput = $request->only('email', 'password');
 
