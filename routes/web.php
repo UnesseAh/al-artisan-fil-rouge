@@ -45,3 +45,7 @@ Route::controller(ProductController::class)->group(function()
     Route::get('dashboard/edit-product', 'edit')->name('edit.product');
 
 });
+
+Route::get('shopping-cart', function (){
+    return view('cart');
+});
