@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ResetPasswordController;
 use Illuminate\Support\Facades\Route;
@@ -49,3 +50,8 @@ Route::controller(ProductController::class)->group(function()
 Route::get('shopping-cart', function (){
     return view('cart');
 });
+
+Route::get('categories', [CategoryController::class, 'index'])->name('create.category');
+Route::post('categories', [CategoryController::class, 'store'])->name('store.category');
+Route::delete('categories/{id}', [CategoryController::class, 'destroy'])->name('delete.category');
+//Route::get('categories', [])

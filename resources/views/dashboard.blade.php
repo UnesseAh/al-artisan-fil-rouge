@@ -31,12 +31,10 @@
                 <a href="#" class="list-group-item list-group-item-action py-2 ripple" aria-current="true">
                     <i class="fa-solid fa-bag-shopping  fa-fw me-3"></i><span>Products</span>
                 </a>
-                <a href="#" class="list-group-item list-group-item-action py-2 ripple active">
+                <a href="{{  route('create.category') }}" class="list-group-item list-group-item-action py-2 ripple active">
                     <i class="fa-solid fa-layer-group fa-fw me-3"></i><span>Categories</span>
                 </a>
-                <a href="#" class="list-group-item list-group-item-action py-2 ripple">
-                    <i class="fa-solid fa-layer-group fa-fw me-3"></i><span>Subcategories</span>
-                </a>
+
                 <a href="#" class="list-group-item list-group-item-action py-2 ripple">
                     <i class="fa-solid fa-hammer fa-fw me-3"></i><span>Artisans</span>
                 </a>

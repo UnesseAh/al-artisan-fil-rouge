@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 use Illuminate\Validation\Rule;
 
 class CategoryController extends Controller
@@ -17,7 +18,7 @@ class CategoryController extends Controller
     {
         $categories = Category::all();
 
-        return $categories;
+        return view('dashboard.category', ['categories'=>$categories]);
     }
 
     /**
@@ -39,12 +40,12 @@ class CategoryController extends Controller
     public function store(Request $request)
     {
         $validateData  = $request->validate([
-            'name' => 'required|unique:categories|max:50'
+            'name' => 'required|unique:categories|max:50',
         ]);
 
-        Category::create($validateData);
+        Category::create($validateData + ['slug' => Str::slug($validateData['name'])]);
 
-        return $validateData;
+        return $this->index();
     }
 
     /**
@@ -55,8 +56,7 @@ class CategoryController extends Controller
      */
     public function show(Category $category)
     {
-        //$category = Category::find($category);
-        return $category;
+
     }
 
     /**
@@ -96,9 +96,10 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Category $category)
+    public function destroy($id)
     {
+        $category = Category::find($id);
         $category->delete();
-        return 'deleted successfully!';
+        return $this->index();
     }
 }
