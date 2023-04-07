@@ -28,27 +28,23 @@
     <nav id="sidebarMenu" class="collapse d-lg-block sidebar collapse bg-white">
         <div class="position-sticky">
             <div class="list-group list-group-flush mx-3 mt-4">
-                <a
-                    href="#"
-                    class="list-group-item list-group-item-action py-2 ripple"
-                    aria-current="true"
-                >
-                    <i class="fas fa-tachometer-alt fa-fw me-3"></i><span>Products</span>
+                <a href="#" class="list-group-item list-group-item-action py-2 ripple" aria-current="true">
+                    <i class="fa-solid fa-bag-shopping  fa-fw me-3"></i><span>Products</span>
                 </a>
                 <a href="#" class="list-group-item list-group-item-action py-2 ripple active">
-                    <i class="fas fa-chart-area fa-fw me-3"></i><span>Categories</span>
-                </a>
-                <a href="#" class="list-group-item list-group-item-action py-2 ripple"
-                ><i class="fas fa-lock fa-fw me-3"></i><span>Subcategories</span></a
-                >
-                <a href="#" class="list-group-item list-group-item-action py-2 ripple"
-                ><i class="fas fa-chart-line fa-fw me-3"></i><span>Artisans</span></a
-                >
-                <a href="#" class="list-group-item list-group-item-action py-2 ripple">
-                    <i class="fas fa-chart-pie fa-fw me-3"></i><span>Users</span>
+                    <i class="fa-solid fa-layer-group fa-fw me-3"></i><span>Categories</span>
                 </a>
                 <a href="#" class="list-group-item list-group-item-action py-2 ripple">
-                    <i class="fas fa-chart-bar fa-fw me-3"></i><span>Orders</span>
+                    <i class="fa-solid fa-layer-group fa-fw me-3"></i><span>Subcategories</span>
+                </a>
+                <a href="#" class="list-group-item list-group-item-action py-2 ripple">
+                    <i class="fa-solid fa-hammer fa-fw me-3"></i><span>Artisans</span>
+                </a>
+                <a href="#" class="list-group-item list-group-item-action py-2 ripple">
+                    <i class="fa-solid fa-user fa-fw me-3"></i><span>Users</span>
+                </a>
+                <a href="#" class="list-group-item list-group-item-action py-2 ripple">
+                    <i class="fa-solid fa-cart-shopping fa-fw me-3"></i><span>Orders</span>
                 </a>
 
             </div>
@@ -189,7 +185,85 @@
 
 <!--Main layout-->
 <main style="margin-top: 58px;">
-    <div class="container pt-4"></div>
+    <div class="container pt-4">
+        <button type="button" class="btn btn-primary mb-4">Add Product</button>
+
+        <table class="table align-middle mb-0 bg-white table-striped table-bordered ">
+                <thead class="bg-dark text-light">
+                    <tr>
+                        <th>ID</th>
+                        <th>product</th>
+                        <th>description</th>
+                        <th>price</th>
+                        <th>old price</th>
+                        <th>stock</th>
+                        <th>action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>
+                            <div class="d-flex align-items-center">
+                                <img src="{{ asset('images/product-1.png') }}" alt="" style="width: 45px; height: 45px" />
+                                <div class="ms-3">
+                                    <p class="fw-bold mb-1">MOROCCAN KILIM CUSHION, RED</p>
+                                </div>
+                            </div>
+                        </td>
+                        <td>this is a not very long description</td>
+                        <td>19.99</td>
+                        <td>24.99</td>
+                        <td><span class="badge badge-primary rounded-pill d-inline">5</span></td>
+                        <td>
+                            <button type="button" class="btn btn-outline-success" data-mdb-ripple-color="dark">Edit</button>
+                            <button type="button" class="btn btn-outline-danger" data-mdb-ripple-color="dark">Delete</button>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>
+                            <div class="d-flex align-items-center">
+                                <img src="{{ asset('images/product-2.png') }}" alt="" style="width: 45px; height: 45px" />
+                                <div class="ms-3">
+                                    <p class="fw-bold mb-1">MOROCCAN TRIBAL ENAMELED EARRINGS</p>
+                                </div>
+                            </div>
+                        </td>
+                        <td>this is a not very long description</td>
+                        <td>19.99</td>
+                        <td>24.99</td>
+                        <td><span class="badge badge-primary rounded-pill d-inline">9</span></td>
+                        <td>
+                            <button type="button" class="btn btn-outline-success" data-mdb-ripple-color="dark">Edit</button>
+                            <button type="button" class="btn btn-outline-danger" data-mdb-ripple-color="dark">Delete</button>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>
+                            <div class="d-flex align-items-center">
+                                <img src="{{ asset('images/product-3.png') }}" alt="" style="width: 45px; height: 45px" />
+                                <div class="ms-3">
+                                    <p class="fw-bold mb-1">MOROCCAN CEILING LIGHTS, ALMINA</p>
+                                </div>
+                            </div>
+                        </td>
+                        <td>this is a not very long description</td>
+                        <td>19.99</td>
+                        <td>24.99</td>
+                        <td><span class="badge badge-primary rounded-pill d-inline">12</span></td>
+                        <td>
+                            <button type="button" class="btn btn-outline-success" data-mdb-ripple-color="dark">Edit</button>
+                            <button type="button" class="btn btn-outline-danger" data-mdb-ripple-color="dark">Delete</button>
+
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+    </div>
 </main>
 <!--Main layout-->
 
