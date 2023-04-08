@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use App\Models\Subcategory;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class SubcategoryController extends Controller
 {
@@ -14,8 +16,10 @@ class SubcategoryController extends Controller
      */
     public function index()
     {
-        $subcategory = Subcategory::all();
-        return $subcategory;
+        $subcategories = Subcategory::all();
+        $categories = Category::all();
+
+        return view('dashboard.category', compact('subcategories' ,'categories'));
     }
 
     /**
@@ -38,11 +42,13 @@ class SubcategoryController extends Controller
     {
         $validateData = $request->validate([
             'name' => 'required|unique:users|max:50|',
+            'category_id' => 'required|numeric|exists:categories,id'
         ]);
 
-        $subcategory  = Subcategory::create($validateData);
+        Subcategory::create($validateData + ['slug' => Str::slug($validateData['name'])]);
 
-        return $subcategory;
+        return $this->index();
+
     }
     /**
      * Display the specified resource.

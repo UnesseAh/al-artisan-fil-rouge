@@ -67,7 +67,9 @@ class CategoryController extends Controller
      */
     public function edit($id)
     {
-        //
+        $category =  Category::find($id);
+
+        return view('dashboard.edit-category', ['category' => $category]);
     }
 
     /**
@@ -77,17 +79,17 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Category $category)
+    public function update(Request $request, $id)
     {
         $validateData = $request->validate([
-            'name' =>
+            'name' => [
                 'required',
                 'max:50',
-                Rule::unique('categories')->ignore($category->id),
+                Rule::unique('categories')->ignore($id)],
         ]);
-
-        $category->update($validateData);
-        return $category;
+        $category = Category::find($id);
+        $category->update($validateData + ['slug' => Str::slug($validateData['name'])]);
+        return $this->index();
     }
 
     /**

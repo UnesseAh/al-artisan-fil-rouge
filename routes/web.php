@@ -4,6 +4,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ResetPasswordController;
+use App\Http\Controllers\SubcategoryController;
 use Illuminate\Support\Facades\Route;
 use \Barryvdh\Debugbar\Facades\Debugbar;
 /*
@@ -54,4 +55,11 @@ Route::get('shopping-cart', function (){
 Route::get('categories', [CategoryController::class, 'index'])->name('create.category');
 Route::post('categories', [CategoryController::class, 'store'])->name('store.category');
 Route::delete('categories/{id}', [CategoryController::class, 'destroy'])->name('delete.category');
-//Route::get('categories', [])
+Route::get('categories/{id}', [CategoryController::class, 'edit'])->name('edit.category');
+Route::put('categories/{id}', [CategoryController::class, 'update'])->name('update.category');
+
+//Route::get('categories', [SubcategoryController::class, 'index'])->name('create.subcategory');
+Route::post('subcategories', [SubcategoryController::class, 'store'])->name('store.subcategory');
+//Route::get('subcategories/{id}', [SubcategoryController::class, 'edit'])->name('edit.subcategory');
+//Route::put('subcategories/{id}', [SubcategoryController::class, 'update'])->name('update.subcategory');
+//Route::delete('subcategories/{id}', [SubcategoryController::class, 'destroy'])->name('delete.subcategory');
