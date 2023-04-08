@@ -82,18 +82,20 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Product $product)
+    public function update(Request $request, $id)
     {
         $validateData = $request->validate([
             'title' => 'required',
             'description'  => 'required',
             'price'  => 'required',
-            'image' => 'required',
+            'old_price' => 'required',
             'subcategory_id' => 'required'
         ]);
+        $product = Product::find($id);
+        $product->update($validateData);
 
-        $product = Product::update($validateData);
-        return $product;
+        $products =  Product::all();
+        return view('dashboard', ['products' => $products] );
     }
 
     /**
