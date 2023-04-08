@@ -19,9 +19,6 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.2.0/mdb.min.css" rel="stylesheet"/>
 </head>
 <body>
-<style>
-
-</style>
 <!--Main Navigation-->
 <header>
     <!-- Sidebar -->
@@ -53,7 +50,7 @@
     <!-- Navbar -->
     <nav id="main-navbar" class="navbar navbar-expand-lg navbar-light bg-white fixed-top">
         <!-- Container wrapper -->
-        <div class="container-fluid">
+{{--        <div class="container-fluid">--}}
             <!-- Toggle button -->
             <button class="navbar-toggler" type="button" data-mdb-toggle="collapse" data-mdb-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
                 <i class="fas fa-bars"></i>
@@ -157,26 +154,27 @@
                     </tr>
                 </thead>
                 <tbody>
+                @foreach($products as $product)
                     <tr>
-                        <td>1</td>
+                        <td>{{ $product->id }}</td>
                         <td>
                             <div class="d-flex align-items-center">
                                 <img src="{{ asset('images/product-1.png') }}" alt="" style="width: 45px; height: 45px" />
                                 <div class="ms-3">
-                                    <p class="fw-bold mb-1">MOROCCAN KILIM CUSHION, RED</p>
+                                    <p class="fw-bold mb-1">{{ $product->title }}</p>
                                 </div>
                             </div>
                         </td>
-                        <td>this is a not very long description</td>
-                        <td>19.99</td>
-                        <td>24.99</td>
-                        <td><span class="badge badge-primary rounded-pill d-inline">5</span></td>
+                        <td>{{ $product->description }}</td>
+                        <td>{{ $product->price }}</td>
+                        <td>{{ $product->old_price }}</td>
+                        <td><span class="badge badge-primary rounded-pill d-inline">{{ $product->stock }}</span></td>
                         <td>
-                            <button type="button" class="btn btn-outline-success" data-mdb-ripple-color="dark">Edit</button>
+                            <a href="{{ route('edit.product', ['product' => $product->id]) }}"  class="btn btn-outline-success" data-mdb-ripple-color="dark">Edit</a>
                             <button type="button" class="btn btn-outline-danger" data-mdb-ripple-color="dark">Delete</button>
-
                         </td>
                     </tr>
+                @endforeach
                 </tbody>
             </table>
     </div>
@@ -185,12 +183,6 @@
 
 <!-- MDB -->
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.2.0/mdb.min.js"></script>
-{{--<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.min.js"--}}
-{{--        integrity="sha384-Y4oOpwW3duJdCWv5ly8SCFYWqFDsfob/3GkgExXKV4idmbt98QcxXYs9UoXAB7BZ"--}}
-{{--        crossorigin="anonymous"></script>--}}
-</body>
-</html>
-
 </body>
 </html>
 

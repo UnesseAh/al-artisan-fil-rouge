@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Product;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -53,10 +54,10 @@ class AuthController extends Controller
 
 
         $userInput = $request->only('email', 'password');
-
+        $products = Product::all();
         if(Auth::attempt($userInput))
         {
-            return redirect()->intended('dashboard')->with('message', 'You have Successfully logged in');
+            return redirect()->intended('dashboard', ['products'=> $products])->with('message', 'You have Successfully logged in');
         }
 
         return redirect('login')->with('success', 'Opps! You have entered invalid credentials');
@@ -69,7 +70,8 @@ class AuthController extends Controller
     {
         if(Auth::check())
         {
-            return view('dashboard');
+            $products  = Product::all();
+            return view('dashboard', ['products' => $products]);
         }
         return redirect('login')->with('success', 'Opps! You do not have access');
     }
