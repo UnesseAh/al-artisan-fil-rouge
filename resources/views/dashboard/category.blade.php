@@ -43,14 +43,20 @@
 
 <h1>Subcategory</h1>
 <div>
-    <form method="Post" action="{{ route('store.subcategory') }}">
+    <form method="POST" action="{{ route('store.subcategory') }}">
         @csrf
+
         <div>
-            <label>Category :</label>
-            <input name="category_id" type="number">
+            <label for="subcategory">Choose a subategory :</label>
+            <select id="subcategory" name="category_id">
+                <option selected>Choose a category</option>
+                @foreach($categories as $category)
+                    <option value="{{ $category->id }}">{{$category->name}}</option>
+                @endforeach
+            </select>
         </div>
         <div>
-            <label>Subategory :</label>
+            <label>Category :</label>
             <input name="name" type="text">
         </div>
         <button class="btn btn-info" type="submit">Add Subcategory</button>
@@ -73,11 +79,11 @@
                 <td>{{ $subcategory->name }}</td>
                 <td>
                     <a href="{{ route('edit.subcategory', ['id'=>$subcategory->id]) }}">Edit</a>
-                    <form method="post" action="{{ route('delete.subcategory', ['id'=>$subcategory->id]) }}">
+{{--                    <form method="post" action="{{ route('delete.subcategory', ['id'=>$subcategory->id]) }}">--}}
                         @csrf
                         @method('DELETE')
                         <button type="submit">Delete</button>
-                    </form>
+{{--                    </form>--}}
                 </td>
             </tr>
         @endforeach

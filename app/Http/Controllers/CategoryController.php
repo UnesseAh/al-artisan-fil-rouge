@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
+use App\Models\Subcategory;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Illuminate\Validation\Rule;
@@ -16,9 +17,10 @@ class CategoryController extends Controller
      */
     public function index()
     {
+        $subcategories = Subcategory::all();
         $categories = Category::all();
 
-        return view('dashboard.category', ['categories'=>$categories]);
+        return view('dashboard.category', compact('subcategories' ,'categories'));
     }
 
     /**

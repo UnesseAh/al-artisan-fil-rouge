@@ -73,7 +73,8 @@ class SubcategoryController extends Controller
      */
     public function edit($id)
     {
-        //
+        $subcategory = Subcategory::find($id);
+        return view('dashboard.edit-subcategory', ['subcategory' => $subcategory]);
     }
 
     /**
@@ -83,15 +84,16 @@ class SubcategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Subcategory $subcategory)
+    public function update(Request $request, $id)
     {
-        $validateData = $request->request([
+        $validateData = $request->validate([
             'name' => 'required',
-            'category_id'  => 'required',
         ]);
 
-        Subcategory::update($validateData);
+        $subcategory  = Subcategory::find($id);
+        $subcategory->update($validateData + ['slug' => Str::slug($validateData['name'])]);
 
+        return $this->index();
 
     }
 
