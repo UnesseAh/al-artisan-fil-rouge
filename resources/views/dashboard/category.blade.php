@@ -79,11 +79,11 @@
                 <td>{{ $subcategory->name }}</td>
                 <td>
                     <a href="{{ route('edit.subcategory', ['id'=>$subcategory->id]) }}">Edit</a>
-{{--                    <form method="post" action="{{ route('delete.subcategory', ['id'=>$subcategory->id]) }}">--}}
+                    <form method="post" action="{{ route('delete.subcategory', ['subcategory'=>$subcategory->id]) }}">
                         @csrf
                         @method('DELETE')
                         <button type="submit">Delete</button>
-{{--                    </form>--}}
+                    </form>
                 </td>
             </tr>
         @endforeach
