@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Product;
+use App\Models\Subcategory;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
@@ -68,7 +69,9 @@ class ProductController extends Controller
      */
     public function edit($id)
     {
-        return view('dashboard.product.edit-product');
+        $product = Product::find($id);
+        $subcategories  = Subcategory::all();
+        return view('dashboard.product.edit-product', compact('product', 'subcategories'));
 
     }
 

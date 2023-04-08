@@ -170,7 +170,7 @@
                         <td>{{ $product->old_price }}</td>
                         <td><span class="badge badge-primary rounded-pill d-inline">{{ $product->stock }}</span></td>
                         <td>
-                            <a href="{{ route('edit.product', ['product' => $product->id]) }}"  class="btn btn-outline-success" data-mdb-ripple-color="dark">Edit</a>
+                            <a href="{{ route('edit.product', ['id' => $product->id]) }}"  class="btn btn-outline-success" data-mdb-ripple-color="dark">Edit</a>
                             <button type="button" class="btn btn-outline-danger" data-mdb-ripple-color="dark">Delete</button>
                         </td>
                     </tr>
