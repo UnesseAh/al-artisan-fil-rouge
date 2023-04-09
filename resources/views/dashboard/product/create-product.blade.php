@@ -2,7 +2,7 @@
 
 <h1>Create a new product</h1>
 
-<form method="POST" action="{{route('store.product')}}">
+<form method="POST" action="{{route('store.product')}}" enctype="multipart/form-data">
     @csrf
     <div class="form-floating">
         <input name="title" type="text" id="title" class="form-control" placeholder="title">

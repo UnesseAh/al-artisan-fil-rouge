@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
     <title>Al Artisan | Home Page</title>
-    <link rel="icon" type="image/x-icon" href="images/logo/icon/al-artisan-icon-dark.png">
+    <link rel="icon" type="image/x-icon" href="image/logo/icon/al-artisan-icon-dark.png">
 {{--    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">--}}
     <!-- Font Awesome -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet"/>
@@ -20,7 +20,7 @@
     <div class="container">
         <!-- Navbar brand -->
         <a class="navbar-brand me-2" href="https://mdbgo.com/">
-            <img src="{{ asset('images/logo/icon/al-artisan-icon-white.png') }}" height="36" alt="MDB Logo" loading="lazy" style="margin-top: -1px;"/>
+            <img src="{{ asset('image/logo/icon/al-artisan-icon-white.png') }}" height="36" alt="MDB Logo" loading="lazy" style="margin-top: -1px;"/>
         </a>
 
         <!-- Toggle button -->
@@ -89,12 +89,11 @@
         @foreach($products as $product)
             <div class="col">
                 <div class="card">
-                    <img src="{{asset('images/product-1.png')}}" class="card-img-top" alt="Hollywood Sign on The Hill"/>
+                    <img src="{{asset('image/'.$product->image)}}" class="card-img-top" alt="Hollywood Sign on The Hill"/>
                     <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
+                        <h5 class="card-title">{{ $product->title }}</h5>
                         <p class="card-text">
-                            This is a longer card with supporting text below as a natural lead-in to
-                            additional content. This content is a little bit longer.
+                            {{$product->price}}
                         </p>
                     </div>
                 </div>

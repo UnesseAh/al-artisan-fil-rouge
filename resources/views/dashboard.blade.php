@@ -57,8 +57,8 @@
             </button>
 
             <!-- Brand -->
-            <a class="navbar-brand" href="#">
-                <img src="{{asset('images/logo/al-artisan-logo-dark-1.png')}}" height="25" alt="MDB Logo" loading="lazy"/>
+            <a class="navbar-brand" href="{{ route('landing.data') }}">
+                <img src="{{asset('image/logo/al-artisan-logo-dark-1.png')}}" height="25" alt="MDB Logo" loading="lazy"/>
             </a>
             <!-- Search form -->
             <form class="d-none d-md-flex input-group w-auto my-auto">
@@ -114,7 +114,7 @@
                 <!-- Avatar -->
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle hidden-arrow d-flex align-items-center" href="#" id="navbarDropdownMenuLink" role="button" data-mdb-toggle="dropdown" aria-expanded="false">
-                        <img src="{{ asset('images/youness-ahasla.png') }}" class="rounded-circle" height="22" alt="Avatar" loading="lazy"/>
+                        <img src="{{ asset('image/youness-ahasla.png') }}" class="rounded-circle" height="22" alt="Avatar" loading="lazy"/>
                     </a>
                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuLink">
                         <li>
@@ -159,7 +159,7 @@
                         <td>{{ $product->id }}</td>
                         <td>
                             <div class="d-flex align-items-center">
-                                <img src="{{ asset('images/'.$product->image) }}" alt="" style="width: 45px; height: 45px" />
+                                <img src="{{ asset('image/'.$product->image) }}" alt="" style="width: 45px; height: 45px" />
                                 <div class="ms-3">
                                     <p class="fw-bold mb-1">{{ $product->title }}</p>
                                 </div>
@@ -170,7 +170,6 @@
                         <td>{{ $product->old_price }}</td>
                         <td><span class="badge badge-primary rounded-pill d-inline">{{ $product->stock }}</span></td>
                         <td>
-
                             <form method="POST" action="{{ route('delete.product', ['product' => $product]) }}">
                                 <a href="{{ route('edit.product', ['id' => $product->id]) }}"  class="btn btn-outline-success" data-mdb-ripple-color="dark">Edit</a>
                                 @csrf
