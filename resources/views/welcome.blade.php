@@ -83,7 +83,12 @@
     <!-- Container wrapper -->
 </nav>
 <!-- Navbar -->
-
+<div class="card text-center">
+    <div class="card-header">MARHABA!</div>
+    <div class="card-body d-flex justify-content-center">
+        <p class="card-text w-50">Welcome to Al Artisan, where we strive to empower talented artisans from remote areas by showcasing their exquisite crafts. Our unique and authentic products are sourced directly from the artisans, allowing us to offer wholesale prices to bazaar owners and support the local communities. By shopping with us, you're not only getting beautiful and authentic Moroccan decor, but you're also contributing to the livelihoods of the hardworking artisans who make them.</p>
+    </div>
+</div>
 <div class="container">
     <div class="row row-cols-1 row-cols-md-4 g-4">
         @foreach($products as $product)
