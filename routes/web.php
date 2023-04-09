@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\LandingPageController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ResetPasswordController;
 use App\Http\Controllers\SubcategoryController;
@@ -18,9 +19,7 @@ use \Barryvdh\Debugbar\Facades\Debugbar;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [LandingPageController::class, 'RedirectToLandingPageWithProductsAndCategories'])->name('landing.data');
 
 
 Route::controller(AuthController::class)->group(function()
