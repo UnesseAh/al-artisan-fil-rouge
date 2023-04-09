@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Product;
 use App\Models\Subcategory;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Str;
 
 class ProductController extends Controller
 {
@@ -26,7 +28,9 @@ class ProductController extends Controller
      */
     public function create()
     {
-        return view('dashboard.product.create-product');
+        $subcategories = Subcategory::all();
+
+        return view('dashboard.product.create-product', ['subcategories' => $subcategories]);
     }
 
     /**
@@ -37,16 +41,27 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        $validateData = $request->validate([
+        $request->validate([
             'title' => 'required',
             'description'  => 'required',
             'price'  => 'required',
+            'old_price' => 'required',
+            'subcategory_id' => 'required',
+            'stock' => 'required',
             'image' => 'required',
-            'subcategory_id' => 'required'
         ]);
 
-        $product = Product::create($validateData);
-        return $product;
+        $input = $request->all();
+
+        if ($image = $request->file('image')) {
+            $destinationPath = 'public/images/';
+            $profileImage = date('YmdHis') . "." . $image->getClientOriginalExtension();
+            $image->move($destinationPath, $profileImage);
+            $input['image'] = "$profileImage";
+        }
+
+        Product::create($input + ['slug' => Str::slug($input['title'])]);
+        return redirect()->route('dashboard');
     }
 
     /**
@@ -106,7 +121,7 @@ class ProductController extends Controller
      */
     public function destroy(Product $product)
     {
-        Product::delete();
-        return 'product deleted successfully!';
+        $product->delete();
+        return Redirect::back();
     }
 }

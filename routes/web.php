@@ -65,7 +65,7 @@ Route::put('subcategories/{id}', [SubcategoryController::class, 'update'])->name
 Route::delete('subcategories/{subcategory}', [SubcategoryController::class, 'destroy'])->name('delete.subcategory');
 
 Route::get('products', [ProductController::class, 'create'])->name('create.product');
-//Route::post('products', [ProductController::class, 'store'])->name('store.subcategory');
+Route::post('products', [ProductController::class, 'store'])->name('store.product');
 Route::get('product/{id}', [ProductController::class, 'edit'])->name('edit.product');
 Route::put('product/{id}', [ProductController::class, 'update'])->name('update.product');
-//Route::delete('subcategories/{subcategory}', [SubcategoryController::class, 'destroy'])->name('delete.subcategory');
+Route::delete('product/{product}', [ProductController::class, 'destroy'])->name('delete.product');

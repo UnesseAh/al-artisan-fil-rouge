@@ -54,10 +54,10 @@ class AuthController extends Controller
 
 
         $userInput = $request->only('email', 'password');
-        $products = Product::all();
+
         if(Auth::attempt($userInput))
         {
-            return redirect()->intended('dashboard', ['products'=> $products])->with('message', 'You have Successfully logged in');
+            return redirect()->intended('dashboard')->with('message', 'You have Successfully logged in');
         }
 
         return redirect('login')->with('success', 'Opps! You have entered invalid credentials');
