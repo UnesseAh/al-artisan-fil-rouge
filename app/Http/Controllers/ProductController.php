@@ -61,6 +61,7 @@ class ProductController extends Controller
         }
 
         Product::create($input + ['slug' => Str::slug($input['title'])]);
+
         return redirect()->route('dashboard');
     }
 

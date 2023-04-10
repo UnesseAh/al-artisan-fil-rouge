@@ -69,12 +69,12 @@
             </ul>
             <!-- Left links -->
             <div class="d-flex align-items-center">
-                <button type="button" class="btn btn-link px-3 me-2">
+                <a href="{{ route('login.page') }}" type="button" class="btn btn-link px-3 me-2">
                     Login
-                </button>
-                <button type="button" class="btn btn-primary me-3">
+                </a>
+                <a href="{{ route('register.page') }}" type="button" class="btn btn-primary me-3">
                     Register
-                </button>
+                </a>
 
             </div>
         </div>

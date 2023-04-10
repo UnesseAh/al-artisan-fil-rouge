@@ -10,12 +10,17 @@
         <p> Description : {{ $product->description }}</p>
         <p>Price : {{ $product->price  }}</p>
         <p>Old Price : {{ $product->old_price  }}</p>
-        <label for="quantity">Quantity:</label>
-        <input type="number" id="quantity" name="quantity" min="1" max="1000">
-        <hr>
-        <a type="button" class="btn btn-primary" data-mdb-toggle="button" autocomplete="off">
-            Add To Cart
-        </a>
+        <form method="POST" action="{{ route('cart.add')}}">
+            @csrf
+            <!-- add a hidden input field for the product ID -->
+            <input type="hidden" name="product_id" value="{{$product->id}}">
+            <label for="quantity">Quantity:</label>
+            <input type="number" id="quantity" name="quantity" min="1" max="1000">
+            <hr>
+            <button type="submit" class="btn btn-primary">
+                Add To Cart
+            </button>
+        </form>
     </div>
 
 

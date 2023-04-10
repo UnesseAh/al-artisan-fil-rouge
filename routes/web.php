@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\CartController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\LandingPageController;
 use App\Http\Controllers\ProductController;
@@ -47,7 +48,7 @@ Route::controller(ProductController::class)->group(function()
 
 });
 
-Route::get('shopping-cart', function (){
+Route::get('shopping-cart', function () {
     return view('cart');
 });
 
@@ -70,3 +71,6 @@ Route::delete('product/{product}', [ProductController::class, 'destroy'])->name(
 
 
 Route::get('show-product/{product}', [ProductController::class, 'show'])->name('show.product');
+
+Route::post('product/add-to-cart/', [CartController::class, 'addProductToCart'])->name('cart.add');
+

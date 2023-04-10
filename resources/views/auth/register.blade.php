@@ -10,7 +10,7 @@
                         <div class="card" style="border-radius: 1rem;">
                             <div class="row g-0">
                                 <div class="col-md-6 col-lg-5 d-none d-md-block">
-                                    <img src="{{ asset('images/image-2.jpg') }}"
+                                    <img src="{{ asset('image/image-2.jpg') }}"
                                          alt="login form" class="img-fluid" style="border-radius: 1rem 0 0 1rem;" />
                                 </div>
                                 <div class="col-md-6 col-lg-7 d-flex align-items-center" >
@@ -19,7 +19,7 @@
                                         <form method="POST" action="{{ route('register.submit') }}">
                                             @csrf
                                             <div class="d-flex align-items-center mb-3 pb-1">
-                                                <img src="{{ asset('images/logo/al-artisan-logo-dark-1.png') }}" style="width: 50%">
+                                                <img src="{{ asset('image/logo/al-artisan-logo-dark-1.png') }}" style="width: 50%">
                                             </div>
 
 {{--                                            <h5 class="fw-normal mb-3 pb-3" style="letter-spacing: 1px;">Sign into your account</h5>--}}

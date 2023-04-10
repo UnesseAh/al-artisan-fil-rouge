@@ -89,4 +89,5 @@
         @endforeach
         </tbody>
     </table>
+    <h2><a href="{{ route('dashboard') }}">Back</a></h2>
 </div>
