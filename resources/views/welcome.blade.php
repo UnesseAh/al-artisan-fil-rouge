@@ -92,17 +92,20 @@
 <div class="container">
     <div class="row row-cols-1 row-cols-md-4 g-4">
         @foreach($products as $product)
-            <div class="col">
-                <div class="card">
-                    <img src="{{asset('image/'.$product->image)}}" class="card-img-top" alt="Hollywood Sign on The Hill"/>
-                    <div class="card-body">
-                        <h5 class="card-title">{{ $product->title }}</h5>
-                        <p class="card-text">
-                            {{$product->price}}
-                        </p>
+            <a href="{{ route('show.product', ['product' => $product ])}}">
+                <div class="col">
+                    <div class="card">
+                        <img src="{{asset('image/'.$product->image)}}" class="card-img-top" alt="Hollywood Sign on The Hill"/>
+                        <div class="card-body">
+                            <h5 class="card-title">{{ $product->title }}</h5>
+                            <p class="card-text">
+                                {{$product->price}}
+                            </p>
+                        </div>
                     </div>
                 </div>
-            </div>
+            </a>
+
         @endforeach
     </div>
 </div>

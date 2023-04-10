@@ -1,7 +1,6 @@
-@include('includes.dashboard.head')
+{{--@include('includes.dashboard.head')--}}
 
 
-<body>
 <!DOCTYPE html>
 <html lang="en-US">
 <head>

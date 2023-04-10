@@ -72,8 +72,8 @@ class ProductController extends Controller
      */
     public function show(Product $product)
     {
-        $product = Product::find($product);
-        return $product;
+
+        return view('product-page', compact('product'));
     }
 
     /**
