@@ -69,4 +69,4 @@ Route::put('product/{id}', [ProductController::class, 'update'])->name('update.p
 Route::delete('product/{product}', [ProductController::class, 'destroy'])->name('delete.product');
 
 
-Route::get('show-product//{product}', [ProductController::class, 'show'])->name('show.product');
+Route::get('show-product/{product}', [ProductController::class, 'show'])->name('show.product');
