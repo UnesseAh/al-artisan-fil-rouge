@@ -12,15 +12,16 @@ class CartController extends Controller
 {
     public function addProductToCart(Request $request)
     {
-        $userId = Auth::user()->id;
-        $productId = $request->input('product_id');
-        $quantity = $request->input('quantity');
+        if(Auth::user()){
+            $userId = Auth::user()->id;
+            $productId = $request->input('product_id');
+            $quantity = $request->input('quantity');
 
-        $product = Product::find($productId);
+            $product = Product::find($productId);
 
-        Cart::create($request->all() + ['user_id' => $userId]);
-        return Redirect::back()->with('message', 'product added successfully!');
-
+            Cart::create($request->all() + ['user_id' => $userId]);
+            return Redirect::back()->with('message', 'product added successfully!');
+        }else return 'you are not logged in';
 
     }
 }
