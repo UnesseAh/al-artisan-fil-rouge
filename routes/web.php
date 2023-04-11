@@ -74,5 +74,7 @@ Route::get('show-product/{product}', [ProductController::class, 'show'])->name('
 
 Route::post('product/add-to-cart/', [CartController::class, 'addProductToCart'])->name('cart.add');
 Route::get('show-cart', [CartController::class, 'showMyCart'])->name('cart.show');
-
 Route::delete('delete-cart-item/{cartItem}', [CartController::class, 'deleteCartItem'])->name('cart.delete');
+
+
+Route::post('payment')
