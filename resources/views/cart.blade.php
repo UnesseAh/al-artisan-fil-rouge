@@ -25,19 +25,19 @@
                         <tr>
                             <td>
                                 <div class="d-flex align-items-center">
-                                    <img src="{{asset('images/product-1.png')}}" alt="" style="width: 45px; height: 45px"/>
+                                    <img src="{{asset('image/'. $cartItem->product->image)}}" alt="" style="width: 45px; height: 45px"/>
                                     <div class="ms-3">
-                                        <p class="fw-bold mb-1">title</p>
+                                        <p class="fw-bold mb-1">{{ $cartItem->product->title }}</p>
                                     </div>
                                 </div>
                             </td>
                             <td>
-                                <p class="fw-normal mb-1">149DH</p>
+                                <p class="fw-normal mb-1">{{ $cartItem->product->price }}</p>
                             </td>
                             <td>
-                                <span class="badge badge-success rounded-pill d-inline">5</span>
+                                <span class="badge badge-success rounded-pill d-inline">{{ $cartItem->quantity }}</span>
                             </td>
-                            <td>298DH</td>
+                            <td>{{ $cartItem->product->price * $cartItem->quantity}} </td>
                             <td>
                                 <button type="button" class="btn btn-link btn-sm px-3" data-ripple-color="dark">
                                     <i class="fas fa-times"></i>
