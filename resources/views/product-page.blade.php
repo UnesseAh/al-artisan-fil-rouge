@@ -1,5 +1,8 @@
 @include('includes.dashboard.head')
 
+@if(session('message'))
+    <div>{{ session('message') }}</div>
+@endif
 
 <div class="row">
     <div class="col-md-8 mb-4">
