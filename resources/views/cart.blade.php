@@ -1,7 +1,9 @@
 @include('includes.dashboard.head')
 
 
-
+@if(session('message'))
+    <div>{{ $message }}</div>
+@endif
 <div class="row">
     <div class="col-md-8 mb-4">
         <div class="card mb-4">
@@ -39,9 +41,13 @@
                             </td>
                             <td>{{ $cartItem->product->price * $cartItem->quantity}} </td>
                             <td>
-                                <button type="button" class="btn btn-link btn-sm px-3" data-ripple-color="dark">
-                                    <i class="fas fa-times"></i>
-                                </button>
+                                <form method="POST" action="{{ route('cart.delete',['cartItem' => $cartItem->id])  }}">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="btn btn-link btn-sm px-3" data-ripple-color="dark">
+                                        <i class="fas fa-times"></i>
+                                    </button>
+                                </form>
                             </td>
                         </tr>
                     @endforeach

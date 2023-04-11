@@ -40,4 +40,10 @@ class CartController extends Controller
         }
 
     }
+
+    public function deleteCartItem(Cart $cartItem)
+    {
+        $cartItem->delete();
+        return Redirect::back();
+    }
 }
