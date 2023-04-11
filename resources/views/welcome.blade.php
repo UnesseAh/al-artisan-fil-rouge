@@ -66,6 +66,9 @@
 
                     </ul>
                 </li>
+                <li class="nav-item dropdown">
+                    <a href="{{ route('cart.show') }}"><i class="fa-solid fa-cart-shopping" style="color: #ffffff;"></i>Cart</a>
+                </li>
             </ul>
             <!-- Left links -->
             <div class="d-flex align-items-center">

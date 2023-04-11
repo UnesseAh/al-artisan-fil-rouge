@@ -18,7 +18,7 @@
             <!-- add a hidden input field for the product ID -->
             <input type="hidden" name="product_id" value="{{$product->id}}">
             <label for="quantity">Quantity:</label>
-            <input type="number" id="quantity" name="quantity" min="1" max="1000">
+            <input type="number" id="quantity" name="quantity" value="1" min="1" max="{{$product->stock}}">
             <hr>
             <button type="submit" class="btn btn-primary">
                 Add To Cart

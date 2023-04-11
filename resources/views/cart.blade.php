@@ -9,7 +9,7 @@
                 <h5 class="mb-0">My Cart</h5>
             </div>
             <div class="card-body">
-
+                @if(count($cartItems) > 0)
                 <table class="table align-middle mb-0 bg-white">
                     <thead class="bg-light">
                     <tr>
@@ -21,74 +21,35 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <tr>
-                        <td>
-                            <div class="d-flex align-items-center">
-                                <img src="{{asset('images/product-1.png')}}" alt="" style="width: 45px; height: 45px"/>
-                                <div class="ms-3">
-                                    <p class="fw-bold mb-1">MOROCCAN KILIM CUSHION, RED</p>
+                    @foreach($cartItems as $cartItem)
+                        <tr>
+                            <td>
+                                <div class="d-flex align-items-center">
+                                    <img src="{{asset('images/product-1.png')}}" alt="" style="width: 45px; height: 45px"/>
+                                    <div class="ms-3">
+                                        <p class="fw-bold mb-1">title</p>
+                                    </div>
                                 </div>
-                            </div>
-                        </td>
-                        <td>
-                            <p class="fw-normal mb-1">149DH</p>
-                        </td>
-                        <td>
-                            <span class="badge badge-success rounded-pill d-inline">5</span>
-                        </td>
-                        <td>298DH</td>
-                        <td>
-                            <button type="button" class="btn btn-link btn-sm px-3" data-ripple-color="dark">
-                                <i class="fas fa-times"></i>
-                            </button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <div class="d-flex align-items-center">
-                                <img src="{{asset('images/product-2.png')}}" alt="" style="width: 45px; height: 45px"/>
-                                <div class="ms-3">
-                                    <p class="fw-bold mb-1">MOROCCAN TRIBAL ENAMELED EARRINGS</p>
-                                </div>
-                            </div>
-                        </td>
-                        <td>
-                            <p class="fw-normal mb-1">149DH</p>
-                        </td>
-                        <td>
-                            <span class="badge badge-success rounded-pill d-inline">5</span>
-                        </td>
-                        <td>298DH</td>
-                        <td>
-                            <button type="button" class="btn btn-link btn-sm px-3" data-ripple-color="dark">
-                                <i class="fas fa-times"></i>
-                            </button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <div class="d-flex align-items-center">
-                                <img src="{{asset('images/product-3.png')}}" alt="" style="width: 45px; height: 45px"/>
-                                <div class="ms-3">
-                                    <p class="fw-bold mb-1">MOROCCAN CEILING LIGHTS, ALMINA</p>
-                                </div>
-                            </div>
-                        </td>
-                        <td>
-                            <p class="fw-normal mb-1">149DH</p>
-                        </td>
-                        <td>
-                            <span class="badge badge-success rounded-pill d-inline">5</span>
-                        </td>
-                        <td>298DH</td>
-                        <td>
-                            <button type="button" class="btn btn-link btn-sm px-3" data-ripple-color="dark">
-                                <i class="fas fa-times"></i>
-                            </button>
-                        </td>
-                    </tr>
+                            </td>
+                            <td>
+                                <p class="fw-normal mb-1">149DH</p>
+                            </td>
+                            <td>
+                                <span class="badge badge-success rounded-pill d-inline">5</span>
+                            </td>
+                            <td>298DH</td>
+                            <td>
+                                <button type="button" class="btn btn-link btn-sm px-3" data-ripple-color="dark">
+                                    <i class="fas fa-times"></i>
+                                </button>
+                            </td>
+                        </tr>
+                    @endforeach
                     </tbody>
                 </table>
+                @else
+                <p>Your cart is empty</p>
+                @endif
             </div>
         </div>
     </div>
