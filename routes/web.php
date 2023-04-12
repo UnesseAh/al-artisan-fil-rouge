@@ -4,6 +4,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\LandingPageController;
+use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ResetPasswordController;
 use App\Http\Controllers\SubcategoryController;
@@ -77,4 +78,4 @@ Route::get('show-cart', [CartController::class, 'showMyCart'])->name('cart.show'
 Route::delete('delete-cart-item/{cartItem}', [CartController::class, 'deleteCartItem'])->name('cart.delete');
 
 
-Route::post('payment')
+//Route::post('checkout', [PaymentController::class, 'checkout'])->name('payment.page');
