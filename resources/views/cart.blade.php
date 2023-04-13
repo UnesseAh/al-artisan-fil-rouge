@@ -24,6 +24,7 @@
                     </thead>
                     <tbody>
                     @php($subtotal = 0)
+
                     @foreach($cartItems as $cartItem)
                         <tr>
                             <td>
@@ -77,10 +78,9 @@
                         <span><strong>{{ $subtotal . ' MAD' }}</strong></span>
                     </li>
                 </ul>
-
-                <a href="{{ route('payment.page') }}" type="button" class="btn btn-primary btn-lg btn-block">
-                    Checkout
-                </a>
+                    <a href="{{ route('payment.page', ['subtotal'=> $subtotal]) }}" type="button" class="btn btn-primary btn-lg btn-block">
+                        Checkout
+                    </a>
             </div>
         </div>
     </div>

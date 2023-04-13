@@ -78,4 +78,8 @@ Route::get('show-cart', [CartController::class, 'showMyCart'])->name('cart.show'
 Route::delete('delete-cart-item/{cartItem}', [CartController::class, 'deleteCartItem'])->name('cart.delete');
 
 
-//Route::post('checkout', [PaymentController::class, 'checkout'])->name('payment.page');
+Route::get('checkout/{subtotal}', [PaymentController::class, 'checkout'])->name('payment.page');
+
+Route::post('checkout/buy-products', [PaymentController::class, 'buyProducts'])->name('buy.products');
+
+
