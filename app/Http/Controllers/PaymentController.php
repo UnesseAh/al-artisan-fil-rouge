@@ -21,12 +21,11 @@ class PaymentController extends Controller
         $userId = Auth::user()->id;
         $address = $request->input('shipping_address');
         $payment_method = 'Credit Card';
-        $cartItems = Cart::where('user_id', '=', $userId)
+        $cartItems = Cart::where('user_id', $userId)
             ->with('product')
             ->get()
             ->toArray();
 
-//        $cartItems =  DB::table('carts')->where('user_id', "=" , $userId)->get();
 
         $subtotal = Cart::where('user_id', '=', $userId)
                         ->sum('total');
@@ -46,7 +45,7 @@ class PaymentController extends Controller
         {
             OrderItem::create([
                 'order_id' => $orderId,
-                'product_id' => $cartItems[0]['product_id'],
+                'product_id' => $cartItems[$i]['product_id'],
                 'quantity' => $cartItems[$i]['quantity'],
                 'price' => $cartItems[$i]['product']['price'],
             ]);
