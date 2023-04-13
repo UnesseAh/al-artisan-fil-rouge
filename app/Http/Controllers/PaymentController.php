@@ -7,6 +7,7 @@ use App\Models\Order;
 use App\Models\OrderItem;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class PaymentController extends Controller
 {
@@ -22,33 +23,33 @@ class PaymentController extends Controller
         $payment_method = 'Credit Card';
         $cartItems = Cart::where('user_id', '=', $userId)
             ->with('product')
-            ->get();
-//        return $cartItems[0]->product_id;
+            ->get()
+            ->toArray();
 
-//        $subtotal = Cart::where('user_id', '=', $userId)
-//            ->sum($cartItems[0]->product->price * $cartItems[0]->quantity)
-//            ->get();
+//        $cartItems =  DB::table('carts')->where('user_id', "=" , $userId)->get();
 
-        $order = Order::create([
-            'user_id' => $userId,
-            'subtotal' => 1111,
-            'shipping_address' => $address,
-            'payment_method' => $payment_method,
-            'status_id' => 1
-        ]);
+        $subtotal = Cart::where('user_id', '=', $userId)
+                        ->sum('total');
 
-        $orderId = $order->id;
-        return $orderId;
-        $i = 0;
-        foreach ($cartItems as $cartItem)
+//        $order = Order::create([
+//            'user_id' => $userId,
+//            'subtotal' => $subtotal,
+//            'shipping_address' => $address,
+//            'payment_method' => $payment_method,
+//            'status_id' => 1
+//        ]);
+
+//        $orderId = $order->id;
+        $orderId = 2;
+
+        for($i = 0; $i < count($cartItems); $i++)
         {
             OrderItem::create([
                 'order_id' => $orderId,
-                'product_id' => $cartItem[$i]->product_id,
-                'quantity' => $cartItem[$i]->quantity,
-                'price' => $cartItem[$i]->product->price,
+                'product_id' => $cartItems[0]['product_id'],
+                'quantity' => $cartItems[$i]['quantity'],
+                'price' => $cartItems[$i]['product']['price'],
             ]);
-            $i++;
         }
         return 'Order created successfully! Eyaaaaaaaaay!!!!!!';
     }
