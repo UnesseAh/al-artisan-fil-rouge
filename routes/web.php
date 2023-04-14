@@ -82,4 +82,3 @@ Route::get('checkout/{subtotal}', [PaymentController::class, 'checkout'])->name(
 
 Route::post('checkout/buy-products', [PaymentController::class, 'buyProducts'])->name('buy.products');
 
-

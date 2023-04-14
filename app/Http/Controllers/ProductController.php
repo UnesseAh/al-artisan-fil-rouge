@@ -62,6 +62,9 @@ class ProductController extends Controller
 
         Product::create($input + ['slug' => Str::slug($input['title'])]);
 
+        $title = $request->input('title');
+        toastr()->success('Product "' . $title . '" added successfully!');
+
         return redirect()->route('dashboard');
     }
 
@@ -110,6 +113,9 @@ class ProductController extends Controller
         $product = Product::find($id);
         $product->update($validateData);
 
+        $title = $request->input('title');
+        toastr()->warning('Product "' . $title . '" updated successfully!');
+
         $products =  Product::all();
         return view('dashboard', ['products' => $products] );
     }
@@ -122,6 +128,9 @@ class ProductController extends Controller
      */
     public function destroy(Product $product)
     {
+        $title = $product->title;
+        toastr()->error('Product "' . $title . '" Deleted Successfully!');
+
         $product->delete();
         return Redirect::back();
     }

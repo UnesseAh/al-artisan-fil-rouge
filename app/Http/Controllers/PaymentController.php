@@ -52,8 +52,7 @@ class PaymentController extends Controller
 
         Cart::where('user_id', $userId)->delete();
 
-        Redirect::back()->with('message', 'Bought Successfully!');
-
+        return 'kolchi tchera';
 
     }
 }
