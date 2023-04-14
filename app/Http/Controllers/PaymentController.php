@@ -8,6 +8,7 @@ use App\Models\OrderItem;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Redirect;
 
 class PaymentController extends Controller
 {
@@ -26,20 +27,18 @@ class PaymentController extends Controller
             ->get()
             ->toArray();
 
-
         $subtotal = Cart::where('user_id', '=', $userId)
                         ->sum('total');
 
-//        $order = Order::create([
-//            'user_id' => $userId,
-//            'subtotal' => $subtotal,
-//            'shipping_address' => $address,
-//            'payment_method' => $payment_method,
-//            'status_id' => 1
-//        ]);
+        $order = Order::create([
+            'user_id' => $userId,
+            'subtotal' => $subtotal,
+            'shipping_address' => $address,
+            'payment_method' => $payment_method,
+            'status_id' => 1
+        ]);
 
-//        $orderId = $order->id;
-        $orderId = 2;
+        $orderId = $order->id;
 
         for($i = 0; $i < count($cartItems); $i++)
         {
@@ -50,6 +49,11 @@ class PaymentController extends Controller
                 'price' => $cartItems[$i]['product']['price'],
             ]);
         }
-        return 'Order created successfully! Eyaaaaaaaaay!!!!!!';
+
+        Cart::where('user_id', $userId)->delete();
+
+        Redirect::back()->with('message', 'Bought Successfully!');
+
+
     }
 }
