@@ -7,41 +7,47 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Validator;
 
 class AuthController extends Controller
 {
+    public function showRegisterPage(){
+        return view('auth.register');
+    }
+
     public function showLoginPage()
     {
         return view('auth.login');
     }
 
-    public function showRegisterPage(){
-        return view('auth.register');
-    }
-
     public function register(Request $request)
     {
-        $validator = $request->validate([
-            'name' => 'required|string|max:255',
+
+        $validator = Validator::make($request->all(), [
+            'name' => 'required|string|max:255|min:3|regex:/^[^0-9]*$/',
             'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|min:6|confirmed'
+        ],[
+            'name.regex'=> 'The :attribute field must not contain any numeric characters.',
         ]);
 
+        if ($validator->fails()){
+            return Redirect::back()
+                ->withErrors($validator)
+                ->withInput();
+        }
 
-        // skip id whenever validation fails
-        $user = User::create([
-            'name' => $request->input('name'),
-            'email' => $request->input('email'),
-            'password' => Hash::make($request->input('password'))
+        // Retrieve the validated input
+        $validated = $validator->validated();
+
+        User::create([
+            'name' => $validated['name'],
+            'email' => $validated['email'],
+            'password' => Hash::make($validated['password']),
         ]);
 
         return redirect('login')->with('message', 'You have successfully registered');
-//        different method to create a new user
-//        $user = new User;
-//        $user->name = $request->name;
-//        $user->email = $request->email;
-//        $user->password = Hash::make($request->password);
-//        $user->save();
 
     }
 

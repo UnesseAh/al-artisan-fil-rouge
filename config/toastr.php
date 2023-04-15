@@ -25,7 +25,6 @@ return array(
 
     'options' => [
         "closeButton" => true,
-        'closeHtml' => '<button><i class="icon-off"></i></button>',
         "debug" => false,
         "newestOnTop" => true,
         "progressBar" => true,

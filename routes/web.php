@@ -35,6 +35,7 @@ Route::controller(AuthController::class)->group(function()
     Route::get('logout','logout')->name('logout');
 });
 
+
 Route::controller(ResetPasswordController::class)->group(function(){
     Route::get('forget-password', 'showForgetPasswordForm')->name('forget.password.show');
     Route::post('forget-password', 'sendRestLinkEmail')->name('forget.password.submit');
@@ -46,29 +47,35 @@ Route::controller(ProductController::class)->group(function()
 {
     Route::get('dashboard/create-product', 'create')->name('create.product');
     Route::get('dashboard/edit-product', 'edit')->name('edit.product');
-
 });
 
 Route::get('shopping-cart', function () {
     return view('cart');
 });
 
-Route::get('categories', [CategoryController::class, 'index'])->name('create.category');
-Route::post('categories', [CategoryController::class, 'store'])->name('store.category');
-Route::delete('categories/{id}', [CategoryController::class, 'destroy'])->name('delete.category');
-Route::get('categories/{id}', [CategoryController::class, 'edit'])->name('edit.category');
-Route::put('categories/{id}', [CategoryController::class, 'update'])->name('update.category');
+Route::controller(ProductController::class)->group(function () {
+    Route::get('products', 'create')->name('create.product');
+    Route::post('product', 'store')->name('store.product');
+    Route::get('product/{id}', 'edit')->name('edit.product');
+    Route::put('product/{id}',  'update')->name('update.product');
+    Route::delete('product/{product}', 'destroy')->name('delete.product');
+});
 
-Route::post('subcategories', [SubcategoryController::class, 'store'])->name('store.subcategory');
-Route::get('subcategories/{id}', [SubcategoryController::class, 'edit'])->name('edit.subcategory');
-Route::put('subcategories/{id}', [SubcategoryController::class, 'update'])->name('update.subcategory');
-Route::delete('subcategories/{subcategory}', [SubcategoryController::class, 'destroy'])->name('delete.subcategory');
+Route::controller(CategoryController::class)->group(function (){
+    Route::get('categories', 'index')->name('create.category');
+    Route::post('categories', 'store')->name('store.category');
+    Route::delete('categories/{id}', 'destroy')->name('delete.category');
+    Route::get('categories/{id}', 'edit')->name('edit.category');
+    Route::put('categories/{id}', 'update')->name('update.category');
+});
 
-Route::get('products', [ProductController::class, 'create'])->name('create.product');
-Route::post('products', [ProductController::class, 'store'])->name('store.product');
-Route::get('product/{id}', [ProductController::class, 'edit'])->name('edit.product');
-Route::put('product/{id}', [ProductController::class, 'update'])->name('update.product');
-Route::delete('product/{product}', [ProductController::class, 'destroy'])->name('delete.product');
+Route::controller(SubcategoryController::class)->group(function () {
+    Route::post('subcategories', 'store')->name('store.subcategory');
+    Route::get('subcategories/{id}', 'edit')->name('edit.subcategory');
+    Route::put('subcategories/{id}',  'update')->name('update.subcategory');
+    Route::delete('subcategories/{subcategory}', 'destroy')->name('delete.subcategory');
+});
+
 
 
 Route::get('show-product/{product}', [ProductController::class, 'show'])->name('show.product');
@@ -76,7 +83,6 @@ Route::get('show-product/{product}', [ProductController::class, 'show'])->name('
 Route::post('product/add-to-cart/', [CartController::class, 'addProductToCart'])->name('cart.add');
 Route::get('show-cart', [CartController::class, 'showMyCart'])->name('cart.show');
 Route::delete('delete-cart-item/{cartItem}', [CartController::class, 'deleteCartItem'])->name('cart.delete');
-
 
 Route::get('checkout/{subtotal}', [PaymentController::class, 'checkout'])->name('payment.page');
 
