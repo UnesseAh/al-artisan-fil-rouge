@@ -39,9 +39,7 @@ Route::controller(AuthController::class)->group(function() {
 
 Route::controller(ProfileController::class)->group(function (){
     Route::get('profile', 'RedirectToProfilePage')->name('profile.page');
-    Route::post('edit-profile/{id}', function (){
-        return 1;
-    })->name('edit.profile');
+    Route::put('update-profile/{user}', 'updateProfile')->name('update.profile');
 });
 
 Route::controller(ResetPasswordController::class)->group(function() {

@@ -22,7 +22,7 @@
                                             </div>
 
                                             <div class="form-outline mb-2">
-                                                <input name="name" type="text" id="name" value="{{ old('name') }}" class="form-control form-control-lg bg-white" />
+                                                <input name="name" type="text" id="name" value="{{ old('name') }}" class="form-control form-control-lg bg-white " />
                                                 <label class="form-label" for="name">Name</label>
                                             </div>
                                             @if($errors->has('name'))
