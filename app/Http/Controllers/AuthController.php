@@ -27,7 +27,7 @@ class AuthController extends Controller
         $validator = Validator::make($request->all(), [
             'name' => 'required|string|max:255|min:3|regex:/^[^0-9]*$/',
             'email' => 'required|string|email|max:255|unique:users',
-            'password' => 'required|string|min:6|confirmed'
+            'password' => 'required|string|min:6|max:200|confirmed'
         ],[
             'name.regex'=> 'The :attribute field must not contain any numeric characters.',
         ]);
@@ -53,23 +53,27 @@ class AuthController extends Controller
 
     public function login(Request $request)
     {
-        $request->validate([
+        $validator = Validator::make($request->all(), [
             'email' => 'required|string|email|max:255',
-            'password' => 'required|string'
+            'password' => 'required|string|min:6|max:200'
         ]);
 
 
-        $userInput = $request->only('email', 'password');
-
-        if(Auth::attempt($userInput))
-        {
-            return redirect()->intended('dashboard')->with('message', 'You have Successfully logged in');
+        if ($validator->fails()){
+            return Redirect::back()
+                ->withErrors($validator)
+                ->withInput();
         }
 
-        return redirect('login')->with('success', 'Opps! You have entered invalid credentials');
-//        return back()->withErrors([
-//            'email' => 'The provided credentials do not match our records.'
-//        ])->onlyInput('email');
+
+        if(Auth::attempt($validator->validate()))
+        {
+            $request->session()->regenerate();
+            return redirect()->intended('dashboard')->with('message', 'Welcome Back!');
+        }
+
+        return redirect('login')->with('error', 'Opps! You have entered invalid credentials');
+
     }
 
     public function dashboard()

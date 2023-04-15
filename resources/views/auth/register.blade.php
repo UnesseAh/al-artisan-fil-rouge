@@ -61,7 +61,7 @@
                                                 <button type="submit" class="btn btn-dark btn-lg btn-block">Register</button>
                                             </div>
 
-                                            <p class="mb-5 pb-lg-2" style="color: #332D2D;">Already have an account? <a href="{{ route('login.page') }}" style="color: #C7B299;">Login here</a></p>
+                                            <p class=" pb-lg-2" style="color: #332D2D;margin-bottom: 0">Already have an account? <a href="{{ route('login.page') }}" style="color: #C7B299;">Login here</a></p>
                                         </form>
 
                                     </div>

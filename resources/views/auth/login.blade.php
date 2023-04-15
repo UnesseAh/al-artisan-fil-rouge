@@ -1,9 +1,4 @@
 
-{{--@if(session('message'))--}}
-{{--    <div>{{ session('message') }}</div>--}}
-{{--@endif--}}
-
-
 @include('includes.dashboard.head')
 <body>
 <div>
@@ -19,31 +14,32 @@
                             </div>
                             <div class="dsfasdfsadcol-md-6 col-lg-7 d-flex align-items-center">
                                 <div class="card-body p-4 p-lg-5 text-black">
-
                                     <form action="{{ route('login.submit') }}" method="POST">
                                         @csrf
                                         <div class="d-flex align-items-center mb-3 pb-1">
                                             <img src="{{ asset('image/logo/al-artisan-logo-dark-1.png') }}" style="width: 50%">
-{{--                                            <span class="h1 fw-bold mb-0">Al Artisan </span>--}}
                                         </div>
+                                        @if(session('message'))
+                                            <div class="alert alert-success p-3">{{ session('message') }}</div>
+                                        @endif
 
-{{--                                        <h5 class="fw-normal mb-3 pb-3" style="letter-spacing: 1px;">Sign into your account</h5>--}}
-
-                                        <div class="form-outline mb-4">
-                                            <input name="email" type="email" id="email" class="form-control form-control-lg" />
+                                        <div class="form-outline mb-2">
+                                            <input name="email" type="email" value="{{ old('email') }}" id="email" class="form-control form-control-lg" />
                                             <label  class="form-label" for="email">Email address</label>
                                         </div>
-                                        {{--        @if($errors->has('email'))--}}
-                                        {{--            <span>{{ $errors->first('email')}}</span>--}}
-                                        {{--        @endif--}}
+                                        @if($errors->has('email'))
+                                            <p class="text-danger small mb-2">{{ $errors->first('email') }}</p>
+                                        @endif
+
 
                                         <div class="form-outline mb-1">
-                                            <input name="password" type="password" id="password" class="form-control form-control-lg" />
+                                            <input name="password" type="password" value="{{ old('password') }}" id="password" class="form-control form-control-lg" />
                                             <label  class="form-label" for="password">Password</label>
                                         </div>
-                                        {{--        @if($errors->has('password'))--}}
-                                        {{--            <span>{{ $errors->first('password') }}</span>--}}
-                                        {{--        @endif--}}
+                                        @if($errors->has('password'))
+                                            <p class="text-danger small mb-2">{{ $errors->first('password') }}</p>
+                                        @endif
+
                                         <a class="small text-muted" href="{{ route('forget.password.show') }}">Forgot password?</a>
 
 
@@ -51,7 +47,7 @@
                                             <button type="submit" class="btn btn-dark btn-lg btn-block" >Login</button>
                                         </div>
 
-                                        <p class="mb-5 pb-lg-2" style="color: #212121;">Don't have an account? <a href="{{ route('register.page') }}" style="color: #C7B299;">Register here</a></p>
+                                        <p class="pb-lg-2" style="color: #212121; margin-bottom: 0">Don't have an account? <a href="{{ route('register.page') }}" style="color: #C7B299;">Register here</a></p>
 
                                     </form>
 
