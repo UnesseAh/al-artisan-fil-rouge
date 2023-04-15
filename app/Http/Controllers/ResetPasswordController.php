@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Str;
 
 class ResetPasswordController extends Controller
@@ -23,21 +24,33 @@ class ResetPasswordController extends Controller
             'email' => 'required|email|exists:users',
         ]);
 
-        $token = Str::random(64);
+        $email = $request->email;
 
-        DB::table('password_resets')->insert([
-            'email' => $request->email,
-            'token' => $token,
-            'created_at' => Carbon::now()
-        ]);
+        $existingReset = DB::table('password_resets')
+            ->where('email', $email)
+            ->first();
 
-        Mail::send('email.forgetPassword', ['token' => $token], function($message) use($request)
+        if($existingReset)
         {
-            $message->to($request->email);
-            $message->subject('Reset Password');
-        });
+            return Redirect::back()->with('message', 'We already sent you a password reset link! Please, check your email.');
+        }else {
+            $token = Str::random(64);
 
-        return redirect()->route('forget.password.show')->with('message', 'We have e-mailed your password reset link!');
+            DB::table('password_resets')->insert([
+                'email' => $request->email,
+                'token' => $token,
+                'created_at' => Carbon::now()
+            ]);
+
+            Mail::send('email.forgetPassword', ['token' => $token], function($message) use($request)
+            {
+                $message->to($request->email);
+                $message->subject('AL ARTISAN | Password Reset Request');
+            });
+
+            return redirect()->route('forget.password.show')->with('message', 'We have e-mailed you a password reset link!');
+        }
+
     }
 
     public function showResetPasswordForm($token)

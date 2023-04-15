@@ -58,7 +58,6 @@ class AuthController extends Controller
             'password' => 'required|string|min:6|max:200'
         ]);
 
-
         if ($validator->fails()){
             return Redirect::back()
                 ->withErrors($validator)
@@ -69,6 +68,7 @@ class AuthController extends Controller
         if(Auth::attempt($validator->validate()))
         {
             $request->session()->regenerate();
+
             return redirect()->intended('dashboard')->with('message', 'Welcome Back!');
         }
 
@@ -91,7 +91,7 @@ class AuthController extends Controller
             $products  = Product::all();
             return view('dashboard', ['products' => $products]);
         }
-        return redirect('login')->with('success', 'Opps! You do not have access');
+        return redirect('login')->with('error', 'Opps! You do not have access');
     }
 
 }

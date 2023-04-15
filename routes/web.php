@@ -30,9 +30,9 @@ Route::controller(AuthController::class)->group(function()
     Route::get('login', 'showLoginPage')->name('login.page');
     Route::post('post-register', 'register')->name('register.submit');
     Route::post('post-login', 'login')->name('login.submit');
+    Route::get('logout','logout')->name('logout');
 
     Route::get('dashboard', 'dashboard')->name('dashboard');
-    Route::get('logout','logout')->name('logout');
 });
 
 

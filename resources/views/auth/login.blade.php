@@ -40,6 +40,7 @@
                                             <p class="text-danger small mb-2">{{ $errors->first('password') }}</p>
                                         @endif
 
+
                                         <a class="small text-muted" href="{{ route('forget.password.show') }}">Forgot password?</a>
 
 
