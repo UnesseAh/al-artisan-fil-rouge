@@ -76,6 +76,14 @@ class AuthController extends Controller
 
     }
 
+    public function logout(Request $request)
+    {
+        Auth::logout();
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+        return redirect('/')->with('success', 'You have successfully logged out');
+    }
+
     public function dashboard()
     {
         if(Auth::check())
@@ -86,10 +94,4 @@ class AuthController extends Controller
         return redirect('login')->with('success', 'Opps! You do not have access');
     }
 
-    public function logout()
-    {
-        // Session::flush()
-        Auth::logout();
-        return redirect('login');
-    }
 }
