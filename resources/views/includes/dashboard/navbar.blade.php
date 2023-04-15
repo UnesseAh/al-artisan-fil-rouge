@@ -1,38 +1,84 @@
-<nav class="navbar navbar-expand-lg bg-body-tertiary">
-    <div class="container-fluid">
-        <a class="navbar-brand" href="#">Al Artisan</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#">Home</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Link</a>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        Dropdown
+<nav id="main-navbar" class="navbar navbar-expand-lg navbar-light bg-white fixed-top">
+    <!-- Container wrapper -->
+            <div class="container-fluid">
+    <!-- Toggle button -->
+    <button class="navbar-toggler" type="button" data-mdb-toggle="collapse" data-mdb-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
+        <i class="fas fa-bars"></i>
+    </button>
+
+    <!-- Brand -->
+    <a class="navbar-brand" href="{{ route('landing.data') }}">
+        <img src="{{asset('image/logo/al-artisan-logo-dark-1.png')}}" height="25" alt="MDB Logo" loading="lazy"/>
+    </a>
+    <!-- Search form -->
+    <form class="d-none d-md-flex input-group w-auto my-auto">
+        <input autocomplete="off" type="search" class="form-control rounded" placeholder='Search' style="min-width: 225px;"/>
+        <span class="input-group-text border-0"><i class="fas fa-search"></i></span>
+    </form>
+
+    <!-- Right links -->
+    <ul class="navbar-nav ms-auto d-flex flex-row">
+
+        <!-- Icon dropdown -->
+        <li class="nav-item dropdown">
+            <a class="nav-link me-3 me-lg-0 dropdown-toggle hidden-arrow" href="#" id="navbarDropdown" role="button" data-mdb-toggle="dropdown" aria-expanded="false">
+                <i class="united kingdom flag m-0"></i>
+            </a>
+            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                <li>
+                    <a class="dropdown-item" href="#">
+                        <i class="united kingdom flag"></i>English
+                        <i class="fa fa-check text-success ms-2"></i>
                     </a>
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="#">Action</a></li>
-                        <li><a class="dropdown-item" href="#">Another action</a></li>
-                        <li><hr class="dropdown-divider"></li>
-                        <li><a class="dropdown-item" href="#">Something else here</a></li>
-                    </ul>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link disabled">Disabled</a>
+                <li>
+                    <hr class="dropdown-divider"/>
+                </li>
+                <li>
+                    <a class="dropdown-item" href="#"><i class="poland flag"></i>Polski</a>
+                </li>
+                <li>
+                    <a class="dropdown-item" href="#"><i class="china flag"></i>中文</a>
+                </li>
+                <li>
+                    <a class="dropdown-item" href="#"><i class="japan flag"></i>日本語</a>
+                </li>
+                <li>
+                    <a class="dropdown-item" href="#"><i class="germany flag"></i>Deutsch</a>
+                </li>
+                <li>
+                    <a class="dropdown-item" href="#"><i class="france flag"></i>Français</a>
+                </li>
+                <li>
+                    <a class="dropdown-item" href="#"><i class="spain flag"></i>Español</a>
+                </li>
+                <li>
+                    <a class="dropdown-item" href="#"><i class="russia flag"></i>Русский</a>
+                </li>
+                <li>
+                    <a class="dropdown-item" href="#"><i class="portugal flag"></i>Português</a>
                 </li>
             </ul>
-            <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBothOptions" aria-controls="offcanvasWithBothOptions">Side Bar</button>
+        </li>
 
-            <form class="d-flex" role="search">
-                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-success" type="submit">Search</button>
-            </form>
-        </div>
+        <!-- Avatar -->
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle hidden-arrow d-flex align-items-center" href="#" id="navbarDropdownMenuLink" role="button" data-mdb-toggle="dropdown" aria-expanded="false">
+                <img src="{{ asset('image/youness-ahasla.png') }}" class="rounded-circle" height="22" alt="Avatar" loading="lazy"/>
+            </a>
+            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuLink">
+                <li>
+                    <a class="dropdown-item" href="{{ route('profile.page') }}">My profile</a>
+                </li>
+                <li>
+                    <a class="dropdown-item" href="#">Settings</a>
+                </li>
+                <li>
+                    <a class="dropdown-item" href="{{ route('logout') }}">Logout</a>
+                </li>
+            </ul>
+        </li>
+    </ul>
     </div>
+    <!-- Container wrapper -->
 </nav>

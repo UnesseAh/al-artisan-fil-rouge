@@ -6,6 +6,7 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\LandingPageController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ResetPasswordController;
 use App\Http\Controllers\SubcategoryController;
 use Illuminate\Support\Facades\Route;
@@ -24,27 +25,33 @@ use \Barryvdh\Debugbar\Facades\Debugbar;
 Route::get('/', [LandingPageController::class, 'RedirectToLandingPageWithProductsAndCategories'])->name('landing.data');
 
 
-Route::controller(AuthController::class)->group(function()
-{
+Route::controller(AuthController::class)->group(function() {
     Route::get('register', 'showRegisterPage')->name('register.page');
     Route::get('login', 'showLoginPage')->name('login.page');
+
     Route::post('post-register', 'register')->name('register.submit');
     Route::post('post-login', 'login')->name('login.submit');
     Route::get('logout','logout')->name('logout');
 
+
     Route::get('dashboard', 'dashboard')->name('dashboard');
 });
 
+Route::controller(ProfileController::class)->group(function (){
+    Route::get('profile', 'RedirectToProfilePage')->name('profile.page');
+    Route::post('edit-profile/{id}', function (){
+        return 1;
+    })->name('edit.profile');
+});
 
-Route::controller(ResetPasswordController::class)->group(function(){
+Route::controller(ResetPasswordController::class)->group(function() {
     Route::get('forget-password', 'showForgetPasswordForm')->name('forget.password.show');
     Route::post('forget-password', 'sendRestLinkEmail')->name('forget.password.submit');
     Route::get('reset-password/{token}', 'showResetPasswordForm')->name('reset.password.show');
     Route::post('reset-password', 'resetPassword')->name('reset.password.submit');
 });
 
-Route::controller(ProductController::class)->group(function()
-{
+Route::controller(ProductController::class)->group(function() {
     Route::get('dashboard/create-product', 'create')->name('create.product');
     Route::get('dashboard/edit-product', 'edit')->name('edit.product');
 });
