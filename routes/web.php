@@ -33,13 +33,13 @@ Route::controller(AuthController::class)->group(function() {
     Route::post('post-login', 'login')->name('login.submit');
     Route::get('logout','logout')->name('logout');
 
-
     Route::get('dashboard', 'dashboard')->name('dashboard');
 });
 
 Route::controller(ProfileController::class)->group(function (){
     Route::get('profile', 'RedirectToProfilePage')->name('profile.page');
     Route::put('update-profile/{user}', 'updateProfile')->name('update.profile');
+    Route::put('update-password', 'updatePassword')->name('update.password');
 });
 
 Route::controller(ResetPasswordController::class)->group(function() {
