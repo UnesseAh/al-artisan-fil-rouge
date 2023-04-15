@@ -12,14 +12,20 @@
                     @if(session('message'))
                         <div class="alert alert-success p-3">{{ session('message') }}</div>
                     @endif
+                    @if(session('resetLink'))
+                        <div class="alert alert-danger p-3">{{ session('resetLink') }}</div>
+                    @endif
                     <!-- Email input -->
-                    <div class="form-outline mb-4">
+                    <div class="form-outline mb-2">
                         <input name="email" type="email" value="{{ old('email') }}" id="email" class="form-control" />
                         <label class="form-label" for="email">Email address</label>
                     </div>
+                    @if($errors->has('email'))
+                        <p class="text-danger small ">{{ $errors->first('email') }}</p>
+                    @endif
 
                     <!-- Submit button -->
-                    <button type="submit" class="btn btn-dark btn-block mb-4">Get New Password</button>
+                    <button type="submit" class="btn btn-dark btn-block mt-3 mb-4">Get New Password</button>
 
                     <div class="text-center">
                         <p><a style="color: #C7B299" href="{{ route('register.page') }}">Register</a> | <a style="color: #C7B299" href="{{ route('login.page') }}">Login</a></p>

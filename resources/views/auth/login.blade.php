@@ -19,8 +19,12 @@
                                         <div class="d-flex align-items-center mb-3 pb-1">
                                             <img src="{{ asset('image/logo/al-artisan-logo-dark-1.png') }}" style="width: 50%">
                                         </div>
+
                                         @if(session('message'))
                                             <div class="alert alert-success p-3">{{ session('message') }}</div>
+                                        @endif
+                                        @if(session('invalidCredentials'))
+                                            <div class="alert alert-danger p-3">{{ session('invalidCredentials') }}</div>
                                         @endif
 
                                         <div class="form-outline mb-2">

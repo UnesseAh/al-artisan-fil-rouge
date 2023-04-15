@@ -72,7 +72,7 @@ class AuthController extends Controller
             return redirect()->intended('dashboard')->with('message', 'Welcome Back!');
         }
 
-        return redirect('login')->with('error', 'Opps! You have entered invalid credentials');
+        return redirect('login')->with('invalidCredentials', 'Opps! You have entered invalid credentials');
 
     }
 
