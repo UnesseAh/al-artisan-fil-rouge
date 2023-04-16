@@ -2,20 +2,21 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Product;
+use App\Models\Craft;
 use App\Models\Subcategory;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Str;
 
-class ProductController extends Controller
+class CraftController extends Controller
 {
-    public function index()
-    {
-        $products =  Product::all();
-
-        return view('dashboard', ['products' => $products] );
-    }
+//    public function index()
+//    {
+//        $products =  Product::all();
+//
+//        return view('dashboard', ['products' => $products] );
+//    }
 
 
     public function create()
@@ -28,15 +29,22 @@ class ProductController extends Controller
 
     public function store(Request $request)
     {
-        $request->validate([
-            'title' => 'required',
-            'description'  => 'required',
-            'price'  => 'required',
-            'old_price' => 'required',
-            'subcategory_id' => 'required',
-            'stock' => 'required',
-            'image' => 'required',
+        $validator = Validator::make($request->all(), [
+            'title' => 'required|string|max:255',
+            'description' => 'required|string|max:1000',
+            'price' => 'required|numeric|min:0',
+            'subcategory_id' => 'required|exists:subcategories,id',
+            'stock' => 'required|integer|min:0',
+            'image' => 'required|image|mimes:jpeg,png,jpg',
+        ],[
+            'subcategory_id.required' => 'The category field is required'
         ]);
+
+        if($validator->fails()){
+            return Redirect::back()
+                ->withErrors($validator)
+                ->withInput();
+        }
 
         $input = $request->all();
 
@@ -47,7 +55,7 @@ class ProductController extends Controller
             $input['image'] = "$profileImage";
         }
 
-        Product::create($input + ['slug' => Str::slug($input['title'])]);
+        Craft::create($input + ['slug' => Str::slug($input['title'])]);
 
         $title = $request->input('title');
         toastr()->success('Product "' . $title . '" added successfully!');
@@ -56,7 +64,7 @@ class ProductController extends Controller
     }
 
 
-    public function show(Product $product)
+    public function show(Craft $product)
     {
 
         return view('product-page', compact('product'));
@@ -65,7 +73,7 @@ class ProductController extends Controller
 
     public function edit($id)
     {
-        $product = Product::find($id);
+        $product = Craft::find($id);
         $subcategories  = Subcategory::all();
         return view('dashboard.product.edit-product', compact('product', 'subcategories'));
 
@@ -81,18 +89,18 @@ class ProductController extends Controller
             'old_price' => 'required',
             'subcategory_id' => 'required'
         ]);
-        $product = Product::find($id);
+        $product = Craft::find($id);
         $product->update($validateData);
 
         $title = $request->input('title');
         toastr()->warning('Product "' . $title . '" updated successfully!');
 
-        $products =  Product::all();
+        $products =  Craft::all();
         return view('dashboard', ['products' => $products] );
     }
 
 
-    public function destroy(Product $product)
+    public function destroy(Craft $product)
     {
         $title = $product->title;
         toastr()->error('Product "' . $title . '" Deleted Successfully!');

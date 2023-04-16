@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Cart;
-use App\Models\Product;
+use App\Models\Craft;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -19,7 +19,7 @@ class CartController extends Controller
             $productId = $request->input('product_id');
             $quantity = $request->input('quantity');
 
-            $product = Product::find($productId);
+            $product = Craft::find($productId);
             $total = $product->price * $quantity;
 
             Cart::create($request->all() + ['user_id' => $userId, 'total' => $total]);

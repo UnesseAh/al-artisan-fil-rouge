@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Product;
+use App\Models\Craft;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -38,7 +38,6 @@ class AuthController extends Controller
                 ->withInput();
         }
 
-        // Retrieve the validated input
         $validated = $validator->validated();
 
         User::create([
@@ -88,7 +87,7 @@ class AuthController extends Controller
     {
         if(Auth::check())
         {
-            $products  = Product::all();
+            $products  = Craft::all();
             return view('dashboard', ['products' => $products]);
         }
         return redirect('login')->with('error', 'Opps! You do not have access');

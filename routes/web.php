@@ -5,7 +5,7 @@ use App\Http\Controllers\CartController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\LandingPageController;
 use App\Http\Controllers\PaymentController;
-use App\Http\Controllers\ProductController;
+use App\Http\Controllers\CraftController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ResetPasswordController;
 use App\Http\Controllers\SubcategoryController;
@@ -49,22 +49,18 @@ Route::controller(ResetPasswordController::class)->group(function() {
     Route::post('reset-password', 'resetPassword')->name('reset.password.submit');
 });
 
-Route::controller(ProductController::class)->group(function() {
-    Route::get('dashboard/create-product', 'create')->name('create.product');
-    Route::get('dashboard/edit-product', 'edit')->name('edit.product');
+Route::controller(CraftController::class)->group(function() {
+    Route::get('create-craft', 'create')->name('create.product');
+    Route::post('store-craft', 'store')->name('store.product');
+    Route::get('edit-product/{id}', 'edit')->name('edit.product');
+    Route::put('product/{id}',  'update')->name('update.product');
+    Route::delete('product/{product}', 'destroy')->name('delete.product');
 });
 
 Route::get('shopping-cart', function () {
     return view('cart');
 });
 
-Route::controller(ProductController::class)->group(function () {
-    Route::get('products', 'create')->name('create.product');
-    Route::post('product', 'store')->name('store.product');
-    Route::get('product/{id}', 'edit')->name('edit.product');
-    Route::put('product/{id}',  'update')->name('update.product');
-    Route::delete('product/{product}', 'destroy')->name('delete.product');
-});
 
 Route::controller(CategoryController::class)->group(function (){
     Route::get('categories', 'index')->name('create.category');
@@ -83,7 +79,7 @@ Route::controller(SubcategoryController::class)->group(function () {
 
 
 
-Route::get('show-product/{product}', [ProductController::class, 'show'])->name('show.product');
+Route::get('show-product/{product}', [CraftController::class, 'show'])->name('show.product');
 
 Route::post('product/add-to-cart/', [CartController::class, 'addProductToCart'])->name('cart.add');
 Route::get('show-cart', [CartController::class, 'showMyCart'])->name('cart.show');

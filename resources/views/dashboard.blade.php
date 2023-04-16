@@ -26,7 +26,6 @@
                         <th>product</th>
                         <th>description</th>
                         <th>price</th>
-                        <th>old price</th>
                         <th>stock</th>
                         <th>action</th>
                     </tr>
@@ -45,7 +44,6 @@
                         </td>
                         <td>{{ $product->description }}</td>
                         <td>{{ $product->price }}</td>
-                        <td>{{ $product->old_price }}</td>
                         <td><span class="badge badge-primary rounded-pill d-inline">{{ $product->stock }}</span></td>
                         <td>
                             <form method="POST" action="{{ route('delete.product', ['product' => $product]) }}">
