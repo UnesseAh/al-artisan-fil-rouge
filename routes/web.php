@@ -63,11 +63,11 @@ Route::get('shopping-cart', function () {
 
 
 Route::controller(CategoryController::class)->group(function (){
-    Route::get('categories', 'index')->name('create.category');
+    Route::get('categories-subcategories', 'create')->name('create.category');
     Route::post('categories', 'store')->name('store.category');
-    Route::delete('categories/{id}', 'destroy')->name('delete.category');
-    Route::get('categories/{id}', 'edit')->name('edit.category');
-    Route::put('categories/{id}', 'update')->name('update.category');
+    Route::get('category/{category}', 'edit')->name('edit.category');
+    Route::put('category/{category}', 'update')->name('update.category');
+    Route::delete('categories/{category}', 'destroy')->name('delete.category');
 });
 
 Route::controller(SubcategoryController::class)->group(function () {

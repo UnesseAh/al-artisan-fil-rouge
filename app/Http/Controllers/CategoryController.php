@@ -5,23 +5,13 @@ namespace App\Http\Controllers;
 use App\Models\Category;
 use App\Models\Subcategory;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Str;
 use Illuminate\Validation\Rule;
 
 class CategoryController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        $subcategories = Subcategory::all();
-        $categories = Category::all();
-
-        return view('dashboard.category', compact('subcategories' ,'categories'));
-    }
 
     /**
      * Show the form for creating a new resource.
@@ -30,36 +20,38 @@ class CategoryController extends Controller
      */
     public function create()
     {
+        $subcategories = Subcategory::all();
+        $categories = Category::all();
 
+        return view('dashboard.category-subcategory', compact('subcategories' ,'categories'));
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Show the form for creating a new resource.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function store(Request $request)
     {
-        $validateData  = $request->validate([
-            'name' => 'required|unique:categories|max:50',
+        $validator = Validator::make($request->all(), [
+            'name' => 'required|unique:categories|max:50|regex:/^[^0-9]*$/',
+        ],[
+            'name.regex' => 'The :attribute field must not contain any numeric characters.',
+            'name.unique' => 'This category already exists.'
         ]);
 
-        Category::create($validateData + ['slug' => Str::slug($validateData['name'])]);
+        if($validator->fails()){
+            return Redirect::back()
+                ->withErrors($validator)
+                ->withInput();
+        }
 
-        return $this->index();
+        $data = $validator->validate();
+        Category::create($data + ['slug' => Str::slug($data['name'])]);
+
+        return redirect()->route('create.category')->with('added', 'Category "' . $data['name']. '" added successfully!');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Category $category)
-    {
-
-    }
 
     /**
      * Show the form for editing the specified resource.
@@ -67,10 +59,8 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Category $category)
     {
-        $category =  Category::find($id);
-
         return view('dashboard.edit-category', ['category' => $category]);
     }
 
@@ -79,19 +69,30 @@ class CategoryController extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Category $category)
     {
-        $validateData = $request->validate([
+        $validator = Validator::make($request->all(),[
             'name' => [
                 'required',
                 'max:50',
-                Rule::unique('categories')->ignore($id)],
+                Rule::unique('categories')->ignore($category->id)],
+        ],
+        [
+            'name.unique' => 'This category already exists.'
         ]);
-        $category = Category::find($id);
-        $category->update($validateData + ['slug' => Str::slug($validateData['name'])]);
-        return $this->index();
+
+        if($validator->fails()){
+            return Redirect::back()
+            ->withErrors($validator)
+            ->withInput();
+        }
+
+        $data = $validator->validated();
+        $category->update($data + ['slug' => Str::slug($data['name'])]);
+
+        return Redirect::route('create.category')->with('updated', 'Category "' . $category->name. '" updated successfully!');
     }
 
     /**
@@ -100,10 +101,9 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Category $category)
     {
-        $category = Category::find($id);
         $category->delete();
-        return $this->index();
+        return redirect()->route('create.category')->with('deleted', 'Category "' . $category->name. '" deleted successfully!');
     }
 }
