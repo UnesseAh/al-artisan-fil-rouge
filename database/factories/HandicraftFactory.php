@@ -6,9 +6,9 @@ use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Craft>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Handicraft>
  */
-class CraftFactory extends Factory
+class HandicraftFactory extends Factory
 {
     /**
      * Define the model's default state.

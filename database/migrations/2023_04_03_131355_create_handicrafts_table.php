@@ -13,7 +13,7 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('crafts', function (Blueprint $table) {
+        Schema::create('handicrafts', function (Blueprint $table) {
             $table->id();
             $table->string('title');
             $table->string('slug', 255)->unique();

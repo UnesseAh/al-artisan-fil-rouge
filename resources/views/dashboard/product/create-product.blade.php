@@ -8,14 +8,14 @@
                     <img src="{{ asset('image/create-product-cover.jpg') }}"
                          class="w-100" style="border-top-left-radius: .3rem; border-top-right-radius: .3rem;"
                          alt="Sample photo">
-                    <div class="card-body p-4 p-md-5">
+                    <div class="card-body pb-3">
 {{--                        <h3 class="mb-4 pb-2 pb-md-0 mb-md-5 px-md-2">Add New Craft :</h3>--}}
 
                         <form method="POST" action="{{route('store.product')}}" enctype="multipart/form-data">
                             @csrf
 
                             <div class="form-outline mb-2">
-                                <input name="title" type="text" id="title" class="form-control" />
+                                <input name="title" value="{{ old('title') }}" type="text" id="title" class="form-control" />
                                 <label class="form-label" for="title">Title</label>
                             </div>
                             @if($errors->has('title'))
@@ -24,7 +24,7 @@
 
                             <!-- Description input -->
                             <div class="form-outline mb-2">
-                                <textarea name="description" class="form-control" id="description" rows="4"></textarea>
+                                <textarea name="description"  class="form-control" id="description" rows="4">{{ old('description') }}</textarea>
                                 <label class="form-label" for="description">Description</label>
                             </div>
                             @if($errors->has('description'))
@@ -45,7 +45,7 @@
                             @endif
 
                             <div class="form-outline mb-2">
-                                    <input name="price" min="1" max="9999" type="number" id="price" class="form-control" placeholder="price">
+                                    <input name="price" value="{{ old('price') }}" min="1" max="9999" type="number" id="price" class="form-control" placeholder="price">
                                     <label for="price" class="form-label">Price</label>
                             </div>
                             @if($errors->has('price'))
@@ -53,7 +53,7 @@
                             @endif
 
                             <div class="form-outline mb-2">
-                                    <input name="stock" min="0" maxlength="1000" type="number" id="stock" class="form-control" placeholder="stock">
+                                    <input name="stock" value="{{ old('stock') }}" min="0" maxlength="1000" type="number" id="stock" class="form-control" placeholder="stock">
                                     <label for="stock" class="form-label">Stock</label>
                             </div>
                             @if($errors->has('stock'))
@@ -70,10 +70,12 @@
                             @endif
                             <!-- Submit button -->
                             <button type="submit" class="btn btn-primary btn-block mb-4">
-                                Add Artifact
+                                Add Handicraft
                             </button>
                         </form>
-
+                        <div>
+                            <p><a class="btn btn-outline-info btn-block" href="{{ route('dashboard') }}">Back to Dashboard</a></p>
+                        </div>
                     </div>
                 </div>
             </div>

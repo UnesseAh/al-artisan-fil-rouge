@@ -5,7 +5,7 @@ use App\Http\Controllers\CartController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\LandingPageController;
 use App\Http\Controllers\PaymentController;
-use App\Http\Controllers\CraftController;
+use App\Http\Controllers\HandicraftController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ResetPasswordController;
 use App\Http\Controllers\SubcategoryController;
@@ -49,12 +49,12 @@ Route::controller(ResetPasswordController::class)->group(function() {
     Route::post('reset-password', 'resetPassword')->name('reset.password.submit');
 });
 
-Route::controller(CraftController::class)->group(function() {
-    Route::get('create-craft', 'create')->name('create.product');
-    Route::post('store-craft', 'store')->name('store.product');
-    Route::get('edit-product/{id}', 'edit')->name('edit.product');
-    Route::put('product/{id}',  'update')->name('update.product');
-    Route::delete('product/{product}', 'destroy')->name('delete.product');
+Route::controller(HandicraftController::class)->group(function() {
+    Route::get('handicraft', 'create')->name('create.product');
+    Route::post('handicraft', 'store')->name('store.product');
+    Route::get('handicraft/{handicraft}', 'edit')->name('edit.product');
+    Route::put('handicraft/{handicraft}',  'update')->name('update.product');
+    Route::delete('handicraft/{handicraft}', 'destroy')->name('delete.product');
 });
 
 Route::get('shopping-cart', function () {
@@ -79,7 +79,7 @@ Route::controller(SubcategoryController::class)->group(function () {
 
 
 
-Route::get('show-product/{product}', [CraftController::class, 'show'])->name('show.product');
+Route::get('show-product/{product}', [HandicraftController::class, 'show'])->name('show.product');
 
 Route::post('product/add-to-cart/', [CartController::class, 'addProductToCart'])->name('cart.add');
 Route::get('show-cart', [CartController::class, 'showMyCart'])->name('cart.show');

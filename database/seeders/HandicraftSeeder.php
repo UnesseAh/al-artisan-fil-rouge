@@ -3,11 +3,11 @@
 namespace Database\Seeders;
 
 use App\Models\Category;
-use App\Models\Craft;
+use App\Models\Handicraft;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
-class CraftSeeder extends Seeder
+class HandicraftSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -45,6 +45,6 @@ class CraftSeeder extends Seeder
             ],
         ];
 
-        Craft::insert($products);
+        Handicraft::insert($products);
     }
 }

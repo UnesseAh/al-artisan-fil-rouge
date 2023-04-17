@@ -16,11 +16,11 @@ return new class extends Migration
         Schema::create('carts', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id');
-            $table->unsignedBigInteger('craft_id');
+            $table->unsignedBigInteger('handicraft_id');
             $table->integer('quantity');
             $table->decimal('total');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
-            $table->foreign('craft_id')->references('id')->on('crafts')->onDelete('cascade');
+            $table->foreign('handicraft_id')->references('id')->on('handicrafts')->onDelete('cascade');
             $table->timestamps();
         });
     }

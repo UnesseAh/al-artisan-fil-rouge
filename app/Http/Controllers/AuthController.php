@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Craft;
+use App\Models\Handicraft;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -87,8 +87,9 @@ class AuthController extends Controller
     {
         if(Auth::check())
         {
-            $products  = Craft::all();
-            return view('dashboard', ['products' => $products]);
+            $handicrafts  = Handicraft::all();
+
+            return view('dashboard', ['handicrafts' => $handicrafts]);
         }
         return redirect('login')->with('error', 'Opps! You do not have access');
     }
