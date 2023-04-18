@@ -1,90 +1,21 @@
 <!DOCTYPE html>
 <html lang="en-US">
-<head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
-    <title>Al Artisan | Home Page</title>
-    <link rel="icon" type="image/x-icon" href="image/logo/icon/al-artisan-icon-dark.png">
-{{--    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">--}}
-    <!-- Font Awesome -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet"/>
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet"/>
-    <!-- MDB -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.2.0/mdb.min.css" rel="stylesheet"/>
-</head>
+{{--<head>--}}
+{{--    <meta charset="UTF-8" />--}}
+{{--    <meta name="viewport" content="width=device-width" />--}}
+{{--    <title>Al Artisan | Home Page</title>--}}
+{{--    <link rel="icon" type="image/x-icon" href="image/logo/icon/al-artisan-icon-dark.png">--}}
+{{--    <!-- Font Awesome -->--}}
+{{--    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet"/>--}}
+{{--    <!-- Google Fonts -->--}}
+{{--    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet"/>--}}
+{{--    <!-- MDB -->--}}
+{{--    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.2.0/mdb.min.css" rel="stylesheet"/>--}}
+{{--</head>--}}
+@include('includes.dashboard.head')
 <body>
 <!-- Navbar -->
-<nav class="navbar navbar-expand-lg bg-dark navbar-dark" >
-    <!-- Container wrapper -->
-    <div class="container">
-        <!-- Navbar brand -->
-        <a class="navbar-brand me-2" href="https://mdbgo.com/">
-            <img src="{{ asset('image/logo/icon/al-artisan-icon-white.png') }}" height="36" alt="MDB Logo" loading="lazy" style="margin-top: -1px;"/>
-        </a>
-
-        <!-- Toggle button -->
-        <button class="navbar-toggler" type="button" data-mdb-toggle="collapse" data-mdb-target="#navbarButtonsExample" aria-controls="navbarButtonsExample" aria-expanded="false" aria-label="Toggle navigation">
-            <i class="fas fa-bars"></i>
-        </button>
-
-        <!-- Collapsible wrapper -->
-        <div class="collapse navbar-collapse" id="navbarButtonsExample">
-            <!-- Left links -->
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Artisans</a>
-                </li>
-                <!-- Navbar dropdown -->
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-mdb-toggle="dropdown" aria-expanded="false">Categories</a>
-                    <!-- Dropdown menu -->
-                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <li>
-                            <a class="dropdown-item" href="#">Lighting</a>
-                        </li>
-                        <li>
-                            <a class="dropdown-item" href="#">Rugs</a>
-                        </li>
-                        <li>
-                    </ul>
-                </li>
-                <!-- Navbar dropdown -->
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-mdb-toggle="dropdown" aria-expanded="false">Info</a>
-                    <!-- Dropdown menu -->
-                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <li>
-                            <a class="dropdown-item" href="#">About Us</a>
-                        </li>
-                        <li>
-                            <a class="dropdown-item" href="#">FAQ</a>
-                        </li>
-                        <li>
-                            <a class="dropdown-item" href="#">Contact</a>
-                        </li>
-
-                    </ul>
-                </li>
-                <li class="nav-item dropdown">
-                    <a href="{{ route('cart.show') }}"><i class="fa-solid fa-cart-shopping" style="color: #ffffff;"></i>Cart</a>
-                </li>
-            </ul>
-            <!-- Left links -->
-            <div class="d-flex align-items-center">
-                <a href="{{ route('login.page') }}" type="button" class="btn btn-link px-3 me-2">
-                    Login
-                </a>
-                <a href="{{ route('register.page') }}" type="button" class="btn btn-primary me-3">
-                    Register
-                </a>
-
-            </div>
-        </div>
-        <!-- Collapsible wrapper -->
-    </div>
-    <!-- Container wrapper -->
-</nav>
+@include('includes.landing-page.navbar')
 <!-- Navbar -->
 <div class="card text-center">
     <div class="card-header">MARHABA!</div>
@@ -94,15 +25,15 @@
 </div>
 <div class="container">
     <div class="row row-cols-1 row-cols-md-4 g-4">
-        @foreach($products as $product)
-            <a href="{{ route('show.product', ['product' => $product ])}}">
+        @foreach($handicrafts as $handicraft)
+            <a href="{{ route('show.product', $handicraft) }}">
                 <div class="col">
                     <div class="card">
-                        <img src="{{asset('image/'.$product->image)}}" class="card-img-top" alt="Hollywood Sign on The Hill"/>
+                        <img src="{{asset('image/'.$handicraft->image)}}" class="card-img-top" alt="Hollywood Sign on The Hill"/>
                         <div class="card-body">
-                            <h5 class="card-title">{{ $product->title }}</h5>
+                            <h5 class="card-title">{{ $handicraft->title }}</h5>
                             <p class="card-text">
-                                {{$product->price}}
+                                {{$handicraft->price}}
                             </p>
                         </div>
                     </div>

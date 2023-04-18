@@ -78,8 +78,7 @@ class CategoryController extends Controller
                 'required',
                 'max:50',
                 Rule::unique('categories')->ignore($category->id)],
-        ],
-        [
+        ], [
             'name.unique' => 'This category already exists.'
         ]);
 

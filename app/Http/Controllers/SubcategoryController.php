@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Category;
 use App\Models\Subcategory;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Str;
 
 class SubcategoryController extends Controller
@@ -12,42 +14,39 @@ class SubcategoryController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
     public function index()
     {
         $subcategories = Subcategory::all();
         $categories = Category::all();
 
-        return view('dashboard.category', compact('subcategories' ,'categories'));
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-
+        return view('dashboard.category-subcategory', compact('subcategories' ,'categories'));
     }
 
     /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function store(Request $request)
     {
-        $validateData = $request->validate([
-            'name' => 'required|unique:users|max:50|',
+        $validator = Validator::make($request->all(), [
+            'name' => 'required|unique:users|max:50|max:50|regex:/^[^0-9]*$/',
             'category_id' => 'required|numeric|exists:categories,id'
         ]);
 
-        Subcategory::create($validateData + ['slug' => Str::slug($validateData['name'])]);
+        if($validator->fails()){
+            toastr()->error('Category or subcategory are not valid!');
+            return Redirect::back();
+        }
 
-        return $this->index();
+        $validatedData = $validator->validated();
+
+        Subcategory::create($validatedData + ['slug' => Str::slug($validatedData['name'])]);
+
+        return Redirect::route('create.category')->with('addSubcategory', 'Subcategory added successfully!');
 
     }
     /**
@@ -56,14 +55,13 @@ class SubcategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Subcategory $subcategory)
-    {
-        $subcategory = Subcategory::find($subcategory);
-
-        return $subcategory;
-
-
-    }
+//    public function show(Subcategory $subcategory)
+//    {
+//        $subcategory = Subcategory::find($subcategory);
+//
+//        return $subcategory;
+//
+//    }
 
     /**
      * Show the form for editing the specified resource.
@@ -71,9 +69,8 @@ class SubcategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Subcategory $subcategory)
     {
-        $subcategory = Subcategory::find($id);
         return view('dashboard.edit-subcategory', ['subcategory' => $subcategory]);
     }
 
@@ -84,17 +81,17 @@ class SubcategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Subcategory $subcategory)
     {
-        $validateData = $request->validate([
-            'name' => 'required',
+        $validator = Validator::make($request->all(),[
+            'name' => 'required|unique:users|max:50|max:50|regex:/^[^0-9]*$/',
         ]);
 
-        $subcategory  = Subcategory::find($id);
-        $subcategory->update($validateData + ['slug' => Str::slug($validateData['name'])]);
+        $validatedData = $validator->validated();
+
+        $subcategory->update($validatedData + ['slug' => Str::slug($validatedData['name'])]);
 
         return $this->index();
-
     }
 
     /**
@@ -105,7 +102,8 @@ class SubcategoryController extends Controller
      */
     public function destroy(Subcategory $subcategory)
     {
+        $name = $subcategory->name;
         $subcategory->delete();
-        return $this->index();
+        return Redirect::back()->with('deleteSubcategory', 'Subcategory "'. $name .'" deleted successfully!');
     }
 }

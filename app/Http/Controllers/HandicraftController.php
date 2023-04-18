@@ -11,12 +11,12 @@ use Illuminate\Support\Str;
 
 class HandicraftController extends Controller
 {
-//    public function index()
-//    {
-//        $products =  Product::all();
-//
-//        return view('dashboard', ['products' => $products] );
-//    }
+    public function index()
+    {
+        $handicrafts =  Handicraft::all();
+
+        return view('dashboard', ['products' => $handicrafts] );
+    }
 
 
     public function create()
@@ -65,11 +65,10 @@ class HandicraftController extends Controller
     }
 
 
-//    public function show(Craft $product)
-//    {
-//
-//        return view('product-page', compact('product'));
-//    }
+    public function show(Handicraft $handicraft)
+    {
+        return view('product-page', compact('handicraft'));
+    }
 
 
     public function edit(Handicraft $handicraft)

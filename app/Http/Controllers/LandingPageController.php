@@ -10,10 +10,10 @@ class LandingPageController extends Controller
 {
     public function RedirectToLandingPageWithProductsAndCategories()
     {
-        $products = Handicraft::all();
+        $handicrafts = Handicraft::all();
         $subcategories = Subcategory::all();
 
-        return view('welcome', compact('products', 'subcategories'));
+        return view('welcome', compact('handicrafts', 'subcategories'));
     }
 
 }

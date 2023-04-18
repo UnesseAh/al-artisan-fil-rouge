@@ -70,16 +70,16 @@ Route::controller(CategoryController::class)->group(function (){
     Route::delete('categories/{category}', 'destroy')->name('delete.category');
 });
 
+
 Route::controller(SubcategoryController::class)->group(function () {
-    Route::post('subcategories', 'store')->name('store.subcategory');
-    Route::get('subcategories/{id}', 'edit')->name('edit.subcategory');
-    Route::put('subcategories/{id}',  'update')->name('update.subcategory');
-    Route::delete('subcategories/{subcategory}', 'destroy')->name('delete.subcategory');
+    Route::post('subcategory', 'store')->name('store.subcategory');
+    Route::get('subcategory/{subcategory}', 'edit')->name('edit.subcategory');
+    Route::put('subcategory/{subcategory}',  'update')->name('update.subcategory');
+    Route::delete('subcategory/{subcategory}', 'destroy')->name('delete.subcategory');
 });
 
 
-
-Route::get('show-product/{product}', [HandicraftController::class, 'show'])->name('show.product');
+Route::get('show-product/{handicraft}', [HandicraftController::class, 'show'])->name('show.product');
 
 Route::post('product/add-to-cart/', [CartController::class, 'addProductToCart'])->name('cart.add');
 Route::get('show-cart', [CartController::class, 'showMyCart'])->name('cart.show');

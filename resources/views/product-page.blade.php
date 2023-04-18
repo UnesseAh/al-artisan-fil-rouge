@@ -6,19 +6,19 @@
 
 <div class="row">
     <div class="col-md-8 mb-4">
-        <img src="{{ asset('image/'.$product->image) }}" style="width: 30%">
+        <img src="{{ asset('image/'.$handicraft->image) }}" style="width: 30%">
     </div>
     <div class="col-md-8 mb-4">
-        <h1>Title : {{ $product->title }}</h1>
-        <p> Description : {{ $product->description }}</p>
-        <p>Price : {{ $product->price  }}</p>
-        <p>Old Price : {{ $product->old_price  }}</p>
+        <h1>Title : {{ $handicraft->title }}</h1>
+        <p> Description : {{ $handicraft->description }}</p>
+        <p>Price : {{ $handicraft->price  }}</p>
+        <p>Old Price : {{ $handicraft->old_price  }}</p>
         <form method="POST" action="{{ route('cart.add')}}">
             @csrf
             <!-- add a hidden input field for the product ID -->
-            <input type="hidden" name="product_id" value="{{$product->id}}">
+            <input type="hidden" name="product_id" value="{{$handicraft->id}}">
             <label for="quantity">Quantity:</label>
-            <input type="number" id="quantity" name="quantity" value="1" min="1" max="{{$product->stock}}">
+            <input type="number" id="quantity" name="quantity" value="1" min="1" max="{{$handicraft->stock}}">
             <hr>
             <button type="submit" class="btn btn-primary">
                 Add To Cart
