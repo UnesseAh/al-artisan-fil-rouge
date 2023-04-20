@@ -10,7 +10,7 @@
 <li>Add desired items to their cart and checkout by providing shipping and payment information.</li>
 <li>Track their orders and receive update notifications.</li>
 <li>Leave reviews on purchased products to help other users make informed decisions.</li>
-
+</ul>
 <h4>Functional and Technical Description</h4>
 
 
@@ -21,7 +21,7 @@
 <li>Checkout: Shipping and payment information, order review, and confirmation.</li>
 <li>Sign in/Register: Login to existing account or create a new account.</li>
 <li>About Us: Company presentation, history, mission, and team.</li>
-
+</ul>
 <h4>Technical Description</h4>
 <ul>
 <li>The website will be developed using HTML, CSS, and JavaScript for design and interactivity.<li>
