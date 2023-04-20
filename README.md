@@ -12,20 +12,21 @@
 <li>Leave reviews on purchased products to help other users make informed decisions.</li>
 </ul>
 
+
 ## Functional and Technical Description :
-<ul>
-<li>**Home:** Featured products, product categories, and product search.</li>
-<li>**Catalog:** Display of all available products with category and price filters.</li>
-<li>**Product Detail:** Detailed description, images, technical specifications, and customer reviews.</li>
-<li>**Checkout:** Shipping and payment information, order review, and confirmation.</li>
-<li>**Sign in/Register:** Login to existing account or create a new account.</li>
-<li>**About Us:** Company presentation, history, mission, and team.</li>
-</ul>
+
+- **Home:** Featured products, product categories, and product search.
+- **Catalog:** Display of all available products with category and price filters.
+- **Product Detail:** Detailed description, images, technical specifications, and customer reviews.
+- **Checkout:** Shipping and payment information, order review, and confirmation.
+- **Sign in/Register:** Login to existing account or create a new account.
+- **About Us:** Company presentation, history, mission, and team.
+
 
 ## Technical Description :
-<ul>
-<li>The website will be developed using HTML, CSS, and JavaScript for design and interactivity.</li>
-<li>The back-end will be developed using Laravel and SQL database to store information.</li>
-</ul>
+
+- The website will be developed using HTML, CSS, and JavaScript for design and interactivity.
+- The back-end will be developed using Laravel and SQL database to store information.
+
 
 <h3>Technical Description :</h3>
