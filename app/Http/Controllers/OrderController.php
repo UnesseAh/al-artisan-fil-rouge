@@ -5,84 +5,58 @@ namespace App\Http\Controllers;
 use App\Models\Order;
 use App\Http\Requests\StoreOrderRequest;
 use App\Http\Requests\UpdateOrderRequest;
+use App\Models\OrderState;
 use Carbon\Carbon;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Validator;
 
 class OrderController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function getAllOrders()
     {
         $orders = Order::all();
-        return view('dashboard/order', compact('orders'));
+        return view('dashboard/order/orders', compact('orders'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \App\Http\Requests\StoreOrderRequest  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(StoreOrderRequest $request)
     {
         //
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Order  $order
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Order $order)
+    public function editOrder(Order $order)
     {
-        //
+        $states = OrderState::all();
+        return view('dashboard/order/edit-order', ['order' => $order, 'states' => $states]);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Order  $order
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Order $order)
+
+    public function updateOrder(Request $request, Order $order)
     {
-        //
+        $validator = Validator::make($request->all(), [
+            'user_id' => 'required|numeric',
+            'subtotal' => 'required|numeric|min:0',
+            'shipping_address' => 'required|string',
+            'payment_method' => 'required|string',
+            'state_id' => 'required|numeric',
+            ]
+        );
+
+        if($validator->fails()){
+            return Redirect::back()
+                ->withErrors($validator)
+                ->withInput();
+        }
+
+        $order->update($request->all());
+
+        return redirect()->route('show.orders')->with('updated', 'Order updated successfully!');
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \App\Http\Requests\UpdateOrderRequest  $request
-     * @param  \App\Models\Order  $order
-     * @return \Illuminate\Http\Response
-     */
-    public function update(UpdateOrderRequest $request, Order $order)
-    {
-        //
-    }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Order  $order
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Order $order)
+    public function deleteOrder(Order $order)
     {
-        //
+        $order->delete();
+        return redirect()->route('show.orders')->with('deleted', 'Order deleted successfully!');
     }
 }

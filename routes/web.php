@@ -91,5 +91,8 @@ Route::get('checkout/{subtotal}', [PaymentController::class, 'checkout'])->name(
 Route::post('checkout/buy-products', [PaymentController::class, 'buyProducts'])->name('buy.products');
 
 Route::controller(OrderController::class)->group(function (){
-    Route::get('order', 'getAllOrders')->name('show.orders');
+    Route::get('orders', 'getAllOrders')->name('show.orders');
+    Route::get('order/{order}', 'editOrder')->name('edit.order');
+    Route::put('order/{order}', 'updateOrder')->name('update.order');
+    Route::delete('order/{order}', 'deleteOrder')->name('delete.order');
 });

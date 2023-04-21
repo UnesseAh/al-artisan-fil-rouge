@@ -16,10 +16,24 @@
 
 <!--Main layout-->
 <main style="margin-top: 58px;">
-    <h1>{{ $orders }}</h1>
     <div class="container pt-4">
-{{--        <a href="" type="button" class="btn btn-primary mb-4">Add Product</a>--}}
-
+        @if(session('deleted'))
+        <div class="d-flex align-items-center alert alert-danger p-3" style="width: fit-content">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="red" class="bi bi-check2-circle" viewBox="0 0 16 16">
+                <path d="M2.5 8a5.5 5.5 0 0 1 8.25-4.764.5.5 0 0 0 .5-.866A6.5 6.5 0 1 0 14.5 8a.5.5 0 0 0-1 0 5.5 5.5 0 1 1-11 0z"/>
+                <path d="M15.354 3.354a.5.5 0 0 0-.708-.708L8 9.293 5.354 6.646a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l7-7z"/>
+            </svg>
+            <span class="px-2">{{ session('deleted') }}</span>
+        </div>
+        @elseif(session('updated'))
+            <div class="d-flex align-items-center alert alert-warning p-3" style="width: fit-content">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="orange" class="bi bi-check2-circle" viewBox="0 0 16 16">
+                    <path d="M2.5 8a5.5 5.5 0 0 1 8.25-4.764.5.5 0 0 0 .5-.866A6.5 6.5 0 1 0 14.5 8a.5.5 0 0 0-1 0 5.5 5.5 0 1 1-11 0z"/>
+                    <path d="M15.354 3.354a.5.5 0 0 0-.708-.708L8 9.293 5.354 6.646a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l7-7z"/>
+                </svg>
+                <span class="px-2">{{ session('updated') }}</span>
+            </div>
+        @endif
         <table class="table align-middle mb-0 bg-white table-striped table-bordered ">
             <thead class="bg-dark text-light">
             <tr>
@@ -46,8 +60,8 @@
                     </td>
                     <td>{{ $order->created_at->format('Y-m-d')}}</td>
                     <td>
-                        <form method="POST" action="">
-                            <a href=""
+                        <form method="POST" action="{{ route('delete.order', $order) }}">
+                            <a href="{{ route('edit.order', $order) }}"
                                class="btn btn-outline-success" data-mdb-ripple-color="dark">Edit</a>
                             @csrf
                             @method('DELETE')
