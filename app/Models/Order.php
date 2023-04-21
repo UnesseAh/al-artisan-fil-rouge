@@ -21,4 +21,8 @@ class Order extends Model
     {
         $this->belongsTo(User::class);
     }
+
+    public function orderState(){
+        return $this->hasOne(OrderState::class);
+    }
 }

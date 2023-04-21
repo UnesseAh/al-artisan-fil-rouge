@@ -16,21 +16,35 @@ class CategorySeeder extends Seeder
      */
     public function run()
     {
-        Category::factory(5)->create();
 
-        /*
+//        Category::factory(5)->create();
+
         $categories  = [
             [
-                'name' => 'category 1',
-                'slug' => Str::slug('category 1')
+                'name' => 'moroccan lighting',
+                'slug' => Str::slug('moroccan lighting')
             ],
             [
-                'name' => 'category 2',
-                'slug' => Str::slug('category 2')
+                'name' => 'moroccan area rugs',
+                'slug' => Str::slug('moroccan area rugs')
             ],
+            [
+                'name' => 'moroccan soft furnishing',
+                'slug' => Str::slug('moroccan soft furnishing')
+            ],
+            [
+                'name' => 'moroccan jewellery',
+                'slug' => Str::slug('moroccan jewellery')
+            ],
+            [
+                'name' => 'moroccan furniture',
+                'slug' => Str::slug('moroccan furniture')
+            ]
         ];
 
-        Category::insert($categories);
-        */
+        foreach ($categories as $category){
+            Category::create($category);
+        }
+
     }
 }

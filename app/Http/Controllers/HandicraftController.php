@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Handicraft;
 use App\Models\Subcategory;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Str;
@@ -126,4 +128,14 @@ class HandicraftController extends Controller
 
         return Redirect::back();
     }
+
+//    public function test(){
+//        $handicraft = Handicraft::find(8);
+//
+//        if(Gate::allows('delete-handicraft', $handicraft)){
+//            return 'allowed';
+//        }else return 'not allowed';
+//    }
+
+
 }

@@ -16,13 +16,18 @@ class CartController extends Controller
         if(Auth::user())
         {
             $userId = Auth::user()->id;
-            $productId = $request->input('product_id');
+            $handicraftId = $request->input('handicraft_id');
             $quantity = $request->input('quantity');
 
-            $product = Handicraft::find($productId);
+            $product = Handicraft::find($handicraftId);
             $total = $product->price * $quantity;
 
-            Cart::create($request->all() + ['user_id' => $userId, 'total' => $total]);
+            Cart::create([
+                'handicraft_id' => $handicraftId,
+                'quantity' => $quantity,
+                'user_id' => $userId,
+                'total' => $total,
+            ]);
 
             return Redirect::back()->with('message', 'product added successfully!');
 

@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use App\Models\Handicraft;
+use App\Models\User;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Gate;
 
@@ -25,6 +27,8 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies();
 
-        //
+        Gate::define('delete-handicraft', function (User $user, Handicraft $handicraft){
+            return $user->id === $handicraft->user_id;
+        });
     }
 }

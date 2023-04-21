@@ -19,10 +19,10 @@ return new class extends Migration
             $table->decimal('subtotal');
             $table->text('shipping_address');
             $table->string('payment_method');
-            $table->unsignedBigInteger('status_id');
+            $table->unsignedBigInteger('state_id');
 
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
-            $table->foreign('status_id')->references('id')->on('order_status')->onDelete('cascade');
+            $table->foreign('state_id')->references('id')->on('order_states')->onDelete('cascade');
             $table->timestamps();
         });
     }
