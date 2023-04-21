@@ -16,7 +16,7 @@ class Cart extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function product()
+    public function handicraft()
     {
         return $this->belongsTo(Handicraft::class);
     }

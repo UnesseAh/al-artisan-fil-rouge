@@ -1,3 +1,5 @@
+
+
 @include('includes.dashboard.head')
 
 
@@ -29,19 +31,19 @@
                         <tr>
                             <td>
                                 <div class="d-flex align-items-center">
-                                    <img src="{{asset('image/'. $cartItem->product->image)}}" alt="" style="width: 45px; height: 45px"/>
+                                    <img src="{{asset('image/'. $cartItem->handicraft->image)}}" alt="" style="width: 45px; height: 45px"/>
                                     <div class="ms-3">
-                                        <p class="fw-bold mb-1">{{ $cartItem->product->title }}</p>
+                                        <p class="fw-bold mb-1">{{ $cartItem->handicraft->title }}</p>
                                     </div>
                                 </div>
                             </td>
                             <td>
-                                <p class="fw-normal mb-1">{{ $cartItem->product->price }}</p>
+                                <p class="fw-normal mb-1">{{ $cartItem->handicraft->price }}</p>
                             </td>
                             <td>
                                 <span class="badge badge-success rounded-pill d-inline">{{ $cartItem->quantity }}</span>
                             </td>
-                            <td>{{ $cartItem->product->price * $cartItem->quantity}} </td>
+                            <td>{{ $cartItem->handicraft->price * $cartItem->quantity}} </td>
                             <td>
                                 <form method="POST" action="{{ route('cart.delete',['cartItem' => $cartItem->id])  }}">
                                     @csrf
@@ -52,7 +54,7 @@
                                 </form>
                             </td>
                         </tr>
-                       @php($subtotal += $cartItem->product->price * $cartItem->quantity)
+                       @php($subtotal += $cartItem->handicraft->price * $cartItem->quantity)
 
                     @endforeach
                     </tbody>

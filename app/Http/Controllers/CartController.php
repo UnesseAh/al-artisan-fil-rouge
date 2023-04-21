@@ -41,9 +41,9 @@ class CartController extends Controller
         {
             $userId  = Auth::user()->id;
             $cartItems = Cart::where('user_id', '=', $userId)
-                ->with('product')
+                ->with('handicraft')
                 ->get();
-            return view('cart', compact('cartItems'));
+            return view('cart', ['cartItems' => $cartItems]);
         }else {
             return 'you are not logged in';
         }

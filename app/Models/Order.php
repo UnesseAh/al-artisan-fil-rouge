@@ -14,7 +14,7 @@ class Order extends Model
         'subtotal',
         'shipping_address',
         'payment_method',
-        'status_id',
+        'state_id',
     ];
 
     public function user()

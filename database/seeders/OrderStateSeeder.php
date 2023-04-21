@@ -6,7 +6,7 @@ use App\Models\OrderState;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
-class OrderStatusSeeder extends Seeder
+class OrderStateSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -16,9 +16,9 @@ class OrderStatusSeeder extends Seeder
     public function run()
     {
         $ordersStatus = [
-            ['status'=> 'placed'],
-            ['status' => 'shipped'],
-            ['status' => 'delivered']
+            ['name'=> 'placed'],
+            ['name' => 'shipped'],
+            ['name' => 'delivered']
         ];
 
         foreach ($ordersStatus as $orderStatus){

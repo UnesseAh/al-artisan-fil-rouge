@@ -23,7 +23,7 @@ class PaymentController extends Controller
         $address = $request->input('shipping_address');
         $payment_method = 'Credit Card';
         $cartItems = Cart::where('user_id', $userId)
-            ->with('product')
+            ->with('handicraft')
             ->get()
             ->toArray();
 
@@ -35,7 +35,7 @@ class PaymentController extends Controller
             'subtotal' => $subtotal,
             'shipping_address' => $address,
             'payment_method' => $payment_method,
-            'status_id' => 1
+            'state_id' => 1
         ]);
 
         $orderId = $order->id;
@@ -44,9 +44,9 @@ class PaymentController extends Controller
         {
             OrderItem::create([
                 'order_id' => $orderId,
-                'product_id' => $cartItems[$i]['product_id'],
+                'handicraft_id' => $cartItems[$i]['handicraft_id'],
                 'quantity' => $cartItems[$i]['quantity'],
-                'price' => $cartItems[$i]['product']['price'],
+                'price' => $cartItems[$i]['handicraft']['price'],
             ]);
         }
 
