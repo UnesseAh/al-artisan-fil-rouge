@@ -16,39 +16,38 @@
 
 <!--Main layout-->
 <main style="margin-top: 58px;">
+    <h1>{{ $orders }}</h1>
     <div class="container pt-4">
-        <a href="{{ route('create.product') }}" type="button" class="btn btn-primary mb-4">Add Product</a>
+{{--        <a href="" type="button" class="btn btn-primary mb-4">Add Product</a>--}}
 
         <table class="table align-middle mb-0 bg-white table-striped table-bordered ">
             <thead class="bg-dark text-light">
             <tr>
                 <th>ID</th>
-                <th>product</th>
-                <th>description</th>
-                <th>price</th>
-                <th>stock</th>
-                <th>action</th>
+                <th>Name</th>
+                <th>Subtotal</th>
+                <th>Shipping Address</th>
+                <th>Payment Method</th>
+                <th>State</th>
+                <th>Date</th>
+                <th>Action</th>
             </tr>
             </thead>
             <tbody>
-            @foreach($handicrafts as $handicraft)
+            @foreach($orders as $order)
                 <tr>
-                    <td>{{ $handicraft->id }}</td>
+                    <td>{{ $order->id}}</td>
+                    <td>{{ $order->user_id }}</td>
+                    <td>{{ $order->subtotal }}</td>
+                    <td>{{ $order->shipping_address }}</td>
+                    <td>{{ $order->payment_method }}</td>
                     <td>
-                        <div class="d-flex align-items-center">
-                            <img src="{{ asset('image/'.$handicraft->image) }}" alt=""
-                                 style="width: 45px; height: 45px"/>
-                            <div class="ms-3">
-                                <p class="fw-bold mb-1">{{ $handicraft->title }}</p>
-                            </div>
-                        </div>
+                        <span class="badge badge-primary rounded-pill d-inline">{{ $order->state_id }}</span>
                     </td>
-                    <td>{{ $handicraft->description }}</td>
-                    <td>{{ $handicraft->price }}</td>
-                    <td><span class="badge badge-primary rounded-pill d-inline">{{ $handicraft->stock }}</span></td>
+                    <td>{{ $order->created_at->format('Y-m-d')}}</td>
                     <td>
-                        <form method="POST" action="{{ route('delete.product', ['handicraft' => $handicraft]) }}">
-                            <a href="{{ route('edit.product', ['handicraft' => $handicraft]) }}"
+                        <form method="POST" action="">
+                            <a href=""
                                class="btn btn-outline-success" data-mdb-ripple-color="dark">Edit</a>
                             @csrf
                             @method('DELETE')

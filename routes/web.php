@@ -4,6 +4,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\LandingPageController;
+use App\Http\Controllers\OrderController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\HandicraftController;
 use App\Http\Controllers\ProfileController;
@@ -89,4 +90,6 @@ Route::get('checkout/{subtotal}', [PaymentController::class, 'checkout'])->name(
 
 Route::post('checkout/buy-products', [PaymentController::class, 'buyProducts'])->name('buy.products');
 
-Route::get('gate', [HandicraftController::class, 'test']);
+Route::controller(OrderController::class)->group(function (){
+    Route::get('order', 'getAllOrders')->name('show.orders');
+});

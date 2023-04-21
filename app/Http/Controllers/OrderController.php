@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Order;
 use App\Http\Requests\StoreOrderRequest;
 use App\Http\Requests\UpdateOrderRequest;
+use Carbon\Carbon;
 
 class OrderController extends Controller
 {
@@ -13,9 +14,10 @@ class OrderController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function getAllOrders()
     {
-        //
+        $orders = Order::all();
+        return view('dashboard/order', compact('orders'));
     }
 
     /**

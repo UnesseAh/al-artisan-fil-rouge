@@ -1,4 +1,6 @@
 @include('includes.dashboard.head')
+<link rel="stylesheet" href="{{ asset('css/style.css') }}">
+
 @include('includes.landing-page.navbar')
 @if(session('message'))
     <div>{{ session('message') }}</div>
