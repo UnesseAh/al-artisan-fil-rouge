@@ -21,7 +21,6 @@ return new class extends Migration
             $table->decimal('price')->default(0);
             $table->integer('stock')->default(0);
             $table->string('image');
-//            $table->foreignId('subcategory_id')->constrained('subcategories')->onDelete('cascade');
             $table->unsignedBigInteger('subcategory_id');
             $table->unsignedBigInteger('user_id');
             $table->foreign('subcategory_id')->references('id')->on('subcategories')->onDelete('cascade');

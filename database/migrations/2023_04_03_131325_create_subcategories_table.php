@@ -17,7 +17,6 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('slug', 255)->unique();
-//            $table->foreignId('category_id')->constrained('categories')->onDelete('Cascade');
             $table->unsignedBigInteger('category_id');
             $table->foreign('category_id')->references('id')->on('categories')->onDelete('Cascade');
             $table->timestamps();

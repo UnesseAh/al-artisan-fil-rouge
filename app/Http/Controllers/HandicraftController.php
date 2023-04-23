@@ -62,7 +62,9 @@ class HandicraftController extends Controller
             $input['image'] = "$profileImage";
         }
 
-        Handicraft::create($input + ['slug' => Str::slug($input['title'])]);
+        $userId = Auth::user()->id;
+
+        Handicraft::create($input + ['slug' => Str::slug($input['title']), 'user_id' => $userId]);
 
         $title = $request->input('title');
 
@@ -114,7 +116,9 @@ class HandicraftController extends Controller
             unset($input['image']);
         }
 
-        $handicraft->update($input);
+        $userId = Auth::user()->id;
+
+        $handicraft->update($input + ['user_id' => $userId]);
 
         $title = $request->input('title');
 
@@ -133,14 +137,6 @@ class HandicraftController extends Controller
 
         return Redirect::back();
     }
-
-//    public function test(){
-//        $handicraft = Handicraft::find(8);
-//
-//        if(Gate::allows('delete-handicraft', $handicraft)){
-//            return 'allowed';
-//        }else return 'not allowed';
-//    }
 
 
 }

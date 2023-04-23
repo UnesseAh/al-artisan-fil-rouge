@@ -14,4 +14,15 @@ class Subcategory extends Model
         'slug',
         'category_id'
     ];
+
+    public function category()
+    {
+        return $this->belongsTo(Category::class);
+    }
+
+    public function handicrafts()
+    {
+        return $this->hasMany(Handicraft::class);
+    }
+
 }

@@ -27,6 +27,9 @@
                 <th>description</th>
                 <th>price</th>
                 <th>stock</th>
+                <th>Category</th>
+                <th>Subcategory</th>
+                <th>Artisan</th>
                 <th>action</th>
             </tr>
             </thead>
@@ -46,6 +49,10 @@
                     <td>{{ $handicraft->description }}</td>
                     <td>{{ $handicraft->price }}</td>
                     <td><span class="badge badge-primary rounded-pill d-inline">{{ $handicraft->stock }}</span></td>
+                    <td>{{ $handicraft->subcategory->category->name }}</td>
+                    <td>{{ $handicraft->subcategory->name }}</td>
+                    <td>{{ $handicraft->user->name }}</td>
+
                     <td>
                         <form method="POST" action="{{ route('delete.product', ['handicraft' => $handicraft]) }}">
                             <a href="{{ route('edit.product', ['handicraft' => $handicraft]) }}"

@@ -17,8 +17,9 @@ class Category extends Model
         return "slug";
     }
 
-    public function products(){
-        return $this->hasMany(Handicraft::class);
+    public function subcategories()
+    {
+        return $this->hasMany(Subcategory::class);
     }
 
 }

@@ -88,7 +88,7 @@ class AuthController extends Controller
     {
         if(Auth::check())
         {
-            $handicrafts  = Handicraft::all();
+            $handicrafts  = Handicraft::with('user', 'subcategory.category')->get();
 
             return view('dashboard', ['handicrafts' => $handicrafts]);
         }

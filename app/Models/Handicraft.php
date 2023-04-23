@@ -17,7 +17,8 @@ class Handicraft extends Model
         'old_price',
         'stock',
         'image',
-        'subcategory_id'
+        'subcategory_id',
+        'user_id'
     ];
 
     public function getRouteKeyName()
@@ -28,5 +29,10 @@ class Handicraft extends Model
     public function subcategory()
     {
         return $this->belongsTo(Subcategory::class);
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
     }
 }
