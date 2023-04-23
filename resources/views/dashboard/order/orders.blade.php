@@ -34,6 +34,7 @@
                 <span class="px-2">{{ session('updated') }}</span>
             </div>
         @endif
+
         <table class="table align-middle mb-0 bg-white table-striped table-bordered ">
             <thead class="bg-dark text-light">
             <tr>

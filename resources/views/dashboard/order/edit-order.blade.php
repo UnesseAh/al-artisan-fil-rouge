@@ -14,11 +14,11 @@
                             @csrf
                             @method('PUT')
                             <div class="form-outline mb-2">
-                                <input name="user_id" value="{{ $order->user_id }}" type="text" id="name" class="form-control" />
-                                <label class="form-label" for="title">Customer</label>
+                                <input name="name" value="{{ $order->user->name }}" type="text" id="name" class="form-control" />
+                                <label class="form-label" for="name">Customer</label>
                             </div>
-                            @if($errors->has('user_id'))
-                                <p class="text-danger small mb-2">{{ $errors->first('user_id') }}</p>
+                            @if($errors->has('name'))
+                                <p class="text-danger small mb-2">{{ $errors->first('name') }}</p>
                             @endif
 
                             <div class="form-outline mb-2">
