@@ -80,7 +80,8 @@ class AuthController extends Controller
         Auth::logout();
         $request->session()->invalidate();
         $request->session()->regenerateToken();
-        return redirect('/')->with('success', 'You have successfully logged out');
+        return redirect('/');
+//            ->with('success', 'You have successfully logged out');
     }
 
     public function dashboard()

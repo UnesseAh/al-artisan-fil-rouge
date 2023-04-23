@@ -13,14 +13,11 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('users', function (Blueprint $table) {
+        Schema::create('secondary_images', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('handicraft_id');
             $table->string('name');
-            $table->string('email')->unique();
-            $table->string('role')->default(0);
-            $table->timestamp('email_verified_at')->nullable();
-            $table->string('password');
-            $table->rememberToken();
+            $table->foreign('handicraft_id')->references('id')->on('handicrafts')->onDelete('cascade');
             $table->timestamps();
         });
     }
@@ -32,6 +29,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('secondary_images');
     }
 };

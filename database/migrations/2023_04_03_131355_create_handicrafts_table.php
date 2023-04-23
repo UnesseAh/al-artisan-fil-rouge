@@ -23,7 +23,9 @@ return new class extends Migration
             $table->string('image');
 //            $table->foreignId('subcategory_id')->constrained('subcategories')->onDelete('cascade');
             $table->unsignedBigInteger('subcategory_id');
+            $table->unsignedBigInteger('user_id');
             $table->foreign('subcategory_id')->references('id')->on('subcategories')->onDelete('cascade');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();
         });
     }

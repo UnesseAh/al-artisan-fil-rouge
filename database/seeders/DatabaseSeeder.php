@@ -21,7 +21,7 @@ class DatabaseSeeder extends Seeder
             UserSeeder::class,
             CategorySeeder::class,
             SubcategorySeeder::class,
-            HandicraftSeeder::class,
+//            HandicraftSeeder::class,
 //            OrderSeeder::class
         ]);
     }

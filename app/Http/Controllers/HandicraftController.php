@@ -6,6 +6,7 @@ use App\Models\Handicraft;
 use App\Models\Subcategory;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Validator;
@@ -23,6 +24,9 @@ class HandicraftController extends Controller
 
     public function create()
     {
+//        if(!auth()->user()->can('manage_users')){
+//            abort(403);
+//        }
         $subcategories = Subcategory::all();
 
         return view('dashboard.product.create-product', ['subcategories' => $subcategories]);
@@ -31,6 +35,7 @@ class HandicraftController extends Controller
 
     public function store(Request $request)
     {
+
         $validator = Validator::make($request->all(), [
             'title' => 'required|string|max:255',
             'description' => 'required|string|max:1000',
