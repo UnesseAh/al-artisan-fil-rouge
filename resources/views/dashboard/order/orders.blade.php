@@ -38,12 +38,12 @@
             <thead class="bg-dark text-light">
             <tr>
                 <th>ID</th>
-                <th>Name</th>
+                <th>Customer</th>
                 <th>Subtotal</th>
                 <th>Shipping Address</th>
                 <th>Payment Method</th>
                 <th>State</th>
-                <th>Date</th>
+                <th>Purchase Date</th>
                 <th>Action</th>
             </tr>
             </thead>
@@ -51,14 +51,14 @@
             @foreach($orders as $order)
                 <tr>
                     <td>{{ $order->id}}</td>
-                    <td>{{ $order->user_id }}</td>
+                    <td>{{ $order->user->name }}</td>
                     <td>{{ $order->subtotal }}</td>
                     <td>{{ $order->shipping_address }}</td>
                     <td>{{ $order->payment_method }}</td>
                     <td>
-                        <span class="badge badge-primary rounded-pill d-inline">{{ $order->state_id }}</span>
+                        <span class="badge badge-primary rounded-pill d-inline">{{ $order->state->name }}</span>
                     </td>
-                    <td>{{ $order->created_at->format('Y-m-d')}}</td>
+                    <td>{{ $order->created_at->format('Y-m-d H:i:s')}}</td>
                     <td>
                         <form method="POST" action="{{ route('delete.order', $order) }}">
                             <a href="{{ route('edit.order', $order) }}"

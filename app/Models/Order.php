@@ -20,10 +20,11 @@ class Order extends Model
 
     public function user()
     {
-        $this->belongsTo(User::class);
+        return $this->belongsTo(User::class);
     }
 
-    public function orderState(){
-        return $this->hasOne(OrderState::class);
+
+    public function state(){
+        return $this->belongsTo(OrderState::class);
     }
 }

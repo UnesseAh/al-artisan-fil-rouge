@@ -11,4 +11,8 @@ class OrderState extends Model
     protected $fillable = ['status'];
     protected $hidden = ['created_at', 'updated_at'];
 
+
+    public function orders(){
+        return $this->hasOne(Order::class);
+    }
 }

@@ -38,7 +38,7 @@
                                 <select id="subcategory" name="subcategory_id" class="form-select">
                                     <option for="subcategory" selected disabled>Choose category</option>
                                     @foreach($subcategories as $subcategory)
-                                        <option value="{{$subcategory->id}}">{{$subcategory->name}}</option>
+                                        <option value="{{$subcategory->id}}" @if($handicraft->subcategory_id == $subcategory->id) selected @endif>{{$subcategory->name}}</option>
                                     @endforeach
                                 </select>
                             </div>

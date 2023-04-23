@@ -15,7 +15,7 @@ class OrderController extends Controller
 {
     public function getAllOrders()
     {
-        $orders = Order::all();
+        $orders = Order::with('user')->get();
         return view('dashboard/order/orders', compact('orders'));
     }
 

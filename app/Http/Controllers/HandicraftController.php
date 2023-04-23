@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use App\Models\Handicraft;
 use App\Models\Subcategory;
 use App\Models\User;
@@ -28,8 +29,9 @@ class HandicraftController extends Controller
 //            abort(403);
 //        }
         $subcategories = Subcategory::all();
+        $categories = Category::all();
 
-        return view('dashboard.product.create-product', ['subcategories' => $subcategories]);
+        return view('dashboard.product.create-product', ['subcategories' => $subcategories, 'categories' => $categories]);
     }
 
 

@@ -9,8 +9,6 @@
                          class="w-100" style="border-top-left-radius: .3rem; border-top-right-radius: .3rem;"
                          alt="Sample photo">
                     <div class="card-body pb-3">
-{{--                        <h3 class="mb-4 pb-2 pb-md-0 mb-md-5 px-md-2">Add New Craft :</h3>--}}
-
                         <form method="POST" action="{{route('store.product')}}" enctype="multipart/form-data">
                             @csrf
 
@@ -30,6 +28,21 @@
                             @if($errors->has('description'))
                                 <p class="text-danger small mb-2">{{ $errors->first('description') }}</p>
                             @endif
+
+
+{{--                            <div class="mb-2">--}}
+{{--                                <select id="category" name="category" class="form-select">--}}
+{{--                                    <option selected disabled>Choose category</option>--}}
+{{--                                    @foreach($categories as $category)--}}
+{{--                                        <option value="{{$category->id}}">{{$category->name}}</option>--}}
+{{--                                    @endforeach--}}
+{{--                                </select>--}}
+{{--                            </div>--}}
+{{--                            @if($errors->has('category'))--}}
+{{--                                <p class="text-danger small mb-2">{{ $errors->first('category') }}</p>--}}
+{{--                            @endif--}}
+
+
 
 
                             <div class="mb-2">
