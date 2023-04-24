@@ -21,7 +21,8 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
-        'is_email_verified'
+        'is_email_verified',
+        'role_id'
     ];
 
     public function orders()
@@ -34,6 +35,9 @@ class User extends Authenticatable
         return $this->hasMany(Handicraft::class);
     }
 
+    public function role(){
+        return $this->belongsTo(Role::class);
+    }
     /**
      * The attributes that should be hidden for serialization.
      *

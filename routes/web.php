@@ -10,6 +10,7 @@ use App\Http\Controllers\HandicraftController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ResetPasswordController;
 use App\Http\Controllers\SubcategoryController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 use \Barryvdh\Debugbar\Facades\Debugbar;
 /*
@@ -95,4 +96,8 @@ Route::controller(OrderController::class)->group(function (){
     Route::get('order/{order}', 'editOrder')->name('edit.order');
     Route::put('order/{order}', 'updateOrder')->name('update.order');
     Route::delete('order/{order}', 'deleteOrder')->name('delete.order');
+});
+
+Route::controller(UserController::class)->group(function (){
+    Route::get('users', 'getAllUsers')->name('show.users');
 });

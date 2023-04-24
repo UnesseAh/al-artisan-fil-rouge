@@ -1,0 +1,249 @@
+@import url('https://fonts.cdnfonts.com/css/twentieth-century-for-kenmore?styles=91318,91319,91320,91317');
+
+*,*::after,*::before {
+    box-sizing: border-box;
+    font-family: 'Twentieth Century', sans-serif;
+    font-weight: 400;
+}
+
+body {
+    margin: 0;
+}
+
+
+.nav-hero {
+    color: white;
+    background: linear-gradient(180deg, rgb(52,36,36) -28.35%, rgb(196,180,156) 153.96%) no-repeat;
+}
+
+a:visited {
+    color: white; /* change the color to your desired color */
+}
+
+img {
+    max-width: 100%;
+    object-fit: cover;
+}
+
+a {
+    display: inline-block;
+    text-decoration: none;
+}
+
+ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+h1, p {
+    margin: 0;
+}
+
+.row {
+    display: flex;
+}
+
+.container {
+    max-width: 90%;
+    margin: 0 auto;
+}
+
+/* Navigation */
+header {
+    align-items: center;
+    justify-content: space-between;
+    gap: 2em;
+    padding: 1.5em 0;
+}
+
+.logo {
+    align-items: center;
+}
+
+.logo img {
+    max-width: 90px;
+    margin-right: 15px;
+}
+
+.logo h1 {
+    font-weight: 700;
+    font-size: 35px ;
+}
+
+nav ul {
+    gap: 2em;
+    align-items: center;
+}
+
+nav a {
+    font-weight: 500;
+    font-size: 18px;
+    transition: 0.3s ease-in-out;
+}
+
+nav a::after {
+    display: block;
+    content: "";
+    width: 0;
+    height: 3px;
+    margin: 0 auto;
+    background-color: #ebebeb;
+    border-radius: 5px;
+}
+
+nav li:nth-of-type(6) a::after {
+    all: unset;
+}
+
+nav a:hover::after {
+    width: 30px;
+}
+
+nav li:nth-of-type(6) a {
+    padding: 0.5em 1em;
+    background: white;
+    color: rgb(52,36,36);
+    border-radius: 10px;
+    transition: 0.3s ease-in-out;
+}
+
+nav li:nth-of-type(6) a:hover, .hero a:hover {
+    box-shadow: 4px 4px 4px rgba(0, 0, 0.25);
+}
+/* End Navigation */
+
+
+/* Hero */
+
+.hero {
+    gap: 2em;
+    flex-wrap: wrap-reverse;
+    align-items: center;
+    min-height: calc(100vh - 93.6px);
+}
+
+.hero>* {
+    flex: 1 1 25em;
+}
+.hero h1 {
+    font-weight: 700;
+    font-size: clamp(40px, 5vw, 70px);
+    line-height: 1;
+}
+
+.hero p {
+    font-weight: 500;
+    font-size: 30px;
+    padding: 1em 0;
+}
+
+.hero a {
+    font-weight: 700;
+    font-size: 20px;
+    padding: 0.5em 1em;
+    /*background: linear-gradient(90deg, #345aa4 0%, rgba(63, 0, 156, 0.90) 164.26%);*/
+    background: #C7B299;
+    color: rgb(52,36,36);
+    border-radius: 10px;
+    transition: 0.3s ease-in-out;
+}
+/* End Hero */
+
+
+/* Media */
+
+@media screen and (max-width: 900px) {
+    .toggleMenu {
+        position: absolute;
+        right: 5%;
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 448 512'%3E%3Cpath d='M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H416c17.7 0 32 14.3 32 32z'/%3E%3C/svg%3E");
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: 30px;
+        width: 30px;
+        height: 30px;
+        padding: 2em;
+        z-index: 1000;
+        transition: background-size 0.3s ease-in-out;
+    }
+
+    .toggleMenu.active {
+        position: fixed;
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 448 512'%3E%3Cpath d='M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H416c17.7 0 32 14.3 32 32z'/%3E%3C/svg%3E");        background-size: 25px;
+    }
+
+    .navigation {
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        max-height: 0;
+        opacity: 0;
+        transform-origin: top;
+        transform: scale(1, 0);
+    }
+
+    .navigation.active {
+        position: fixed;
+        inset: 0;
+        margin: auto;
+        max-height: 100%;
+        opacity: 1;
+        background-color: rgba(63, 0, 156, 1);
+        transform: scale(1, 1);
+    }
+
+    nav ul {
+        flex-direction: column;
+    }
+
+}
+
+
+/* Mer7aba */
+.merhaba {
+    font-weight: 700;
+    font-size: 30px ;
+    text-align: center;
+    padding: 20px;
+}
+
+.merhaba h2 {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.merhaba p {
+    font-size: 18px;
+    line-height: 1.5;
+    max-width: 900px;
+    margin: 0 auto;
+    margin-bottom: 20px;
+    padding: 0;
+}
+
+.merhaba strong {
+    font-weight: bold;
+}
+
+@media (max-width: 768px) {
+    .merhaba p {
+        font-size: 16px;
+    }
+}
+
+/* End Mer7aba */
+
+
+
+/* On Sale */
+
+
+
+
+/* End Sale */
+
+
+
+
+

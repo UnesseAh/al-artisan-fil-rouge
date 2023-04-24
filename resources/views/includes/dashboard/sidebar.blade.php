@@ -13,7 +13,7 @@
             <a href="#" class="list-group-item list-group-item-action py-2 ripple">
                 <i class="fa-solid fa-hammer fa-fw me-3"></i><span>Artisans</span>
             </a>
-            <a href="#" class="list-group-item list-group-item-action py-2 ripple">
+            <a href="{{ route('show.users') }}" class="list-group-item list-group-item-action py-2 ripple">
                 <i class="fa-solid fa-user fa-fw me-3"></i><span>Users</span>
             </a>
             <a href="{{ route('show.orders') }}" class="list-group-item list-group-item-action py-2 ripple">

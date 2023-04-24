@@ -25,28 +25,6 @@
                 <h5 class="card-title">Beni Ourain Rug</h5>
             </div>
         </div>
-        <div class="card bg-dark text-white">
-            <img src="https://mdbcdn.b-cdn.net/img/new/slides/017.webp" class="card-img" alt="Stony Beach"/>
-            <div class="card-img-overlay">
-                <h5 class="card-title">Leather Pouffes</h5>
-            </div>
-        </div>
-        <div class="card bg-dark text-white">
-            <img src="https://mdbcdn.b-cdn.net/img/new/slides/017.webp" class="card-img" alt="Stony Beach"/>
-            <div class="card-img-overlay">
-                <h5 class="card-title">Floor Cushions</h5>
-            </div>
-        </div>
-        <div class="card bg-dark text-white">
-            <img src="https://mdbcdn.b-cdn.net/img/new/slides/017.webp" class="card-img" alt="Stony Beach"/>
-            <div class="card-img-overlay">
-                <h5 class="card-title">Kilmi Cushions</h5>
-            </div>
-        </div><div class="card bg-dark text-white">
-            <img src="https://mdbcdn.b-cdn.net/img/new/slides/017.webp" class="card-img" alt="Stony Beach"/>
-            <div class="card-img-overlay">
-                <h5 class="card-title">Bangles</h5>
-            </div>
-        </div>
+
     </div>
 </div>
