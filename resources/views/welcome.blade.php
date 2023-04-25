@@ -9,8 +9,7 @@
     <script src="{{asset('js/landing-page.js')}}" type="text/javascript" defer></script>
     <link rel="stylesheet" href="{{asset('css/landing-page.css')}}">
     <!--  Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" /></head>
-<body>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" /><body>
 <!-- Navbar -->
 {{--@include('includes.landing-page.navbar')--}}
 <!-- Navbar -->
@@ -55,25 +54,179 @@
 
 
 <div class="container">
+    <!-- Marhaba -->
     <div class="merhaba" style="outline: 2px solid red">
         <h2>Marhaba!</h2>
         <p>Experience the charm of <strong>Moroccan decor</strong> and <strong>lifestyle</strong> at our store, where you can discover the most extraordinary <strong>artisanal crafts</strong>. Our collection features unique and <strong>exquisite treasures</strong> straight from Morocco, tailored to <strong>modern</strong> and <strong>contemporary homes</strong>. We collaborate with <strong>independent buyers</strong> and cater to commercial projects as well.</p>
     </div>
+    <!-- End Marhaba -->
+
     <!-- On Sale -->
-    @include('includes.landing-page.onsale')
-    <!-- On Sale -->
+    <h2 class="on-sale-heading" style="outline: 2px solid red">ON SALE</h2>
+
+    <div class="main_products" style="outline: 2px solid red">
+
+        <div class="product">
+            <img src="{{asset('image/product-1.png')}}" alt="">
+            <div class="product_desc">
+                <div class="title">Nike M3</div>
+                <p>$12.34</p>
+            </div>
+        </div>
+        <div class="product">
+            <img src="{{asset('image/product-1.png')}}" alt="">
+            <div class="product_desc">
+                <div class="title">Nike M3</div>
+                <p>$12.34</p>
+            </div>
+        </div>
+        <div class="product">
+            <img src="{{asset('image/product-1.png')}}" alt="">
+            <div class="product_desc">
+                <div class="title">Nike M3</div>
+                <p>$12.34</p>
+            </div>
+        </div>
+        <div class="product">
+            <img src="{{asset('image/product-1.png')}}" alt="">
+            <div class="product_desc">
+                <div class="title">Nike M3</div>
+                <p>$12.34</p>
+            </div>
+        </div>
+        <div class="product">
+            <img src="{{asset('image/product-1.png')}}" alt="">
+            <div class="product_desc">
+                <div class="title">Nike M3</div>
+                <p>$12.34</p>
+            </div>
+        </div>
+        <div class="product">
+            <img src="{{asset('image/product-1.png')}}" alt="">
+            <div class="product_desc">
+                <div class="title">Nike M3</div>
+                <p>$12.34</p>
+            </div>
+        </div>
+        <div class="product">
+            <img src="{{asset('image/product-1.png')}}" alt="">
+            <div class="product_desc">
+                <div class="title">Nike M3</div>
+                <p>$12.34</p>
+            </div>
+        </div>
+        <div class="product">
+            <img src="{{asset('image/product-1.png')}}" alt="">
+            <div class="product_desc">
+                <div class="title">Nike M3</div>
+                <p>$12.34</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- End On Sale -->
+
+    <!-- Partners -->
+    <section class="partners_section" style="outline: 2px solid red">
+        <h2 style="outline: 2px solid red">Our <strong>Partners</strong></h2>
+        <div class="partners_row">
+            <div class="col-sm-6 col-md-4 col-lg-3">
+                <div class="square-holder">
+                    <img alt="" src="{{ asset('image/youcode.png') }}" />
+                </div>
+            </div>
+            <div class="col-sm-6 col-md-4 col-lg-3">
+                <div class="square-holder">
+                    <img alt="" src="{{ asset('image/um6p.png') }}" />
+                </div>
+            </div>
+            <div class="col-sm-6 col-md-4 col-lg-3">
+                <div class="square-holder">
+                    <img alt="" src="{{ asset('image/simplon.png') }}" />
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- End Partners -->
+
     <!-- Shop By Category -->
-    @include('includes.landing-page.shop-by-category')
-    <!-- Shop By Category -->
+
+    <h2 class="on-sale-heading" style="outline: 2px solid red">Categories</h2>
+
+    <section class="banner" style="outline: 2px solid red">
+            <a href="">
+                <div class="banner-img">
+                    <img src="{{ asset('image/category-1.jpg') }}" alt="" style="height: 20rem; width: 30rem !important;">
+                    <p class="category">Moroccan Lighting</p>
+                </div>
+            </a>
+        <a href="">
+            <div class="banner-img">
+                <img src="{{ asset('image/category-2.jpg') }}" alt="" style="height: 20rem; width: 30rem !important;">
+                <p class="category">Moroccan Area Rugs</p>
+            </div>
+        </a>
+        <a href="">
+            <div class="banner-img">
+                <img src="{{ asset('image/category-3.jpg') }}" alt="" style="height: 20rem; width: 30rem !important;">
+                <p class="category">Moroccan Furnishing</p>
+            </div>
+        </a>
+        <a href="">
+            <div class="banner-img">
+                <img src="{{ asset('image/category-4.jpg') }}" alt="" style="height: 20rem; width: 30rem !important;">
+                <p class="category">Moroccan Jewellery</p>
+            </div>
+        </a>
+    </section>
+    <!-- End Shop By Category -->
+
+
+
     <!-- Testimonials -->
-    @include('includes.landing-page.testimonials')
     <!-- Testimonials -->
 
 
 </div>
-<!-- Footer -->
-@include('includes.landing-page.footer')
-<!-- Footer -->
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="footer-col">
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="#">about us</a></li>
+                        <li><a href="#">our services</a></li>
+                        <li><a href="#">privacy policy</a></li>
+                        <li><a href="#">affiliate program</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>get help</h4>
+                    <ul>
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#">shipping</a></li>
+                        <li><a href="#">returns</a></li>
+                        <li><a href="#">order status</a></li>
+                        <li><a href="#">payment options</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>online shop</h4>
+                    <ul>
+                        <li><a href="#">watch</a></li>
+                        <li><a href="#">bag</a></li>
+                        <li><a href="#">shoes</a></li>
+                        <li><a href="#">dress</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <img src="{{ asset('image/logo/al-artisan-logo-white-1.png') }}" alt="">
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- Footer -->
 
 <!-- MDB -->
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.2.0/mdb.min.js"></script>
