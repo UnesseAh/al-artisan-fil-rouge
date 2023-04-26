@@ -1,0 +1,117 @@
+/* Container styles */
+.small-container.single-product {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0 20px;
+}
+
+/* Row styles */
+.small-container.single-product .row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    margin: 0 -10px;
+}
+
+/* Column styles */
+.small-container.single-product .col-2 {
+    flex: 1;
+    padding: 0 10px;
+    text-align: center;
+}
+
+/* Product image styles */
+.small-container.single-product #ProductImg {
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    max-width: 100%;
+}
+
+/* Product title styles */
+.small-container.single-product h1 {
+    font-size: 32px;
+    font-weight: bold;
+    margin-top: 30px;
+    text-align: center;
+}
+
+/* Product category styles */
+.small-container.single-product p {
+    font-size: 14px;
+    margin-top: 10px;
+    text-align: center;
+}
+
+/* Product price styles */
+.small-container.single-product h4 {
+    font-size: 24px;
+    color: #f44336;
+    margin-top: 10px;
+    text-align: center;
+}
+
+/* Product quantity styles */
+.small-container.single-product #quantity {
+    width: 50px;
+    height: 30px;
+    margin-right: 10px;
+    text-align: center;
+}
+
+/* Add to cart button styles */
+.small-container.single-product .btn {
+    display: inline-block;
+    background-color: #f44336;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+
+.small-container.single-product .btn:hover {
+    background-color: #212121;
+}
+
+/* Product details styles */
+.small-container.single-product h3 {
+    font-size: 24px;
+    font-weight: bold;
+    margin-top: 50px;
+    text-align: center;
+}
+
+/* Product description styles */
+.small-container.single-product p {
+    font-size: 16px;
+    line-height: 1.5;
+    margin-top: 20px;
+    text-align: justify;
+}
+
+/* Media query for screens smaller than 768px */
+@media (max-width: 768px) {
+    /* Column styles */
+    .small-container.single-product .col-2 {
+        text-align: center;
+        margin-bottom: 30px;
+    }
+
+    /* Product image styles */
+    .small-container.single-product #ProductImg {
+        max-width: 80%;
+    }
+
+    /* Product details styles */
+    .small-container.single-product h3 {
+        margin-top: 30px;
+        text-align: center;
+    }
+}

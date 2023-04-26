@@ -52,7 +52,6 @@
                     <td>{{ $handicraft->subcategory->category->name }}</td>
                     <td>{{ $handicraft->subcategory->name }}</td>
                     <td>{{ $handicraft->user->name }}</td>
-
                     <td>
                         <form method="POST" action="{{ route('delete.product', ['handicraft' => $handicraft]) }}">
                             <a href="{{ route('edit.product', ['handicraft' => $handicraft]) }}"
@@ -69,6 +68,7 @@
         </table>
     </div>
 </main>
+
 <!--Main layout-->
 
 <!-- MDB -->

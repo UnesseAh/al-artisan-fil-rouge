@@ -78,7 +78,8 @@ class HandicraftController extends Controller
 
     public function show(Handicraft $handicraft)
     {
-        return view('product-page', compact('handicraft'));
+         $relatedProducts = Handicraft::where('subcategory_id', $handicraft->subcategory_id)->latest()->take(3)->get();
+        return view('product-page', compact('handicraft', 'relatedProducts'));
     }
 
 

@@ -52,7 +52,7 @@ h1, p {
 /* Navigation */
 header {
     align-items: center;
-    justify-content: space-between;
+    justify-content: space-around;
     gap: 2em;
     padding: 1.5em 0;
 }
@@ -68,12 +68,16 @@ header {
 
 .logo h1 {
     font-weight: 700;
-    font-size: 35px ;
+    font-size: 30px ;
 }
 
 nav ul {
     gap: 2em;
     align-items: center;
+}
+nav ul .row{
+    align-items: center;
+    justify-content: space-between;
 }
 
 nav a {
@@ -100,7 +104,7 @@ nav a:hover::after {
     width: 30px;
 }
 
-nav li:nth-of-type(6) a {
+nav li:nth-of-type(9) a {
     padding: 0.5em 1em;
     background: white;
     color: rgb(52,36,36);
@@ -258,6 +262,7 @@ nav li:nth-of-type(6) a:hover, .hero a:hover {
     box-shadow: 0px 7px 7px rgba(0,0,0,0.1);
     border-radius: 20px;
     outline: 2px solid red;
+    color: black;
 }
 
 .product img {
@@ -295,69 +300,69 @@ nav li:nth-of-type(6) a:hover, .hero a:hover {
 
 /* Partners */
 
-.square-holder {
-    padding: 30px;
-    align-items: center;
-    display: flex;
-    justify-content: center;
-    margin-bottom: 20px;
-    background-color: #f1f1f1;
-    min-height: 200px;
-}
+/*.square-holder {*/
+/*    padding: 30px;*/
+/*    align-items: center;*/
+/*    display: flex;*/
+/*    justify-content: center;*/
+/*    margin-bottom: 20px;*/
+/*    background-color: #f1f1f1;*/
+/*    min-height: 200px;*/
+/*}*/
 
-.square-holder img {
-    max-width: 70%;
-    transition: all 0.3s;
-}
+/*.square-holder img {*/
+/*    max-width: 70%;*/
+/*    transition: all 0.3s;*/
+/*}*/
 
-.partners_row {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-}
+/*.partners_row {*/
+/*    display: flex;*/
+/*    flex-wrap: wrap;*/
+/*    justify-content: center;*/
+/*    align-items: center;*/
+/*}*/
 
-.partners_row .col-sm-6 {
-    flex-basis: 50%;
-}
+/*.partners_row .col-sm-6 {*/
+/*    flex-basis: 50%;*/
+/*}*/
 
-.partners_row .col-md-4 {
-    flex-basis: 33.33%;
-}
+/*.partners_row .col-md-4 {*/
+/*    flex-basis: 33.33%;*/
+/*}*/
 
-.partners_row .col-lg-3 {
-    flex-basis: 25%;
-}
+/*.partners_row .col-lg-3 {*/
+/*    flex-basis: 25%;*/
+/*}*/
 
-.partners_section > h2 {
-    text-align: center;
-    font-size: 35px;
-}
+/*.partners_section > h2 {*/
+/*    text-align: center;*/
+/*    font-size: 35px;*/
+/*}*/
 
-.partners_section > strong {
-    font-weight: 700;
-    color: red;
-}
+/*.partners_section > strong {*/
+/*    font-weight: 700;*/
+/*    color: red;*/
+/*}*/
 
-@media (max-width: 767px) {
-    .partners_row .col-sm-6 {
-        flex-basis: 100%;
-    }
+/*@media (max-width: 767px) {*/
+/*    .partners_row .col-sm-6 {*/
+/*        flex-basis: 100%;*/
+/*    }*/
 
-    .partners_row .col-md-4 {
-        flex-basis: 50%;
-    }
+/*    .partners_row .col-md-4 {*/
+/*        flex-basis: 50%;*/
+/*    }*/
 
-    .partners_row .col-lg-3 {
-        flex-basis: 33.33%;
-    }
-}
+/*    .partners_row .col-lg-3 {*/
+/*        flex-basis: 33.33%;*/
+/*    }*/
+/*}*/
 
-@media (max-width: 576px) {
-    .square-holder {
-        min-height: 150px;
-    }
-}
+/*@media (max-width: 576px) {*/
+/*    .square-holder {*/
+/*        min-height: 150px;*/
+/*    }*/
+/*}*/
 
 /* End Partners */
 
@@ -411,6 +416,8 @@ nav li:nth-of-type(6) a:hover, .hero a:hover {
 }
 /* End Categories */
 
+
+
 /* Artisans */
 .artisans {
     padding: 40px 0;
@@ -423,7 +430,6 @@ nav li:nth-of-type(6) a:hover, .hero a:hover {
     max-width: 1200px;
     margin: auto;
     overflow: hidden;
-    padding: 0 20px;
 }
 
 
@@ -476,11 +482,28 @@ nav li:nth-of-type(6) a:hover, .hero a:hover {
     }
 }
 
-
-
-
 /* End Artisans */
 
+/* Brands */
+.brands {
+    margin: 100px auto;
+}
+
+.col-5 {
+    width: 160px;
+}
+.row {
+    display: flex;
+    justify-content: space-evenly;
+}
+.small-container {
+    max-width: 1080px;
+    margin: auto;
+    padding-left: 25px;
+    padding-right: 25px;
+}
+
+/* Brand */
 
 /* Footer */
 
@@ -548,5 +571,13 @@ footer ul {
     padding-left: 10px;
 }
 
+.footer img {
+    margin-top: 30px;
+}
+
+.footer .social-link > a {
+    margin-right: .5rem;
+}
 
 /* End Footer */
+
