@@ -13,12 +13,15 @@ use Illuminate\Validation\Rule;
 class ProfileController extends Controller
 {
     public function RedirectToProfilePage(){
-        $user = Auth::user();
+        if(Auth::user()){
+            $user = Auth::user();
 
-        return view('profile', compact('user'));
+            return view('profile', compact('user'));
+        }else abort(404);
+
     }
 
-    public function updateProfile(User $user, Request $request){
+    public function updateProfile(Request $request){
 
         $validator =  Validator::make($request->all(), [
             'name' => 'required|string|max:255|min:3|regex:/^[^0-9]*$/',
@@ -33,7 +36,8 @@ class ProfileController extends Controller
                 ->withErrors($validator)
                 ->withInput();
         }
-        $user->update([
+
+        Auth::user()->update([
             'name' => $request->name,
             'email' => $request->email,
             'updated_at' => now()

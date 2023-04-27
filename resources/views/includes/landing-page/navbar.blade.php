@@ -102,7 +102,7 @@
 <header class="row container">
     <a href="#" class="logo row" >
         <img src="{{asset('image/logo/icon/al-artisan-icon-dark.png')}}" alt="">
-        <h1>Al Artisan</h1>
+        <h1>AL Artisan</h1>
     </a>
     <div class="toggleMenu" onclick="toggleMenu();"></div>
     <nav class="navigation row">

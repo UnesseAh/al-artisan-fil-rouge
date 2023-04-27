@@ -420,7 +420,7 @@ nav li:nth-of-type(6) a:hover, .hero a:hover {
 
 /* Artisans */
 .artisans {
-    padding: 40px 0;
+    padding: 0px 0;
     background: #f1f1f1;
     color: #434343;
     text-align: center;
@@ -441,7 +441,7 @@ nav li:nth-of-type(6) a:hover, .hero a:hover {
 
 .artisans .col {
     flex: 33.33%;
-    max-width: 33.33%;
+    max-width: 25%;
     box-sizing: border-box;
     padding: 15px;
 }

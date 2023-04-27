@@ -11,6 +11,10 @@ use Illuminate\Support\Facades\Redirect;
 
 class CartController extends Controller
 {
+
+    public function viewCart(){
+        return view('cart');
+    }
     public function addProductToCart(Request $request)
     {
         $handicraftId = $request->input('handicraft_id');

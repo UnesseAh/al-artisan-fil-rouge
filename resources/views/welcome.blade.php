@@ -7,6 +7,7 @@
     <title>Al Artisan</title>
     <script src="{{asset('js/landing-page.js')}}" type="text/javascript" defer></script>
     <link rel="stylesheet" href="{{asset('css/landing-page.css')}}">
+    <link rel="icon" type="image/x-icon" href="{{asset('image/logo/icon/al-artisan-icon-white.png')}}">
     <!--  Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
@@ -56,7 +57,6 @@
                 </div>
             </a>
         @endforeach
-
     </div>
 
     <!-- End On Sale -->
@@ -94,12 +94,31 @@
     </section>
     <!-- End Shop By Category -->
 
+    <!-- Artisans -->
+    <div class="artisans">
+        <div class="inner">
+            <h2 class="on-sale-heading">Artisans</h2>
+            <div class="row">
+                @foreach($artisans as $artisan)
+                    <div class="col" >
+                        <div class="artisan">
+                            <a href="{{ route('artisan.products', ['id' => $artisan->id]) }}">
+                                <img src="{{ asset('image/artisan-1.jpg') }}" alt="" class="card-img-top">
+                                <div class="name" style="color: black">{{ $artisan->name }}</div>
+                            </a>
+                        </div>
+                    </div>
+                @endforeach
+            </div>
+        </div>
+    </div> <!-- End Artisans -->
+
 
 
     <!-- Artisans -->
     <div class="artisans" style="outline: 2px solid red">
         <div class="inner">
-            <h2 class="on-sale-heading" style="outline: 2px solid red">Artisans</h2>
+            <h2 class="on-sale-heading">Testimonials</h2>
             <div class="row">
                 <div class="col">
                     <div class="artisan">
@@ -187,7 +206,9 @@
     <!-- End Artisans -->
 
     <!-- brands -->
+        <h2 class="on-sale-heading">Our Partners</h2>
     <div class="brands">
+
         <div class="small-container">
             <div class="row">
                 <div class="col-5">

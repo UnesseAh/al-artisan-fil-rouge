@@ -25,9 +25,7 @@ class HandicraftController extends Controller
 
     public function create()
     {
-//        if(!auth()->user()->can('manage_users')){
-//            abort(403);
-//        }
+
         $subcategories = Subcategory::all();
         $categories = Category::all();
 

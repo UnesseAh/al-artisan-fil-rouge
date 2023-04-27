@@ -1,92 +1,170 @@
-@include('includes.dashboard.head')
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Al Artisan</title>
+    <link rel="icon" type="image/x-icon" href="{{asset('image/logo/icon/al-artisan-icon-white.png')}}">
 
-<!-- Credit card form -->
-<section>
-    <div class="row">
-        <div class="col-md-8 mb-4">
-            <div class="card mb-4">
-                <div class="card-header py-3">
-                    <h5 class="mb-0">Biling details</h5>
-                </div>
-                <div class="card-body">
-                    <form action="{{ route('buy.products') }}" method="POST">
-                        @csrf
-                        <!-- Text input -->
-                        <div class="form-outline mb-4">
-                            <input name="shipping_address" type="text" id="adress" class="form-control" />
-                            <label class="form-label" for="adress">Address</label>
-                        </div>
+    <script src="{{asset('js/landing-page.js')}}" type="text/javascript" defer></script>
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet"/>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet"/>
+    <!-- MDB -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.2.0/mdb.min.css" rel="stylesheet"/>
+</head>
 
-                        <hr class="my-4"/>
 
-                        <h5 class="mb-4">Payment</h5>
+<body>
 
-                        <div class="row mb-4">
-                            <div class="col">
-                                <div class="form-outline">
-                                    <input type="text" id="formNameOnCard" class="form-control" />
-                                    <label class="form-label" for="formNameOnCard">Name on card</label>
-                                </div>
-                            </div>
-                            <div class="col">
-                                <div class="form-outline">
-                                    <input type="text" id="card_number" class="form-control" />
-                                    <label class="form-label" for="card_number">Credit card number</label>
-                                </div>
-                            </div>
-                        </div>
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-light bg-white p-3">
+    <!-- Container wrapper -->
+    <div class="container-fluid">
+        <!-- Toggle button -->
+        <button class="navbar-toggler" type="button" data-mdb-toggle="collapse" data-mdb-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="fas fa-bars"></i>
+        </button>
 
-                        <div class="row mb-4">
-                            <div class="col-3">
-                                <div class="form-outline">
-                                    <input type="text" id="expiration" class="form-control" />
-                                    <label class="form-label" for="expiration">Expiration</label>
-                                </div>
-                            </div>
-                            <div class="col-3">
-                                <div class="form-outline">
-                                    <input type="text" id="cvv" class="form-control" />
-                                    <label class="form-label" for="cvv">CVV</label>
-                                </div>
-                            </div>
-                        </div>
+        <!-- Collapsible wrapper -->
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <!-- Navbar brand -->
+            <a class="navbar-brand mt-2 mt-lg-0" href="#">
+                <img src="{{ asset('image/logo/icon/al-artisan-icon-dark.png') }}" height="40" alt="MDB Logo" loading="lazy"/>
+            </a>
+            <!-- Left links -->
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('landing.data') }}">Products</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Artisans</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('cart.show') }}">Cart</a>
+                </li>
+            </ul>
+            <!-- Left links -->
+        </div>
+        <!-- Collapsible wrapper -->
 
-                        <button class="btn btn-primary btn-lg btn-block" type="submit">
-                            Buy
-                        </button>
-                    </form>
-                </div>
+        <!-- Right elements -->
+        <div class="d-flex align-items-center">
+            <!-- Icon -->
+            <a class="link-secondary me-3" href="#">{{ \Illuminate\Support\Facades\Auth::user()->name }}</a>
+
+            <!-- Notifications -->
+            <div class="dropdown">
+                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuLink">
+                    <li>
+                        <a class="dropdown-item" href="#">Some news</a>
+                    </li>
+                    <li>
+                        <a class="dropdown-item" href="#">Another news</a>
+                    </li>
+                    <li>
+                        <a class="dropdown-item" href="#">Something else here</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- Avatar -->
+            <div class="dropdown">
+                <a class="dropdown-toggle d-flex align-items-center hidden-arrow" href="#" id="navbarDropdownMenuAvatar" role="button" data-mdb-toggle="dropdown" aria-expanded="false">
+                    <img src="https://mdbcdn.b-cdn.net/img/new/avatars/2.webp" class="rounded-circle" height="25" alt="Black and White Portrait of a Man" loading="lazy"/>
+                </a>
+                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuAvatar">
+                    <li>
+                        <a class="dropdown-item" href="#">My profile</a>
+                    </li>
+                    <li>
+                        <a class="dropdown-item" href="#">Settings</a>
+                    </li>
+                    <li>
+                        <a class="dropdown-item" href="#">Logout</a>
+                    </li>
+                </ul>
             </div>
         </div>
+        <!-- Right elements -->
+    </div>
+    <!-- Container wrapper -->
+</nav>
+<!-- End nav -->
 
-        <div class="col-md-4 mb-4">
-            <div class="card mb-4">
-                <div class="card-header py-3">
-                    <h5 class="mb-0">Summary</h5>
-                </div>
-                <div class="card-body">
-                    <ul class="list-group list-group-flush">
-                        <li class="list-group-item d-flex justify-content-between align-items-center px-0">
-                            Shipping
-                            <span>Free</span>
-                        </li>
-                        <li class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 mb-3">
-                            <div>
-                                <strong>Total amount</strong>
+<!-- Credit card form -->
+    <!--Main layout-->
+    <main class="mt-5 pt-4">
+        <div class="container">
+            <!-- Heading -->
+            <h2 class=" text-center">Checkout Form</h2>
+
+            <!--Grid row-->
+            <div class="row d-flex justify-content-center" style="margin-bottom: 80px">
+                <!--Grid column-->
+                <div class="col-md-8 mb-4">
+                    <!--Card-->
+                    <div class="card p-4">
+                        <hr class="mb-4" />
+                        <form action="{{ route('buy.products') }}" method="POST">
+                            @csrf
+                            <!--address-->
+                            <p class="mb-0">Shipping Address</p>
+                            <div class="form-outline mb-4">
+                                <input name="shipping_address" type="text" class="form-control" placeholder="Shipping Address" />
                             </div>
-                            <span><strong>{{ $subtotal . ' MAD'}}</strong></span>
-                        </li>
-                    </ul>
+
+                            <!--Phone number-->
+                            <p class="mb-0">Phone Number</p>
+                            <div class="form-outline">
+                                <input type="text" id="form12" placeholder="Phone number" class="form-control" />
+                            </div>
+
+                            <hr class="mb-4" />
+                            <button type="submit" class="w-100 btn btn-outline-success">Buy Products</button>
+                        </form>
+
+                    </div>
+                    <!--/.Card-->
                 </div>
+                <!--Grid column-->
+
+
+                <!--Grid column-->
+            </div>
+            <!--Grid row-->
+        </div>
+    </main>
+    <!--Main layout-->
+
+<!-- Credit card form -->
+
+
+
+<footer class="bg-dark text-center text-white">
+    <div class="container-fluid p-0">
+        <div class="d-flex justify-content-center">
+            <div class="p-4">
+                <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button">
+                    <i class="fab fa-facebook-f"></i>
+                </a>
+                <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button">
+                    <i class="fab fa-twitter"></i>
+                </a>
+                <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button">
+                    <i class="fab fa-instagram"></i>
+                </a>
             </div>
         </div>
     </div>
-</section>
-<!-- Credit card form -->
+    <div class="text-center p-3 bg-dark" style="background-color: rgba(0, 0, 0, 0.2);">
+        © 2023 al-artisan.com
+    </div>
+</footer>
+
 
 
 <!-- MDB -->
-<script
-    type="text/javascript"
-    src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.2.0/mdb.min.js"
-></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.2.0/mdb.min.js"></script>
+</body>

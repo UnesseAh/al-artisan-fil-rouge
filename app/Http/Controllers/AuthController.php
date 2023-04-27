@@ -44,6 +44,7 @@ class AuthController extends Controller
             'name' => $validated['name'],
             'email' => $validated['email'],
             'password' => Hash::make($validated['password']),
+            'role_id' => 3,
         ]);
 
         return redirect('login')->with('message', 'You have successfully registered');
@@ -66,9 +67,13 @@ class AuthController extends Controller
 
         if(Auth::attempt($validator->validate()))
         {
-            $request->session()->regenerate();
+            if($request->user()->can('admin_area')) {
+                $request->session()->regenerate();
 
-            return redirect()->intended('dashboard')->with('message', 'Welcome Back!');
+                return redirect()->intended('dashboard')->with('message', 'Welcome Back!');
+            }else return redirect()->intended('/');
+
+
         }
 
         return redirect('login')->with('invalidCredentials', 'Opps! You have entered invalid credentials');
@@ -86,7 +91,7 @@ class AuthController extends Controller
 
     public function dashboard()
     {
-        if(Auth::check())
+        if(Auth::user())
         {
             $handicrafts  = Handicraft::with('user', 'subcategory.category')->get();
 

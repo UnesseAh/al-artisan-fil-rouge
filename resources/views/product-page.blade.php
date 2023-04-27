@@ -6,6 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Al Artisan</title>
+    <link rel="icon" type="image/x-icon" href="{{asset('image/logo/icon/al-artisan-icon-white.png')}}">
+
     <script src="{{asset('js/landing-page.js')}}" type="text/javascript" defer></script>
 
     <!-- Font Awesome -->
@@ -50,7 +52,7 @@
         <!-- Right elements -->
         <div class="d-flex align-items-center">
             <!-- Icon -->
-            <a class="link-secondary me-3" href="#">{{ \Illuminate\Support\Facades\Auth::user()->name }}</a>
+{{--            <a class="link-secondary me-3" href="#">{{ \Illuminate\Support\Facades\Auth::user()->name }}</a>--}}
 
             <!-- Notifications -->
             <div class="dropdown">
@@ -146,7 +148,8 @@
                         <input type="hidden" name="handicraft_id" value="{{$handicraft->id}}">
                         <!-- Default input -->
                         <div class="form-outline me-1" style="width: 100px;">
-                            <input  type="number" id="quantity" name="quantity" value="1" min="1" max="{{$handicraft->stock}}" class="form-control"/>
+
+                            <input type="number" id="quantity" name="quantity" value="1" min="1" max="{{$handicraft->stock}}" class="form-control"/>
                         </div>
                         <button class="btn btn-primary ms-1" type="submit">
                             Add to cart
