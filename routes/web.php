@@ -43,6 +43,7 @@ Route::controller(ProfileController::class)->group(function (){
     Route::put('update-password', 'updatePassword')->name('update.password');
 });
 
+
 Route::controller(ResetPasswordController::class)->group(function() {
     Route::get('forget-password', 'showForgetPasswordForm')->name('forget.password.show');
     Route::post('forget-password', 'sendRestLinkEmail')->name('forget.password.submit');
@@ -51,12 +52,12 @@ Route::controller(ResetPasswordController::class)->group(function() {
 });
 
 Route::controller(HandicraftController::class)->group(function() {
-    Route::get('show-product/{handicraft}', 'show')->name('show.product');
-    Route::get('handicraft', 'create')->name('create.product');
-    Route::post('handicraft', 'store')->name('store.product');
-    Route::get('handicraft/{handicraft}', 'edit')->name('edit.product');
-    Route::put('handicraft/{handicraft}',  'update')->name('update.product');
-    Route::delete('handicraft/{handicraft}', 'destroy')->name('delete.product');
+    Route::get('show-product/{handicraft}', 'showOneHandicraft')->name('show.product');
+    Route::get('handicraft', 'createHandicraft')->name('create.product');
+    Route::post('handicraft', 'storeHandicraft')->name('store.product');
+    Route::get('handicraft/{handicraft}', 'editHandicraft')->name('edit.product');
+    Route::put('handicraft/{handicraft}',  'updateHandicraft')->name('update.product');
+    Route::delete('handicraft/{handicraft}', 'deleteHandicraft')->name('delete.product');
 });
 
 Route::controller(CategoryController::class)->group(function (){
@@ -67,7 +68,7 @@ Route::controller(CategoryController::class)->group(function (){
     Route::delete('categories/{category}', 'destroy')->name('delete.category');
 });
 
-Route::controller(SubcategoryController::class)->group(function () {
+Route::controller(SubcategoryController::class)->group( function () {
     Route::post('subcategory', 'store')->name('store.subcategory');
     Route::get('subcategory/{subcategory}', 'edit')->name('edit.subcategory');
     Route::put('subcategory/{subcategory}',  'update')->name('update.subcategory');
@@ -77,17 +78,15 @@ Route::controller(SubcategoryController::class)->group(function () {
 
 //Route::get('shopping-cart', [CartController::class, 'viewCart'])->name('show')
 //});
+
 Route::post('product/add-to-cart/', [CartController::class, 'addProductToCart'])->name('cart.add');
 Route::get('show-cart', [CartController::class, 'showMyCart'])->name('cart.show');
 Route::delete('delete-cart-item/{cartItem}', [CartController::class, 'deleteCartItem'])->name('cart.delete');
 
-
 Route::get('checkout/{subtotal}', [PaymentController::class, 'checkout'])->name('payment.page');
-
 Route::post('checkout/buy-products', [PaymentController::class, 'buyProducts'])->name('buy.products');
 
-Route::controller(OrderController::class)->group(function ()
-{
+Route::controller(OrderController::class)->group(function () {
     Route::get('orders', 'getAllOrders')->name('show.orders');
     Route::get('order/{order}', 'editOrder')->name('edit.order');
     Route::put('order/{order}', 'updateOrder')->name('update.order');
@@ -96,6 +95,11 @@ Route::controller(OrderController::class)->group(function ()
 
 Route::controller(UserController::class)->group(function (){
     Route::get('users', 'getAllUsers')->name('show.users');
+    Route::get('users/{user}', 'editUser')->name('edit.user');
+    Route::put('users/{user}', 'updateUser')->name('update.user');
+    Route::delete('users/{user}', 'deleteUser')->name('delete.user');
+
+
 });
 
 Route::get('/artisans/{id}/products', [ArtisanController::class, 'showArtisanProducts'])->name('artisan.products');

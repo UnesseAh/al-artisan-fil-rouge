@@ -42,32 +42,30 @@
                 <th>Customer</th>
                 <th>Subtotal</th>
                 <th>Shipping Address</th>
-                <th>Payment Method</th>
+                <th>Phone Number</th>
                 <th>State</th>
                 <th>Purchase Date</th>
                 <th>Action</th>
             </tr>
             </thead>
             <tbody>
-            @foreach($orders as $order)
+            @foreach ($orders as $order)
                 <tr>
-                    <td>{{ $order->id}}</td>
+                    <td>{{ $order->id }}</td>
                     <td>{{ $order->user->name }}</td>
                     <td>{{ $order->subtotal }}</td>
                     <td>{{ $order->shipping_address }}</td>
-                    <td>{{ $order->payment_method }}</td>
+                    <td>{{ $order->phone_number }}</td>
                     <td>
                         <span class="badge badge-primary rounded-pill d-inline">{{ $order->state->name }}</span>
                     </td>
-                    <td>{{ $order->created_at->format('Y-m-d H:i:s')}}</td>
+                    <td>{{ $order->created_at->format('Y-m-d H:i:s') }}</td>
                     <td>
                         <form method="POST" action="{{ route('delete.order', $order) }}">
-                            <a href="{{ route('edit.order', $order) }}"
-                               class="btn btn-outline-success" data-mdb-ripple-color="dark">Edit</a>
+                            <a href="{{ route('edit.order', $order) }}" class="btn btn-outline-success" data-mdb-ripple-color="dark">Edit</a>
                             @csrf
                             @method('DELETE')
-                            <button type="submit" class="btn btn-outline-danger" data-mdb-ripple-color="dark">Delete
-                            </button>
+                            <button type="submit" class="btn btn-outline-danger" data-mdb-ripple-color="dark">Delete</button>
                         </form>
                     </td>
                 </tr>

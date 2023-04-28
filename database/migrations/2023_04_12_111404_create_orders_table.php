@@ -18,7 +18,7 @@ return new class extends Migration
             $table->unsignedBigInteger('user_id');
             $table->decimal('subtotal');
             $table->text('shipping_address');
-            $table->string('payment_method');
+            $table->string('phone_number');
             $table->unsignedBigInteger('state_id');
 
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');

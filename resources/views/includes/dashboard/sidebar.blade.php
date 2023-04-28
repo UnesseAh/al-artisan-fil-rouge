@@ -5,7 +5,7 @@
             <a href="{{ route('dashboard') }}" class="list-group-item list-group-item-action py-2 ripple" aria-current="true">
                 <i class="fa-solid fa-bag-shopping  fa-fw me-3"></i><span>Products</span>
             </a>
-            <a href="{{  route('create.category') }}" class="list-group-item list-group-item-action py-2 ripple active">
+            <a href="{{  route('create.category') }}" class="list-group-item list-group-item-action py-2 ripple">
                 <i class="fa-solid fa-layer-group fa-fw me-3"></i><span>Categories</span>
             </a>
             <a href="{{ route('show.users') }}" class="list-group-item list-group-item-action py-2 ripple">
@@ -14,9 +14,7 @@
             <a href="{{ route('show.orders') }}" class="list-group-item list-group-item-action py-2 ripple">
                 <i class="fa-solid fa-cart-shopping fa-fw me-3"></i><span>Orders</span>
             </a>
-            <a href="" class="list-group-item list-group-item-action py-2 ripple">
-                <i class="fa-solid fa-cart-shopping fa-fw me-3"></i><span>My Orders</span>
-            </a>
+
         </div>
     </div>
 </nav>

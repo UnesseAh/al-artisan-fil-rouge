@@ -66,8 +66,8 @@
                         <span class="badge badge-primary rounded-pill d-inline">{{ $user->role->name }}</span>
                     </td>
                     <td>
-                        <form method="POST" action="{{ route('delete.order', $user) }}">
-                            <a href="{{ route('edit.order', $user) }}"
+                        <form method="POST" action="{{ route('delete.user', $user) }}">
+                            <a href="{{ route('edit.user', $user) }}"
                                class="btn btn-outline-success" data-mdb-ripple-color="dark">Edit</a>
                             @csrf
                             @method('DELETE')

@@ -9,6 +9,8 @@ use App\Models\OrderState;
 use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Validator;
 
@@ -16,8 +18,30 @@ class OrderController extends Controller
 {
     public function getAllOrders()
     {
-        $orders = Order::with('user')->get();
-        return view('dashboard/order/orders', compact('orders'));
+
+        if(auth()->user()->can('admin_area'))
+        {
+            $orders = Order::with('user')->get();
+            return view('dashboard/order/orders', compact('orders'));
+
+        }else {
+            $userId  = Auth::user()->id;
+
+            $orders = Order::whereHas('orderItems.handicraft', function ($query) {
+                $query->where('user_id', 4);
+            })->get();
+
+//            $orders = DB::table('orders')
+//                ->join('order_items', 'orders.id', '=', 'order_items.order_id')
+//                ->whereIn('order_items.handicraft_id', function($query) {
+//                    $query->select('id')
+//                        ->from('handicrafts')
+//                        ->where('user_id', '=', 4);
+//                })
+//                ->get();
+
+            return view('dashboard/order/orders', compact('orders'));
+        }
     }
 
     public function store(StoreOrderRequest $request)
@@ -38,7 +62,7 @@ class OrderController extends Controller
             'name' => 'required|string',
             'subtotal' => 'required|numeric|min:0',
             'shipping_address' => 'required|string',
-            'payment_method' => 'required|string',
+            'phone_number' => 'required|string',
             'state_id' => 'required|numeric',
             ]
         );

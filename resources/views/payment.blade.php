@@ -118,7 +118,7 @@
                             <!--Phone number-->
                             <p class="mb-0">Phone Number</p>
                             <div class="form-outline">
-                                <input type="text" id="form12" placeholder="Phone number" class="form-control" />
+                                <input name="phonenumber" type="text" id="form12" placeholder="Phone number" class="form-control" />
                             </div>
 
                             <hr class="mb-4" />

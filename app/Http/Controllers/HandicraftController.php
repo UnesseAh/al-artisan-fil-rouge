@@ -15,15 +15,15 @@ use Illuminate\Support\Str;
 
 class HandicraftController extends Controller
 {
-    public function index()
-    {
-        $handicrafts =  Handicraft::all();
+//    public function showAllHandicrafts()
+//    {
+//        $handicrafts =  Handicraft::all();
+//
+//        return view('dashboard', ['products' => $handicrafts] );
+//    }
 
-        return view('dashboard', ['products' => $handicrafts] );
-    }
 
-
-    public function create()
+    public function createHandicraft()
     {
 
         $subcategories = Subcategory::all();
@@ -33,7 +33,7 @@ class HandicraftController extends Controller
     }
 
 
-    public function store(Request $request)
+    public function storeHandicraft(Request $request)
     {
 
         $validator = Validator::make($request->all(), [
@@ -74,21 +74,21 @@ class HandicraftController extends Controller
     }
 
 
-    public function show(Handicraft $handicraft)
+    public function showOneHandicraft(Handicraft $handicraft)
     {
          $relatedProducts = Handicraft::where('subcategory_id', $handicraft->subcategory_id)->latest()->take(3)->get();
         return view('product-page', compact('handicraft', 'relatedProducts'));
     }
 
 
-    public function edit(Handicraft $handicraft)
+    public function editHandicraft(Handicraft $handicraft)
     {
         $subcategories  = Subcategory::all();
         return view('dashboard.product.edit-product', compact('handicraft', 'subcategories'));
     }
 
 
-    public function update(Request $request, Handicraft $handicraft)
+    public function updateHandicraft(Request $request, Handicraft $handicraft)
     {
         $validator = Validator::make($request->all(), [
             'title' => 'required|string|max:255',
@@ -129,7 +129,7 @@ class HandicraftController extends Controller
     }
 
 
-    public function destroy(Handicraft $handicraft)
+    public function deleteHandicraft(Handicraft $handicraft)
     {
         $title = $handicraft->title;
         toastr()->error('Product "' . $title . '" Deleted Successfully!');

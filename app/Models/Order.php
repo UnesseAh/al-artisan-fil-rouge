@@ -13,7 +13,7 @@ class Order extends Model
         'user_id',
         'subtotal',
         'shipping_address',
-        'payment_method',
+        'phone_number',
         'state_id',
     ];
 
@@ -26,5 +26,10 @@ class Order extends Model
 
     public function state(){
         return $this->belongsTo(OrderState::class);
+    }
+
+    public function orderItems()
+    {
+        return $this->hasMany(OrderItem::class);
     }
 }

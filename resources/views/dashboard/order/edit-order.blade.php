@@ -9,7 +9,6 @@
                          class="w-100" style="border-top-left-radius: .3rem; border-top-right-radius: .3rem;"
                          alt="Sample photo">
                     <div class="card-body pb-3">
-{{--                        <h3 class="mb-4 pb-2 pb-md-0 mb-md-5 px-md-2">Add New Craft :</h3>--}}
                         <form method="POST" action="{{route('update.order', $order)}}">
                             @csrf
                             @method('PUT')
@@ -39,8 +38,8 @@
                             @endif
 
                             <div class="form-outline mb-2">
-                                <input name="payment_method" value="{{  $order->payment_method }}" type="text" id="payment_method" class="form-control" />
-                                <label class="form-label" for="payment_method">payment method</label>
+                                <input name="phone_number" value="{{  $order->phone_number }}" type="text" id="payment_method" class="form-control" />
+                                <label class="form-label" for="payment_method">Phone Number</label>
                             </div>
                             @if($errors->has('payment_method'))
                                 <p class="text-danger small mb-2">{{ $errors->first('payment_method') }}</p>

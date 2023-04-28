@@ -21,7 +21,8 @@ class PaymentController extends Controller
     {
         $userId = Auth::user()->id;
         $address = $request->input('shipping_address');
-        $payment_method = 'Credit Card';
+        $phoneNumber = $request->input('phonenumber');
+
         $cartItems = Cart::where('user_id', $userId)
             ->with('handicraft')
             ->get()
@@ -34,7 +35,7 @@ class PaymentController extends Controller
             'user_id' => $userId,
             'subtotal' => $subtotal,
             'shipping_address' => $address,
-            'payment_method' => $payment_method,
+            'phone_number' => $phoneNumber,
             'state_id' => 1
         ]);
 
@@ -52,7 +53,7 @@ class PaymentController extends Controller
 
         Cart::where('user_id', $userId)->delete();
 
-        return 'kolchi tchera';
+        return redirect()->route('cart.show')->with('success', 'You purchase went successfully!');
 
     }
 }

@@ -15,4 +15,9 @@ class OrderItem extends Model
         'quantity',
         'price',
     ];
+
+    public function handicraft()
+    {
+        return $this->belongsTo(Handicraft::class);
+    }
 }
